@@ -9,8 +9,14 @@ import { QuickActions } from '@/components/sections/QuickActions';
 export default function Home() {
   return (
     <div className="min-h-screen bg-panel text-slate-950">
+      <a
+        href="#main-content"
+        className="sr-only z-[60] rounded-md bg-ink px-4 py-3 text-sm font-bold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:shadow-focus"
+      >
+        Skip to portfolio content
+      </a>
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <HeroSection />
         <QuickActions />
         <GameSection />

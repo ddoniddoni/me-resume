@@ -11,7 +11,12 @@ type SkillsModalProps = {
 
 export function SkillsModal({ isOpen, onClose }: SkillsModalProps) {
   return (
-    <BaseModal isOpen={isOpen} title="Skills" onClose={onClose}>
+    <BaseModal
+      isOpen={isOpen}
+      title="Skills"
+      description="Frontend skills grouped by category."
+      onClose={onClose}
+    >
       <div className="grid gap-5">
         <p className="leading-7 text-slate-700">
           Frontend skills are grouped by practical working area, with TODO

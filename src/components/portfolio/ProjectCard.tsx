@@ -6,16 +6,18 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="rounded-lg border border-slate-200 bg-panel p-5">
+    <article className="overflow-hidden rounded-lg border border-slate-200 bg-panel p-5">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-        <div>
+        <div className="min-w-0">
           <h3 className="text-xl font-black text-ink">{project.title}</h3>
           <p className="mt-1 text-sm font-semibold text-slate-600">
             {project.subtitle}
           </p>
         </div>
         {project.period ? (
-          <p className="text-sm font-bold text-circuit">{project.period}</p>
+          <p className="shrink-0 text-sm font-bold text-circuit">
+            {project.period}
+          </p>
         ) : null}
       </div>
 
@@ -42,7 +44,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <dt className="text-sm font-black uppercase tracking-[0.12em] text-slate-500">
             Tech stack
           </dt>
-          <dd className="mt-2 text-sm leading-6 text-slate-700">
+          <dd className="mt-2 break-words text-sm leading-6 text-slate-700">
             {project.techStack.join(', ')}
           </dd>
         </div>

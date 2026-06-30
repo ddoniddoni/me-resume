@@ -10,7 +10,12 @@ type ResumeModalProps = {
 
 export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   return (
-    <BaseModal isOpen={isOpen} title="Resume" onClose={onClose}>
+    <BaseModal
+      isOpen={isOpen}
+      title="Resume"
+      description="Career summary, resume PDF placeholder, and profile details."
+      onClose={onClose}
+    >
       <div className="grid gap-5">
         <div>
           <p className="text-sm font-black uppercase tracking-[0.16em] text-circuit">
@@ -28,7 +33,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         </div>
         <a
           href={profile.resumePdfUrl}
-          className="inline-flex min-h-11 w-fit items-center justify-center rounded-md bg-ink px-4 py-2 text-sm font-bold text-white outline-none transition hover:bg-slate-800 focus-visible:shadow-focus"
+          className="inline-flex min-h-11 w-full items-center justify-center rounded-md bg-ink px-4 py-2 text-center text-sm font-bold text-white outline-none transition hover:bg-slate-800 focus-visible:shadow-focus sm:w-fit"
         >
           Download resume PDF placeholder
         </a>

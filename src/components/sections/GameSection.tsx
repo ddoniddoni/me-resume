@@ -7,7 +7,7 @@ import {
 } from '@/game/interactions';
 import { usePortfolioStore } from '@/store/portfolioStore';
 
-type GameStatus = 'loading' | 'ready' | 'unavailable';
+type GameStatus = 'loading' | 'ready' | 'unavailable' | 'reduced-motion';
 
 export function GameSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -35,6 +35,11 @@ export function GameSection() {
       }
 
       try {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          setStatus('reduced-motion');
+          return;
+        }
+
         const { createPortfolioGame } = await import('@/game/PhaserGame');
 
         if (!isMounted || !containerRef.current) {
@@ -73,7 +78,7 @@ export function GameSection() {
     <section aria-labelledby="game-title" className="bg-panel py-14">
       <div className="mx-auto max-w-6xl px-5">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
-          <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+          <div className="order-2 rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-6 lg:order-1">
             <p className="text-sm font-black uppercase tracking-[0.16em] text-circuit">
               Optional exploration
             </p>
@@ -91,9 +96,13 @@ export function GameSection() {
             >
               {status !== 'ready' ? (
                 <div className="flex h-full min-h-[280px] items-center justify-center px-4 text-center text-sm font-bold text-slate-600">
-                  {status === 'loading'
-                    ? 'Loading interactive map...'
-                    : 'Interactive map is unavailable. Use the direct buttons nearby or the full portfolio sections below.'}
+                  {status === 'loading' ? (
+                    <>Loading interactive map&hellip;</>
+                  ) : status === 'reduced-motion' ? (
+                    'Interactive map is paused because reduced motion is enabled. Use the direct buttons nearby or the full portfolio sections below.'
+                  ) : (
+                    'Interactive map is unavailable. Use the direct buttons nearby or the full portfolio sections below.'
+                  )}
                 </div>
               ) : null}
             </div>
@@ -101,7 +110,7 @@ export function GameSection() {
 
           <aside
             aria-label="Direct access to game destinations"
-            className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5"
+            className="order-1 rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5 lg:order-2"
           >
             <p className="text-sm font-black uppercase tracking-[0.16em] text-circuit">
               Direct access

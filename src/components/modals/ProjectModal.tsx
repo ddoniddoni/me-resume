@@ -11,7 +11,12 @@ type ProjectModalProps = {
 
 export function ProjectModal({ isOpen, onClose }: ProjectModalProps) {
   return (
-    <BaseModal isOpen={isOpen} title="Projects" onClose={onClose}>
+    <BaseModal
+      isOpen={isOpen}
+      title="Projects"
+      description="Selected frontend project case studies."
+      onClose={onClose}
+    >
       <div className="grid gap-5">
         <p className="leading-7 text-slate-700">
           Structured project notes are kept in typed data files so the portfolio

@@ -44,7 +44,7 @@ export function QuickActions() {
               key={action.title}
               type="button"
               onClick={() => openModal(action.modal)}
-              className="rounded-md border border-white/10 bg-white/5 p-4 text-left text-white outline-none transition hover:-translate-y-0.5 hover:bg-white/10 focus-visible:shadow-focus"
+              className="rounded-md border border-white/10 bg-white/5 p-4 text-left text-white outline-none transition motion-safe:hover:-translate-y-0.5 hover:bg-white/10 focus-visible:shadow-focus"
             >
               <span className="block font-bold">{action.title}</span>
               <span className="mt-2 block text-sm leading-6 text-slate-300">

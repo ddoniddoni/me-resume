@@ -5,6 +5,7 @@ import { type ReactNode, useEffect, useId, useRef } from 'react';
 type BaseModalProps = {
   isOpen: boolean;
   title: string;
+  description?: string;
   children: ReactNode;
   onClose: () => void;
 };
@@ -21,10 +22,12 @@ const focusableSelector = [
 export function BaseModal({
   isOpen,
   title,
+  description,
   children,
   onClose,
 }: BaseModalProps) {
   const titleId = useId();
+  const descriptionId = useId();
   const dialogRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
@@ -104,7 +107,7 @@ export function BaseModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-ink/70 px-4 py-6 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-end justify-center overflow-y-auto overscroll-contain bg-ink/70 px-4 py-6 backdrop-blur-sm sm:items-center"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
@@ -116,8 +119,9 @@ export function BaseModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
+        aria-describedby={description ? descriptionId : undefined}
         tabIndex={-1}
-        className="max-h-[min(760px,calc(100vh-3rem))] w-full max-w-3xl overflow-y-auto rounded-lg border border-slate-200 bg-white p-5 shadow-2xl outline-none focus-visible:shadow-focus sm:p-6"
+        className="max-h-[min(760px,calc(100dvh-3rem))] w-full max-w-3xl overflow-y-auto overscroll-contain rounded-lg border border-slate-200 bg-white p-5 shadow-2xl outline-none focus-visible:shadow-focus sm:p-6"
       >
         <div className="flex items-start justify-between gap-4 border-b border-slate-200 pb-4">
           <h2 id={titleId} className="text-2xl font-black text-ink">
@@ -132,6 +136,11 @@ export function BaseModal({
             ×
           </button>
         </div>
+        {description ? (
+          <p id={descriptionId} className="sr-only">
+            {description}
+          </p>
+        ) : null}
         <div className="pt-5">{children}</div>
       </div>
     </div>

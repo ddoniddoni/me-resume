@@ -37,7 +37,7 @@ export function ContactLinks({ profile }: ContactLinksProps) {
           {link.href ? (
             <a
               href={link.href}
-              className="text-sm font-bold text-circuit outline-none hover:text-ink focus-visible:rounded focus-visible:shadow-focus"
+              className="break-words text-sm font-bold text-circuit outline-none hover:text-ink focus-visible:rounded focus-visible:shadow-focus"
             >
               {link.value}
             </a>

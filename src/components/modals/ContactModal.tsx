@@ -11,7 +11,12 @@ type ContactModalProps = {
 
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   return (
-    <BaseModal isOpen={isOpen} title="Contact" onClose={onClose}>
+    <BaseModal
+      isOpen={isOpen}
+      title="Contact"
+      description="Public contact link placeholders for email, GitHub, and LinkedIn."
+      onClose={onClose}
+    >
       <div className="grid gap-5">
         <p className="leading-7 text-slate-700">
           Add DDoni&apos;s public contact links here when they are ready.

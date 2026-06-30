@@ -35,7 +35,7 @@ export function HeroSection() {
           <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-circuit">
             {profile.name}
           </p>
-          <h1 className="max-w-3xl text-4xl font-black leading-tight text-ink sm:text-5xl lg:text-6xl">
+          <h1 className="max-w-3xl text-balance text-4xl font-black leading-tight text-ink sm:text-5xl lg:text-6xl">
             {profile.role}
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-700">

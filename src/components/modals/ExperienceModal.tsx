@@ -23,6 +23,7 @@ export function ExperienceModal({
     <BaseModal
       isOpen={isOpen}
       title={selectedExperience.title}
+      description={`${selectedExperience.title} summary and highlights.`}
       onClose={onClose}
     >
       <div className="grid gap-5">
