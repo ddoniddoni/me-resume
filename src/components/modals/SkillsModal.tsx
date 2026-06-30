@@ -18,7 +18,7 @@ export function SkillsModal({ isOpen, onClose }: SkillsModalProps) {
       onClose={onClose}
     >
       <div className="grid gap-5">
-        <p className="leading-7 text-slate-700">
+        <p className="leading-7 text-body">
           프론트엔드 기술을 실제 작업 영역별로 묶었습니다. 정확한 도구 사용
           경험은 DDoni가 직접 확인해 TODO 항목을 교체하면 됩니다.
         </p>

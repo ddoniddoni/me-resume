@@ -18,7 +18,7 @@ export function ProjectModal({ isOpen, onClose }: ProjectModalProps) {
       onClose={onClose}
     >
       <div className="grid gap-5">
-        <p className="leading-7 text-slate-700">
+        <p className="leading-7 text-body">
           프로젝트 내용은 타입이 지정된 데이터 파일에 보관해, UI 컴포넌트 안에
           콘텐츠를 숨기지 않고 쉽게 확장할 수 있도록 했습니다.
         </p>

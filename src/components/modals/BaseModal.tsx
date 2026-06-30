@@ -121,16 +121,19 @@ export function BaseModal({
         aria-labelledby={titleId}
         aria-describedby={description ? descriptionId : undefined}
         tabIndex={-1}
-        className="max-h-[min(760px,calc(100dvh-3rem))] w-full max-w-3xl overflow-y-auto overscroll-contain rounded-lg border border-slate-200 bg-white p-5 shadow-2xl outline-none focus-visible:shadow-focus sm:p-6"
+        className="max-h-[min(760px,calc(100dvh-3rem))] w-full max-w-3xl overflow-y-auto overscroll-contain rounded-3xl border border-hairline bg-canvas p-6 shadow-2xl outline-none focus-visible:shadow-focus sm:p-8"
       >
-        <div className="flex items-start justify-between gap-4 border-b border-slate-200 pb-4">
-          <h2 id={titleId} className="text-2xl font-black text-ink">
+        <div className="flex items-start justify-between gap-4 border-b border-hairline-soft pb-5">
+          <h2
+            id={titleId}
+            className="text-3xl font-normal tracking-[-0.03em] text-ink"
+          >
             {title}
           </h2>
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex size-10 shrink-0 items-center justify-center rounded-md border border-slate-300 text-xl font-bold leading-none text-slate-700 outline-none transition hover:border-circuit hover:text-circuit focus-visible:shadow-focus"
+            className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-strong text-xl font-semibold leading-none text-ink outline-none transition hover:bg-primary hover:text-white focus-visible:shadow-focus"
             aria-label="모달 닫기"
           >
             ×
@@ -141,7 +144,7 @@ export function BaseModal({
             {description}
           </p>
         ) : null}
-        <div className="pt-5">{children}</div>
+        <div className="pt-6">{children}</div>
       </div>
     </div>
   );

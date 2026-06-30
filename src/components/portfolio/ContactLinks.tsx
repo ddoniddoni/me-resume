@@ -31,20 +31,18 @@ export function ContactLinks({ profile }: ContactLinksProps) {
       {links.map((link) => (
         <li
           key={link.label}
-          className="flex flex-col gap-2 rounded-md border border-slate-200 bg-panel p-4 sm:flex-row sm:items-center sm:justify-between"
+          className="flex flex-col gap-2 rounded-2xl border border-hairline bg-canvas p-4 sm:flex-row sm:items-center sm:justify-between"
         >
           <span className="font-bold text-ink">{link.label}</span>
           {link.href ? (
             <a
               href={link.href}
-              className="break-words text-sm font-bold text-circuit outline-none hover:text-ink focus-visible:rounded focus-visible:shadow-focus"
+              className="break-words text-sm font-semibold text-primary outline-none hover:text-primary-active focus-visible:rounded-full focus-visible:shadow-focus"
             >
               {link.value}
             </a>
           ) : (
-            <span className="text-sm font-semibold text-slate-600">
-              {link.todo}
-            </span>
+            <span className="text-sm font-semibold text-body">{link.todo}</span>
           )}
         </li>
       ))}

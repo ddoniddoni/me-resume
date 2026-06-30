@@ -33,7 +33,10 @@ export function QuickActions() {
   const openModal = usePortfolioStore((state) => state.openModal);
 
   return (
-    <section aria-labelledby="quick-actions-title" className="bg-ink py-8">
+    <section
+      aria-labelledby="quick-actions-title"
+      className="border-b border-hairline-soft bg-canvas py-8"
+    >
       <div className="mx-auto max-w-6xl px-5">
         <h2 id="quick-actions-title" className="sr-only">
           빠른 포트폴리오 이동
@@ -44,10 +47,12 @@ export function QuickActions() {
               key={action.title}
               type="button"
               onClick={() => openModal(action.modal)}
-              className="rounded-md border border-white/10 bg-white/5 p-4 text-left text-white outline-none transition motion-safe:hover:-translate-y-0.5 hover:bg-white/10 focus-visible:shadow-focus"
+              className="rounded-3xl border border-hairline bg-canvas p-6 text-left outline-none transition hover:-translate-y-0.5 hover:shadow-soft focus-visible:shadow-focus motion-reduce:hover:translate-y-0"
             >
-              <span className="block font-bold">{action.title}</span>
-              <span className="mt-2 block text-sm leading-6 text-slate-300">
+              <span className="block text-lg font-semibold text-ink">
+                {action.title}
+              </span>
+              <span className="mt-2 block text-sm leading-6 text-body">
                 {action.description}
               </span>
             </button>

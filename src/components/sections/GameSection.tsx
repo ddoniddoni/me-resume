@@ -75,27 +75,30 @@ export function GameSection() {
   };
 
   return (
-    <section aria-labelledby="game-title" className="bg-panel py-14">
+    <section aria-labelledby="game-title" className="bg-panel py-24">
       <div className="mx-auto max-w-6xl px-5">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
-          <div className="order-2 rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-6 lg:order-1">
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-circuit">
+          <div className="order-2 rounded-3xl border border-hairline bg-canvas p-4 shadow-soft sm:p-6 lg:order-1">
+            <p className="w-fit rounded-full bg-strong px-4 py-2 text-xs font-semibold text-ink">
               선택형 탐색
             </p>
-            <h2 id="game-title" className="mt-3 text-2xl font-black text-ink">
+            <h2
+              id="game-title"
+              className="mt-5 text-balance text-4xl font-normal tracking-[-0.03em] text-ink"
+            >
               포트폴리오 지도
             </h2>
-            <p className="mt-3 max-w-3xl leading-7 text-slate-700">
+            <p className="mt-4 max-w-3xl leading-7 text-body">
               WASD 또는 방향키로 이동하세요. 오브젝트 가까이에서 Enter를 누르면
               아래에서도 접근 가능한 같은 포트폴리오 섹션이 열립니다.
             </p>
             <div
               ref={containerRef}
               aria-label="인터랙티브 포트폴리오 지도 캔버스"
-              className="portfolio-game-canvas mt-5 h-[320px] overflow-hidden rounded-md border border-slate-300 bg-slate-100 sm:h-[420px] lg:h-[520px]"
+              className="portfolio-game-canvas mt-6 h-[320px] overflow-hidden rounded-3xl border border-hairline bg-strong sm:h-[420px] lg:h-[520px]"
             >
               {status !== 'ready' ? (
-                <div className="flex h-full min-h-[280px] items-center justify-center px-4 text-center text-sm font-bold text-slate-600">
+                <div className="flex h-full min-h-[280px] items-center justify-center px-4 text-center text-sm font-semibold text-body">
                   {status === 'loading' ? (
                     <>인터랙티브 지도를 불러오는 중&hellip;</>
                   ) : status === 'reduced-motion' ? (
@@ -110,9 +113,9 @@ export function GameSection() {
 
           <aside
             aria-label="지도 목적지 바로가기"
-            className="order-1 rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5 lg:order-2"
+            className="order-1 rounded-3xl border border-hairline bg-canvas p-5 shadow-soft lg:order-2"
           >
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-circuit">
+            <p className="w-fit rounded-full bg-strong px-4 py-2 text-xs font-semibold text-ink">
               바로가기
             </p>
             <div className="mt-4 grid gap-3">
@@ -121,7 +124,7 @@ export function GameSection() {
                   key={interactable.id}
                   type="button"
                   onClick={() => handleOpen(interactable)}
-                  className="min-h-11 rounded-md border border-slate-300 px-3 py-2 text-left text-sm font-bold text-ink outline-none transition hover:border-circuit hover:text-circuit focus-visible:shadow-focus"
+                  className="min-h-12 rounded-full bg-strong px-4 py-2 text-left text-sm font-semibold text-ink outline-none transition hover:bg-primary hover:text-white focus-visible:shadow-focus"
                 >
                   {interactable.label}
                 </button>

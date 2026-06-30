@@ -4,7 +4,7 @@
 
 :root {
   color-scheme: light;
-  background: #f8fafc;
+  background: #ffffff;
 }
 
 * {
@@ -18,7 +18,10 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  background: #ffffff;
+  color: #0a0b0d;
+  font-family:
+    Pretendard, 'Noto Sans KR', Inter, ui-sans-serif, system-ui, sans-serif;
   overflow-x: hidden;
   overflow-wrap: anywhere;
 }
@@ -35,7 +38,7 @@ a {
 }
 
 ::selection {
-  background: rgb(244 185 66 / 0.45);
+  background: rgb(0 82 255 / 0.16);
 }
 
 @media (prefers-reduced-motion: reduce) {

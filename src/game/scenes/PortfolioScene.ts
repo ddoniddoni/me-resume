@@ -56,7 +56,7 @@ export class PortfolioScene extends Phaser.Scene {
         GAME_HEIGHT - 28,
         'WASD 또는 방향키로 이동하고, 오브젝트 근처에서 Enter를 누르세요.',
         {
-          color: '#0f172a',
+          color: '#0a0b0d',
           fontFamily: GAME_FONT,
           fontSize: '16px',
           fontStyle: '700',
@@ -82,10 +82,10 @@ export class PortfolioScene extends Phaser.Scene {
   private drawMap() {
     const graphics = this.add.graphics();
 
-    graphics.fillStyle(0xf8fafc, 1);
+    graphics.fillStyle(0xeef0f3, 1);
     graphics.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
-    graphics.lineStyle(1, 0xdbe4ef, 0.7);
+    graphics.lineStyle(1, 0xdee1e6, 0.8);
     for (let x = 40; x < GAME_WIDTH; x += 40) {
       graphics.lineBetween(x, 0, x, GAME_HEIGHT);
     }
@@ -93,20 +93,20 @@ export class PortfolioScene extends Phaser.Scene {
       graphics.lineBetween(0, y, GAME_WIDTH, y);
     }
 
-    graphics.fillStyle(0xe2e8f0, 1);
+    graphics.fillStyle(0xdee1e6, 1);
     graphics.fillRoundedRect(74, 82, 812, 398, 18);
     graphics.fillStyle(0xffffff, 1);
     graphics.fillRoundedRect(95, 105, 770, 354, 14);
 
-    graphics.lineStyle(4, 0x0f172a, 1);
+    graphics.lineStyle(4, 0x0a0b0d, 1);
     graphics.strokeRoundedRect(95, 105, 770, 354, 14);
 
-    graphics.lineStyle(3, 0x38bdf8, 0.85);
+    graphics.lineStyle(3, 0x0052ff, 0.85);
     graphics.strokeRoundedRect(130, 140, 700, 284, 10);
 
     this.add
       .text(128, 118, 'DDoni 프론트엔드 포트폴리오 지도', {
-        color: '#0f172a',
+        color: '#0a0b0d',
         fontFamily: GAME_FONT,
         fontSize: '18px',
         fontStyle: '900',
@@ -118,17 +118,17 @@ export class PortfolioScene extends Phaser.Scene {
     this.renderedInteractables = portfolioInteractables.map((interactable) => {
       const marker = this.add
         .rectangle(interactable.x, interactable.y, 108, 58, 0xffffff)
-        .setStrokeStyle(3, 0x0f172a)
+        .setStrokeStyle(3, 0x0a0b0d)
         .setInteractive({ useHandCursor: true });
 
       const pulse = this.add
-        .circle(interactable.x, interactable.y, INTERACTION_RADIUS, 0x38bdf8, 0)
-        .setStrokeStyle(2, 0x38bdf8, 0)
+        .circle(interactable.x, interactable.y, INTERACTION_RADIUS, 0x0052ff, 0)
+        .setStrokeStyle(2, 0x0052ff, 0)
         .setDepth(0);
 
       this.add
         .text(interactable.x, interactable.y, this.iconFor(interactable.id), {
-          color: '#0f172a',
+          color: '#0a0b0d',
           fontFamily: GAME_FONT,
           fontSize: '20px',
           fontStyle: '900',
@@ -139,7 +139,7 @@ export class PortfolioScene extends Phaser.Scene {
       this.add
         .text(interactable.x, interactable.y + 48, interactable.label, {
           align: 'center',
-          color: '#334155',
+          color: '#5b616e',
           fontFamily: GAME_FONT,
           fontSize: '13px',
           fontStyle: '700',
@@ -161,8 +161,8 @@ export class PortfolioScene extends Phaser.Scene {
 
   private createPlayer() {
     this.player = this.add
-      .circle(PLAYER_START.x, PLAYER_START.y, 18, 0xf4b942)
-      .setStrokeStyle(4, 0x0f172a)
+      .circle(PLAYER_START.x, PLAYER_START.y, 18, 0x0052ff)
+      .setStrokeStyle(4, 0x0a0b0d)
       .setDepth(4);
 
     this.playerHighlight = this.add
@@ -254,9 +254,9 @@ export class PortfolioScene extends Phaser.Scene {
       const isNearest = rendered.data.id === nearest?.id;
       rendered.marker.setStrokeStyle(
         isNearest ? 4 : 3,
-        isNearest ? 0x0891b2 : 0x0f172a,
+        isNearest ? 0x0052ff : 0x0a0b0d,
       );
-      rendered.pulse.setStrokeStyle(2, 0x38bdf8, isNearest ? 0.95 : 0);
+      rendered.pulse.setStrokeStyle(2, 0x0052ff, isNearest ? 0.95 : 0);
     }
   }
 

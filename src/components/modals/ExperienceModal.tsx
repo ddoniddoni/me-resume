@@ -27,16 +27,16 @@ export function ExperienceModal({
       onClose={onClose}
     >
       <div className="grid gap-5">
-        <p className="leading-7 text-slate-700">{selectedExperience.summary}</p>
-        <div className="rounded-lg border border-slate-200 bg-panel p-5">
-          <h3 className="font-black text-ink">주요 내용</h3>
-          <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
+        <p className="leading-7 text-body">{selectedExperience.summary}</p>
+        <div className="rounded-3xl border border-hairline bg-panel p-6">
+          <h3 className="font-semibold text-ink">주요 내용</h3>
+          <ul className="mt-3 space-y-2 text-sm leading-6 text-body">
             {selectedExperience.highlights.map((highlight) => (
               <li key={highlight}>{highlight}</li>
             ))}
           </ul>
         </div>
-        <p className="text-sm leading-6 text-slate-600">
+        <p className="text-sm leading-6 text-body">
           입력 필요: 일반화된 예시를 DDoni가 검증한 실제 프로젝트와 업무
           경험으로 교체하세요.
         </p>

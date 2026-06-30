@@ -12,7 +12,7 @@ export function createGameConfig(
     parent,
     width: GAME_WIDTH,
     height: GAME_HEIGHT,
-    backgroundColor: '#f8fafc',
+    backgroundColor: '#eef0f3',
     scene,
     scale: {
       mode: Phaser.Scale.FIT,

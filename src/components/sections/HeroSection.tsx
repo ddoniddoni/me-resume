@@ -29,16 +29,16 @@ export function HeroSection() {
   const openModal = usePortfolioStore((state) => state.openModal);
 
   return (
-    <section id="top" className="relative overflow-hidden bg-white">
-      <div className="mx-auto grid min-h-[calc(100vh-73px)] max-w-6xl content-center gap-10 px-5 py-16 md:grid-cols-[1.05fr_0.95fr] md:py-20">
+    <section id="top" className="relative overflow-hidden bg-ink text-white">
+      <div className="mx-auto grid min-h-[calc(100vh-65px)] max-w-6xl content-center gap-12 px-5 py-20 md:grid-cols-[1fr_0.92fr] md:py-24">
         <div className="flex flex-col justify-center">
-          <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-circuit">
+          <p className="mb-5 w-fit rounded-full bg-dark-elevated px-4 py-2 text-sm font-semibold text-white">
             {profile.name}
           </p>
-          <h1 className="max-w-3xl text-balance text-4xl font-black leading-tight text-ink sm:text-5xl lg:text-6xl">
+          <h1 className="max-w-3xl text-balance text-5xl font-normal leading-none tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl">
             {profile.role}
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-700">
+          <p className="mt-6 max-w-2xl text-base leading-8 text-muted-soft sm:text-lg">
             {profile.headline}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -49,8 +49,8 @@ export function HeroSection() {
                 onClick={() => openModal(cta.modal)}
                 className={
                   cta.variant === 'primary'
-                    ? 'inline-flex min-h-12 items-center justify-center rounded-md bg-ink px-5 py-3 text-sm font-bold text-white outline-none transition hover:bg-slate-800 focus-visible:shadow-focus'
-                    : 'inline-flex min-h-12 items-center justify-center rounded-md border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-ink outline-none transition hover:border-circuit hover:text-circuit focus-visible:shadow-focus'
+                    ? 'inline-flex min-h-14 items-center justify-center rounded-full bg-primary px-8 py-4 text-base font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus'
+                    : 'inline-flex min-h-14 items-center justify-center rounded-full border border-white/20 bg-dark-elevated px-8 py-4 text-base font-semibold text-white outline-none transition hover:border-white/40 hover:bg-white/10 focus-visible:shadow-focus'
                 }
               >
                 {cta.label}
@@ -60,32 +60,47 @@ export function HeroSection() {
         </div>
 
         <div className="flex items-center md:justify-end">
-          <div className="w-full max-w-md rounded-lg border border-slate-200 bg-panel p-5 shadow-sm">
-            <div className="mb-5 flex items-center justify-between gap-3">
-              <span className="text-sm font-black uppercase tracking-[0.16em] text-slate-500">
-                지도 미리보기
-              </span>
-              <span className="rounded-full bg-signal/25 px-3 py-1 text-xs font-bold text-ink">
-                MVP
-              </span>
-            </div>
-            <div className="grid aspect-[4/3] grid-cols-4 gap-3 rounded-md border border-dashed border-slate-300 bg-white p-4">
-              {['홈', '이력서', '프로젝트', '기술', '연락처', '아래 지도'].map(
-                (label) => (
+          <div className="relative w-full max-w-md">
+            <div className="rounded-3xl border border-white/10 bg-dark-elevated p-6 shadow-soft">
+              <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-5">
+                <div>
+                  <p className="text-sm text-muted-soft">포트폴리오 상태</p>
+                  <p className="mt-1 text-2xl font-normal tracking-[-0.02em]">
+                    탐색 준비 완료
+                  </p>
+                </div>
+                <span className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-white">
+                  MVP
+                </span>
+              </div>
+              <div className="mt-5 grid gap-3">
+                {[
+                  ['이력서', '즉시 열기'],
+                  ['프로젝트', '사례 확인'],
+                  ['기술', '스택 보기'],
+                  ['연락처', '입력 필요'],
+                ].map(([label, value]) => (
                   <div
                     key={label}
-                    className="flex items-center justify-center rounded-md border border-slate-200 bg-panel text-xs font-bold text-slate-700"
+                    className="flex min-h-14 items-center justify-between rounded-2xl bg-ink px-4"
                   >
-                    {label}
+                    <span className="text-sm text-muted-soft">{label}</span>
+                    <span className="text-sm font-semibold text-white">
+                      {value}
+                    </span>
                   </div>
-                ),
-              )}
+                ))}
+              </div>
             </div>
-            <p className="mt-4 text-sm leading-6 text-slate-600">
-              이 영역은 실제 게임 화면이 아니라 안내용 미리보기입니다. 조작
-              가능한 2D 지도는 아래 섹션에서 로드되며, 같은 정보는 버튼으로도
-              바로 열 수 있습니다.
-            </p>
+            <div className="absolute -bottom-8 -left-4 hidden w-56 rotate-[-3deg] rounded-3xl border border-white/10 bg-white p-5 text-ink shadow-soft sm:block">
+              <p className="text-sm font-semibold text-body">다음 목적지</p>
+              <p className="mt-2 text-2xl font-normal tracking-[-0.02em]">
+                포트폴리오 지도
+              </p>
+              <div className="mt-4 h-2 rounded-full bg-strong">
+                <div className="h-2 w-2/3 rounded-full bg-primary" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
