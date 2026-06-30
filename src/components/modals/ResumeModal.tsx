@@ -13,7 +13,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     <BaseModal
       isOpen={isOpen}
       title="이력서"
-      description="경력 요약, 이력서 PDF 자리표시자, 프로필 정보입니다."
+      description="경력 요약, 이력서 PDF 준비 상태, 프로필 정보입니다."
       onClose={onClose}
     >
       <div className="grid gap-5">
@@ -33,16 +33,19 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             지역: {profile.location}
           </p>
         </div>
-        <a
-          href={profile.resumePdfUrl}
-          className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-primary px-5 py-2 text-center text-sm font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus sm:w-fit"
-        >
-          이력서 PDF 자리표시자 다운로드
-        </a>
-        <p className="text-sm leading-6 text-body">
-          입력 필요: 이 자리표시자를 DDoni의 실제 이력서 PDF와 검증된 경력
-          정보로 교체하세요.
-        </p>
+        {profile.resumePdfUrl ? (
+          <a
+            href={profile.resumePdfUrl}
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-primary px-5 py-2 text-center text-sm font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus sm:w-fit"
+          >
+            이력서 PDF 다운로드
+          </a>
+        ) : (
+          <p className="rounded-2xl border border-hairline bg-panel p-4 text-sm leading-6 text-body">
+            이력서 PDF는 공개 가능한 최종 파일이 준비되면 다운로드 버튼으로
+            연결됩니다.
+          </p>
+        )}
       </div>
     </BaseModal>
   );

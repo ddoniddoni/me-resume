@@ -18,7 +18,7 @@ export const skills: SkillGroup[] = [
   },
   {
     category: '테스트',
-    items: ['입력 필요: DDoni가 실제로 사용한 테스트 도구'],
+    items: ['DDoni가 실제로 사용한 테스트 도구 정리 예정'],
   },
   {
     category: '성능',

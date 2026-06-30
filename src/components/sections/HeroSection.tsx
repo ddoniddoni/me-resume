@@ -78,7 +78,7 @@ export function HeroSection() {
                   ['이력서', '즉시 열기'],
                   ['프로젝트', '사례 확인'],
                   ['기술', '스택 보기'],
-                  ['연락처', '입력 필요'],
+                  ['연락처', '준비 중'],
                 ].map(([label, value]) => (
                   <div
                     key={label}

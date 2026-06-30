@@ -7,11 +7,12 @@ import {
 } from '@/game/interactions';
 import { usePortfolioStore } from '@/store/portfolioStore';
 
-type GameStatus = 'loading' | 'ready' | 'unavailable' | 'reduced-motion';
+type GameStatus =
+  'waiting' | 'loading' | 'ready' | 'unavailable' | 'reduced-motion';
 
 export function GameSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [status, setStatus] = useState<GameStatus>('loading');
+  const [status, setStatus] = useState<GameStatus>('waiting');
   const openModal = usePortfolioStore((state) => state.openModal);
 
   useEffect(() => {
@@ -40,6 +41,7 @@ export function GameSection() {
           return;
         }
 
+        setStatus('loading');
         const { createPortfolioGame } = await import('@/game/PhaserGame');
 
         if (!isMounted || !containerRef.current) {
@@ -57,10 +59,40 @@ export function GameSection() {
       }
     }
 
-    void bootGame();
+    const container = containerRef.current;
+
+    if (!container) {
+      return () => {
+        isMounted = false;
+      };
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      void bootGame();
+      return () => {
+        isMounted = false;
+        game?.destroy(true);
+      };
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          observer.disconnect();
+          void bootGame();
+        }
+      },
+      {
+        rootMargin: '240px 0px',
+        threshold: 0.01,
+      },
+    );
+
+    observer.observe(container);
 
     return () => {
       isMounted = false;
+      observer.disconnect();
       game?.destroy(true);
     };
   }, [openModal]);
@@ -95,11 +127,14 @@ export function GameSection() {
             <div
               ref={containerRef}
               aria-label="인터랙티브 포트폴리오 지도 캔버스"
+              aria-live="polite"
               className="portfolio-game-canvas mt-6 h-[320px] overflow-hidden rounded-3xl border border-hairline bg-strong sm:h-[420px] lg:h-[520px]"
             >
               {status !== 'ready' ? (
                 <div className="flex h-full min-h-[280px] items-center justify-center px-4 text-center text-sm font-semibold text-body">
-                  {status === 'loading' ? (
+                  {status === 'waiting' ? (
+                    '지도 영역에 가까워지면 인터랙티브 지도를 불러옵니다.'
+                  ) : status === 'loading' ? (
                     <>인터랙티브 지도를 불러오는 중&hellip;</>
                   ) : status === 'reduced-motion' ? (
                     '동작 줄이기 설정이 켜져 있어 인터랙티브 지도를 멈췄습니다. 옆의 바로가기 버튼이나 아래 포트폴리오 섹션을 이용하세요.'

@@ -25,6 +25,6 @@ export const profile: Profile = {
   github: '',
   // TODO: DDoni의 공개 LinkedIn 프로필 URL로 교체하세요.
   linkedin: '',
-  // TODO: 실제 이력서 PDF를 public/resume/resume.pdf에 추가하세요.
-  resumePdfUrl: '/resume/resume.pdf',
+  // TODO: 실제 이력서 PDF를 public/resume/resume.pdf에 추가한 뒤 경로를 입력하세요.
+  resumePdfUrl: '',
 };
