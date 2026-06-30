@@ -1,6 +1,6 @@
 # DDoni의 프론트엔드 퀘스트
 
-프론트엔드 개발자 DDoni의 포트폴리오입니다. 채용 담당자가 이력서, 프로젝트, 기술, 연락처를 바로 확인할 수 있도록 구성하고, 선택형 2D 포트폴리오 지도를 더해 기억에 남는 탐색 경험을 제공합니다.
+프론트엔드 개발자 DDoni의 포트폴리오입니다. `/` 진입 시 전체 화면 2D 게임 맵이 먼저 열리고, 채용 담당자가 이력서, 프로젝트, 기술, 연락처를 바로 확인할 수 있도록 페이지 보기와 직접 접근 버튼을 함께 제공합니다.
 
 ## 기술 스택
 
@@ -33,6 +33,21 @@ npm run format
 
 현재 테스트 스크립트는 테스트 파일이 없어도 통과하도록 설정되어 있습니다.
 
+## 게임 에셋 생성
+
+현재 게임은 Phaser가 `public/assets`의 PNG 타일셋, 스프라이트시트, Tiled 호환 JSON 맵을 로드하는 구조입니다.
+
+```bash
+npm run assets:generate
+```
+
+생성되는 파일:
+
+- `public/assets/tiles/portfolio-campus.png`
+- `public/assets/sprites/player.png`
+- `public/assets/sprites/stations.png`
+- `public/assets/maps/portfolio-campus.json`
+
 ## 콘텐츠 수정 위치
 
 - 프로필과 연락처: `src/data/profile.ts`
@@ -49,9 +64,9 @@ npm run format
 
 ## 게임 지도
 
-Phaser 지도는 필수 접근 경로가 아닙니다. 모든 주요 정보는 버튼과 일반 HTML 섹션에서도 접근할 수 있습니다.
+Phaser 지도는 기본 경험이지만, 필수 접근 경로는 아닙니다. 모든 주요 정보는 HUD 버튼과 페이지 보기의 일반 HTML 섹션에서도 접근할 수 있습니다.
 
-성능을 위해 게임 코드는 페이지 진입 즉시 로드하지 않고, 게임 섹션이 화면 가까이에 왔을 때 동적으로 불러옵니다. `prefers-reduced-motion`이 켜져 있으면 게임 로딩을 멈추고 바로가기 버튼과 fallback 섹션 사용을 안내합니다.
+게임 코드는 클라이언트에서 동적으로 로드합니다. `prefers-reduced-motion`이 켜져 있으면 게임 로딩을 멈추고 바로가기 버튼과 페이지 보기 사용을 안내합니다.
 
 ## Git 규칙
 

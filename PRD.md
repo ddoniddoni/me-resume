@@ -57,6 +57,8 @@ Recommended concept:
 
 A full-screen 2D top-view map where the visitor can move a character around and interact with stations. The visual direction should evoke classic dot-style top-down RPGs without copying any specific copyrighted game, map, character, or asset.
 
+The game view should be asset-based. Prefer PNG tile sets, sprite sheets, and map JSON over drawing the complete world with Phaser primitive rectangles. Phaser primitive graphics may still be used for HUD, focus highlights, debug overlays, and lightweight interaction affordances.
+
 Each station represents a resume section:
 
 - Home Base: introduction
