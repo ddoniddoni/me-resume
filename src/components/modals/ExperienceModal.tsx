@@ -23,13 +23,13 @@ export function ExperienceModal({
     <BaseModal
       isOpen={isOpen}
       title={selectedExperience.title}
-      description={`${selectedExperience.title} summary and highlights.`}
+      description={`${selectedExperience.title} 요약과 주요 내용입니다.`}
       onClose={onClose}
     >
       <div className="grid gap-5">
         <p className="leading-7 text-slate-700">{selectedExperience.summary}</p>
         <div className="rounded-lg border border-slate-200 bg-panel p-5">
-          <h3 className="font-black text-ink">Highlights</h3>
+          <h3 className="font-black text-ink">주요 내용</h3>
           <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
             {selectedExperience.highlights.map((highlight) => (
               <li key={highlight}>{highlight}</li>
@@ -37,8 +37,8 @@ export function ExperienceModal({
           </ul>
         </div>
         <p className="text-sm leading-6 text-slate-600">
-          TODO: Replace generalized examples with DDoni&apos;s verified project
-          and work experience details.
+          입력 필요: 일반화된 예시를 DDoni가 검증한 실제 프로젝트와 업무
+          경험으로 교체하세요.
         </p>
       </div>
     </BaseModal>

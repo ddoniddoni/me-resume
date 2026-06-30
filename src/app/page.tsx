@@ -13,7 +13,7 @@ export default function Home() {
         href="#main-content"
         className="sr-only z-[60] rounded-md bg-ink px-4 py-3 text-sm font-bold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:shadow-focus"
       >
-        Skip to portfolio content
+        포트폴리오 본문으로 이동
       </a>
       <Header />
       <main id="main-content" tabIndex={-1}>

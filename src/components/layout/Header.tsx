@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { SITE_NAME } from '@/lib/constants';
 
 const navItems = [
-  { label: 'Resume', href: '#resume' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
+  { label: '이력서', href: '#resume' },
+  { label: '프로젝트', href: '#projects' },
+  { label: '기술', href: '#skills' },
+  { label: '연락처', href: '#contact' },
 ];
 
 export function Header() {
@@ -18,7 +18,7 @@ export function Header() {
         >
           {SITE_NAME}
         </Link>
-        <nav aria-label="Primary navigation">
+        <nav aria-label="주요 탐색">
           <ul className="flex flex-wrap items-center gap-1">
             {navItems.map((item) => (
               <li key={item.href}>

@@ -80,28 +80,28 @@ export function GameSection() {
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
           <div className="order-2 rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-6 lg:order-1">
             <p className="text-sm font-black uppercase tracking-[0.16em] text-circuit">
-              Optional exploration
+              선택형 탐색
             </p>
             <h2 id="game-title" className="mt-3 text-2xl font-black text-ink">
-              Quest map
+              포트폴리오 지도
             </h2>
             <p className="mt-3 max-w-3xl leading-7 text-slate-700">
-              Move with WASD / Arrow Keys. Press Enter near an object to open
-              the same portfolio sections available below.
+              WASD 또는 방향키로 이동하세요. 오브젝트 가까이에서 Enter를 누르면
+              아래에서도 접근 가능한 같은 포트폴리오 섹션이 열립니다.
             </p>
             <div
               ref={containerRef}
-              aria-label="Interactive portfolio map canvas"
-              className="mt-5 aspect-[12/7] min-h-[280px] overflow-hidden rounded-md border border-slate-300 bg-slate-100"
+              aria-label="인터랙티브 포트폴리오 지도 캔버스"
+              className="portfolio-game-canvas mt-5 h-[320px] overflow-hidden rounded-md border border-slate-300 bg-slate-100 sm:h-[420px] lg:h-[520px]"
             >
               {status !== 'ready' ? (
                 <div className="flex h-full min-h-[280px] items-center justify-center px-4 text-center text-sm font-bold text-slate-600">
                   {status === 'loading' ? (
-                    <>Loading interactive map&hellip;</>
+                    <>인터랙티브 지도를 불러오는 중&hellip;</>
                   ) : status === 'reduced-motion' ? (
-                    'Interactive map is paused because reduced motion is enabled. Use the direct buttons nearby or the full portfolio sections below.'
+                    '동작 줄이기 설정이 켜져 있어 인터랙티브 지도를 멈췄습니다. 옆의 바로가기 버튼이나 아래 포트폴리오 섹션을 이용하세요.'
                   ) : (
-                    'Interactive map is unavailable. Use the direct buttons nearby or the full portfolio sections below.'
+                    '인터랙티브 지도를 표시할 수 없습니다. 옆의 바로가기 버튼이나 아래 포트폴리오 섹션을 이용하세요.'
                   )}
                 </div>
               ) : null}
@@ -109,11 +109,11 @@ export function GameSection() {
           </div>
 
           <aside
-            aria-label="Direct access to game destinations"
+            aria-label="지도 목적지 바로가기"
             className="order-1 rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5 lg:order-2"
           >
             <p className="text-sm font-black uppercase tracking-[0.16em] text-circuit">
-              Direct access
+              바로가기
             </p>
             <div className="mt-4 grid gap-3">
               {portfolioInteractables.map((interactable) => (

@@ -131,7 +131,7 @@ export function BaseModal({
             type="button"
             onClick={onClose}
             className="inline-flex size-10 shrink-0 items-center justify-center rounded-md border border-slate-300 text-xl font-bold leading-none text-slate-700 outline-none transition hover:border-circuit hover:text-circuit focus-visible:shadow-focus"
-            aria-label="Close modal"
+            aria-label="모달 닫기"
           >
             ×
           </button>

@@ -21,7 +21,7 @@ export type InteractableObject = {
 export const portfolioInteractables: InteractableObject[] = [
   {
     id: 'projects',
-    label: 'Laptop',
+    label: '프로젝트 노트북',
     x: 220,
     y: 180,
     interactionType: 'modal',
@@ -29,7 +29,7 @@ export const portfolioInteractables: InteractableObject[] = [
   },
   {
     id: 'resume',
-    label: 'Resume Board',
+    label: '이력서 보드',
     x: 500,
     y: 145,
     interactionType: 'modal',
@@ -37,7 +37,7 @@ export const portfolioInteractables: InteractableObject[] = [
   },
   {
     id: 'components',
-    label: 'Component Lab',
+    label: '컴포넌트 연구실',
     x: 760,
     y: 220,
     interactionType: 'modal',
@@ -46,7 +46,7 @@ export const portfolioInteractables: InteractableObject[] = [
   },
   {
     id: 'performance',
-    label: 'Performance Monitor',
+    label: '성능 모니터',
     x: 705,
     y: 430,
     interactionType: 'modal',
@@ -55,7 +55,7 @@ export const portfolioInteractables: InteractableObject[] = [
   },
   {
     id: 'troubleshooting',
-    label: 'Trouble Room',
+    label: '문제 해결실',
     x: 335,
     y: 455,
     interactionType: 'modal',
@@ -64,7 +64,7 @@ export const portfolioInteractables: InteractableObject[] = [
   },
   {
     id: 'contact',
-    label: 'Contact Terminal',
+    label: '연락처 터미널',
     x: 145,
     y: 340,
     interactionType: 'modal',

@@ -7,22 +7,22 @@ type ContactLinksProps = {
 export function ContactLinks({ profile }: ContactLinksProps) {
   const links = [
     {
-      label: 'Email',
+      label: '이메일',
       value: profile.email,
       href: profile.email ? `mailto:${profile.email}` : '',
-      todo: 'TODO: Add public email',
+      todo: '입력 필요: 공개 이메일',
     },
     {
       label: 'GitHub',
       value: profile.github,
       href: profile.github,
-      todo: 'TODO: Add GitHub URL',
+      todo: '입력 필요: GitHub 주소',
     },
     {
       label: 'LinkedIn',
       value: profile.linkedin,
       href: profile.linkedin,
-      todo: 'TODO: Add LinkedIn URL',
+      todo: '입력 필요: LinkedIn 주소',
     },
   ];
 

@@ -12,6 +12,8 @@ const PLAYER_START = {
   x: 480,
   y: 300,
 };
+const GAME_FONT =
+  'Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, Inter, sans-serif';
 
 type MovementKeys = {
   up: Phaser.Input.Keyboard.Key;
@@ -52,10 +54,10 @@ export class PortfolioScene extends Phaser.Scene {
       .text(
         GAME_WIDTH / 2,
         GAME_HEIGHT - 28,
-        'Move with WASD / Arrow Keys. Press Enter near an object.',
+        'WASD 또는 방향키로 이동하고, 오브젝트 근처에서 Enter를 누르세요.',
         {
           color: '#0f172a',
-          fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif',
+          fontFamily: GAME_FONT,
           fontSize: '16px',
           fontStyle: '700',
         },
@@ -103,9 +105,9 @@ export class PortfolioScene extends Phaser.Scene {
     graphics.strokeRoundedRect(130, 140, 700, 284, 10);
 
     this.add
-      .text(128, 118, 'DDoni Frontend Quest Map', {
+      .text(128, 118, 'DDoni 프론트엔드 포트폴리오 지도', {
         color: '#0f172a',
-        fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif',
+        fontFamily: GAME_FONT,
         fontSize: '18px',
         fontStyle: '900',
       })
@@ -127,7 +129,7 @@ export class PortfolioScene extends Phaser.Scene {
       this.add
         .text(interactable.x, interactable.y, this.iconFor(interactable.id), {
           color: '#0f172a',
-          fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif',
+          fontFamily: GAME_FONT,
           fontSize: '20px',
           fontStyle: '900',
         })
@@ -138,7 +140,7 @@ export class PortfolioScene extends Phaser.Scene {
         .text(interactable.x, interactable.y + 48, interactable.label, {
           align: 'center',
           color: '#334155',
-          fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif',
+          fontFamily: GAME_FONT,
           fontSize: '13px',
           fontStyle: '700',
         })
@@ -244,8 +246,8 @@ export class PortfolioScene extends Phaser.Scene {
     this.nearestInteractable = nearest;
     this.hintText.setText(
       nearest
-        ? `Press Enter to open ${nearest.label}.`
-        : 'Move with WASD / Arrow Keys. Press Enter near an object.',
+        ? `Enter를 눌러 ${nearest.label} 열기`
+        : 'WASD 또는 방향키로 이동하고, 오브젝트 근처에서 Enter를 누르세요.',
     );
 
     for (const rendered of this.renderedInteractables) {
@@ -261,9 +263,9 @@ export class PortfolioScene extends Phaser.Scene {
   private iconFor(id: InteractableObject['id']) {
     const icons: Record<InteractableObject['id'], string> = {
       projects: '</>',
-      resume: 'CV',
+      resume: '이력',
       components: '{}',
-      performance: 'ms',
+      performance: '성능',
       troubleshooting: '!',
       contact: '@',
     };

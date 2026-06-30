@@ -28,6 +28,12 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+.portfolio-game-canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
 ::selection {
   background: rgb(244 185 66 / 0.45);
 }

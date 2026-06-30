@@ -12,19 +12,19 @@ export type Profile = {
 
 export const profile: Profile = {
   name: 'DDoni',
-  role: 'Frontend Developer',
+  role: '프론트엔드 개발자',
   headline:
-    'I build accessible, maintainable React interfaces with a product-minded frontend approach.',
+    '접근성과 유지보수성을 고려한 React 인터페이스를 제품 관점으로 설계하고 구현합니다.',
   summary:
-    'Frontend portfolio for showcasing React, Next.js, TypeScript, UI architecture, performance work, and production debugging experience.',
-  // TODO: Replace with DDoni's preferred public location.
-  location: 'TODO: Location',
-  // TODO: Replace with DDoni's public contact email.
+    'React, Next.js, TypeScript 기반 UI 아키텍처, 성능 개선, 운영 이슈 해결 경험을 보여주는 프론트엔드 포트폴리오입니다.',
+  // TODO: DDoni가 공개해도 되는 지역 정보로 교체하세요.
+  location: '지역 입력 필요',
+  // TODO: DDoni의 공개 이메일로 교체하세요.
   email: '',
-  // TODO: Replace with DDoni's public GitHub profile URL.
+  // TODO: DDoni의 공개 GitHub 프로필 URL로 교체하세요.
   github: '',
-  // TODO: Replace with DDoni's public LinkedIn profile URL.
+  // TODO: DDoni의 공개 LinkedIn 프로필 URL로 교체하세요.
   linkedin: '',
-  // TODO: Add the real resume PDF at public/resume/resume.pdf.
+  // TODO: 실제 이력서 PDF를 public/resume/resume.pdf에 추가하세요.
   resumePdfUrl: '/resume/resume.pdf',
 };

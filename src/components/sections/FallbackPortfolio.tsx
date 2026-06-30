@@ -16,41 +16,41 @@ import {
 
 const fallbackActions = [
   {
-    title: 'Resume',
-    description: 'Career summary and resume PDF placeholder.',
+    title: '이력서',
+    description: '경력 요약과 이력서 PDF 자리표시자를 확인합니다.',
     modal: 'resume',
   },
   {
-    title: 'Projects',
-    description: 'Structured frontend project case studies.',
+    title: '프로젝트',
+    description: '구조화된 프론트엔드 프로젝트 사례를 확인합니다.',
     modal: 'projects',
   },
   {
-    title: 'Skills',
-    description: 'Frontend toolkit grouped by working area.',
+    title: '기술',
+    description: '작업 영역별 프론트엔드 기술 스택을 확인합니다.',
     modal: 'skills',
   },
   {
-    title: 'Component Lab',
-    description: 'Reusable UI and architecture experience.',
+    title: '컴포넌트 연구실',
+    description: '재사용 가능한 UI와 아키텍처 경험을 확인합니다.',
     modal: 'experience',
     experienceId: 'components',
   },
   {
-    title: 'Performance Monitor',
-    description: 'Rendering, loading, and responsiveness experience.',
+    title: '성능 모니터',
+    description: '렌더링, 로딩, 반응성 개선 경험을 확인합니다.',
     modal: 'experience',
     experienceId: 'performance',
   },
   {
-    title: 'Trouble Room',
-    description: 'Debugging and issue handling experience.',
+    title: '문제 해결실',
+    description: '디버깅과 이슈 대응 경험을 확인합니다.',
     modal: 'experience',
     experienceId: 'troubleshooting',
   },
   {
-    title: 'Contact',
-    description: 'Public contact link placeholders.',
+    title: '연락처',
+    description: '공개 연락처 자리표시자를 확인합니다.',
     modal: 'contact',
   },
 ] satisfies {
@@ -68,17 +68,17 @@ export function FallbackPortfolio() {
       <div className="mx-auto grid max-w-6xl gap-8 px-5">
         <section aria-labelledby="fallback-title" className="scroll-mt-24">
           <p className="text-sm font-black uppercase tracking-[0.16em] text-circuit">
-            Full access
+            전체 접근
           </p>
           <h2
             id="fallback-title"
             className="mt-2 text-balance text-3xl font-black text-ink"
           >
-            Portfolio shortcuts
+            포트폴리오 바로가기
           </h2>
           <p className="mt-4 max-w-3xl leading-7 text-slate-700">
-            Every important section is available here without using the game
-            map.
+            게임 지도를 사용하지 않아도 모든 주요 정보를 여기서 바로 열 수
+            있습니다.
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {fallbackActions.map((action) => (
@@ -112,13 +112,13 @@ export function FallbackPortfolio() {
           className="scroll-mt-24"
         >
           <p className="text-sm font-black uppercase tracking-[0.16em] text-circuit">
-            Resume
+            이력서
           </p>
           <h2
             id="resume-title"
             className="mt-2 text-balance text-3xl font-black text-ink"
           >
-            Career summary
+            경력 요약
           </h2>
           <p className="mt-4 max-w-3xl leading-7 text-slate-700">
             {profile.summary}
@@ -128,7 +128,7 @@ export function FallbackPortfolio() {
             onClick={() => openModal('resume')}
             className="mt-5 inline-flex min-h-11 items-center justify-center rounded-md border border-slate-300 px-4 py-2 text-sm font-bold text-ink outline-none transition hover:border-circuit hover:text-circuit focus-visible:shadow-focus"
           >
-            Open resume modal
+            이력서 모달 열기
           </button>
         </section>
 
@@ -138,13 +138,13 @@ export function FallbackPortfolio() {
           className="scroll-mt-24"
         >
           <p className="text-sm font-black uppercase tracking-[0.16em] text-circuit">
-            Projects
+            프로젝트
           </p>
           <h2
             id="projects-title"
             className="mt-2 text-balance text-3xl font-black text-ink"
           >
-            Selected work
+            주요 작업
           </h2>
           <div className="mt-5 grid gap-4">
             {projects.map((project) => (
@@ -156,7 +156,7 @@ export function FallbackPortfolio() {
             onClick={() => openModal('projects')}
             className="mt-5 inline-flex min-h-11 items-center justify-center rounded-md border border-slate-300 px-4 py-2 text-sm font-bold text-ink outline-none transition hover:border-circuit hover:text-circuit focus-visible:shadow-focus"
           >
-            Open projects modal
+            프로젝트 모달 열기
           </button>
         </section>
 
@@ -166,13 +166,13 @@ export function FallbackPortfolio() {
           className="scroll-mt-24"
         >
           <p className="text-sm font-black uppercase tracking-[0.16em] text-circuit">
-            Skills
+            기술
           </p>
           <h2
             id="skills-title"
             className="mt-2 text-balance text-3xl font-black text-ink"
           >
-            Frontend toolkit
+            프론트엔드 도구함
           </h2>
           <div className="mt-5">
             <SkillInventory skills={skills} />
@@ -182,19 +182,19 @@ export function FallbackPortfolio() {
             onClick={() => openModal('skills')}
             className="mt-5 inline-flex min-h-11 items-center justify-center rounded-md border border-slate-300 px-4 py-2 text-sm font-bold text-ink outline-none transition hover:border-circuit hover:text-circuit focus-visible:shadow-focus"
           >
-            Open skills modal
+            기술 모달 열기
           </button>
         </section>
 
         <section aria-labelledby="experience-title" className="scroll-mt-24">
           <p className="text-sm font-black uppercase tracking-[0.16em] text-circuit">
-            Experience
+            경험
           </p>
           <h2
             id="experience-title"
             className="mt-2 text-balance text-3xl font-black text-ink"
           >
-            Technical strengths
+            기술적 강점
           </h2>
           <div className="mt-5">
             <ExperienceTimeline experiences={experiences} />
@@ -209,7 +209,7 @@ export function FallbackPortfolio() {
                 }
                 className="inline-flex min-h-11 items-center justify-center rounded-md border border-slate-300 px-4 py-2 text-sm font-bold text-ink outline-none transition hover:border-circuit hover:text-circuit focus-visible:shadow-focus"
               >
-                Open {experience.title}
+                {experience.title} 열기
               </button>
             ))}
           </div>
@@ -221,18 +221,18 @@ export function FallbackPortfolio() {
           className="scroll-mt-24 rounded-lg border border-slate-200 bg-ink p-6 text-white"
         >
           <p className="text-sm font-black uppercase tracking-[0.16em] text-signal">
-            Contact
+            연락처
           </p>
           <h2
             id="contact-title"
             className="mt-2 text-balance text-3xl font-black"
           >
-            Contact details need DDoni input
+            연락처 정보는 DDoni 입력이 필요합니다
           </h2>
           <p className="mt-4 max-w-3xl leading-7 text-slate-200">
-            TODO: Add public email, GitHub, LinkedIn, and final resume PDF.
-            Private personal details should only be added when explicitly
-            provided.
+            입력 필요: 공개 이메일, GitHub, LinkedIn, 최종 이력서 PDF를
+            추가하세요. 비공개 개인정보는 명시적으로 제공된 경우에만 넣어야
+            합니다.
           </p>
           <div className="mt-5">
             <ContactLinks profile={profile} />
@@ -242,7 +242,7 @@ export function FallbackPortfolio() {
             onClick={() => openModal('contact')}
             className="mt-5 inline-flex min-h-11 items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-bold text-ink outline-none transition hover:bg-slate-100 focus-visible:shadow-focus"
           >
-            Open contact modal
+            연락처 모달 열기
           </button>
         </section>
       </div>

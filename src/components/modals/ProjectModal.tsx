@@ -13,14 +13,14 @@ export function ProjectModal({ isOpen, onClose }: ProjectModalProps) {
   return (
     <BaseModal
       isOpen={isOpen}
-      title="Projects"
-      description="Selected frontend project case studies."
+      title="프로젝트"
+      description="주요 프론트엔드 프로젝트 사례입니다."
       onClose={onClose}
     >
       <div className="grid gap-5">
         <p className="leading-7 text-slate-700">
-          Structured project notes are kept in typed data files so the portfolio
-          can grow without burying content inside UI components.
+          프로젝트 내용은 타입이 지정된 데이터 파일에 보관해, UI 컴포넌트 안에
+          콘텐츠를 숨기지 않고 쉽게 확장할 수 있도록 했습니다.
         </p>
         <div className="grid gap-4">
           {projects.map((project) => (

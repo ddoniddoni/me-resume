@@ -5,17 +5,17 @@ import { usePortfolioStore, type ModalType } from '@/store/portfolioStore';
 
 const ctas = [
   {
-    label: 'Resume',
+    label: '이력서',
     modal: 'resume',
     variant: 'primary',
   },
   {
-    label: 'Projects',
+    label: '프로젝트',
     modal: 'projects',
     variant: 'secondary',
   },
   {
-    label: 'Contact',
+    label: '연락처',
     modal: 'contact',
     variant: 'secondary',
   },
@@ -63,14 +63,14 @@ export function HeroSection() {
           <div className="w-full max-w-md rounded-lg border border-slate-200 bg-panel p-5 shadow-sm">
             <div className="mb-5 flex items-center justify-between gap-3">
               <span className="text-sm font-black uppercase tracking-[0.16em] text-slate-500">
-                Quest Map
+                지도 미리보기
               </span>
               <span className="rounded-full bg-signal/25 px-3 py-1 text-xs font-bold text-ink">
-                MVP shell
+                MVP
               </span>
             </div>
             <div className="grid aspect-[4/3] grid-cols-4 gap-3 rounded-md border border-dashed border-slate-300 bg-white p-4">
-              {['Home', 'Resume', 'Projects', 'Skills', 'Contact', 'Next'].map(
+              {['홈', '이력서', '프로젝트', '기술', '연락처', '아래 지도'].map(
                 (label) => (
                   <div
                     key={label}
@@ -82,9 +82,9 @@ export function HeroSection() {
               )}
             </div>
             <p className="mt-4 text-sm leading-6 text-slate-600">
-              The interactive 2D map below lets visitors explore the same
-              resume, project, experience, and contact paths without making the
-              canvas required.
+              이 영역은 실제 게임 화면이 아니라 안내용 미리보기입니다. 조작
+              가능한 2D 지도는 아래 섹션에서 로드되며, 같은 정보는 버튼으로도
+              바로 열 수 있습니다.
             </p>
           </div>
         </div>

@@ -4,23 +4,23 @@ import { usePortfolioStore, type ModalType } from '@/store/portfolioStore';
 
 const quickActions = [
   {
-    title: 'Open Resume',
-    description: 'View career summary and the resume PDF placeholder.',
+    title: '이력서 보기',
+    description: '경력 요약과 이력서 PDF 자리표시자를 확인합니다.',
     modal: 'resume',
   },
   {
-    title: 'Review Projects',
-    description: 'Scan structured frontend project case studies.',
+    title: '프로젝트 보기',
+    description: '구조화된 프론트엔드 프로젝트 사례를 확인합니다.',
     modal: 'projects',
   },
   {
-    title: 'Check Skills',
-    description: 'See the frontend stack and working strengths.',
+    title: '기술 보기',
+    description: '프론트엔드 기술 스택과 강점을 확인합니다.',
     modal: 'skills',
   },
   {
-    title: 'Contact',
-    description: 'Find TODO placeholders for public contact links.',
+    title: '연락하기',
+    description: '공개 연락처 자리표시자를 확인합니다.',
     modal: 'contact',
   },
 ] satisfies {
@@ -36,7 +36,7 @@ export function QuickActions() {
     <section aria-labelledby="quick-actions-title" className="bg-ink py-8">
       <div className="mx-auto max-w-6xl px-5">
         <h2 id="quick-actions-title" className="sr-only">
-          Quick portfolio actions
+          빠른 포트폴리오 이동
         </h2>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {quickActions.map((action) => (

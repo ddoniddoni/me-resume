@@ -26,7 +26,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <dl className="mt-5 grid gap-4">
         <div>
           <dt className="text-sm font-black uppercase tracking-[0.12em] text-slate-500">
-            Problem
+            문제
           </dt>
           <dd className="mt-2 text-sm leading-6 text-slate-700">
             {project.problem}
@@ -34,7 +34,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
         <div>
           <dt className="text-sm font-black uppercase tracking-[0.12em] text-slate-500">
-            Role
+            역할
           </dt>
           <dd className="mt-2 text-sm leading-6 text-slate-700">
             {project.role}
@@ -42,7 +42,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
         <div>
           <dt className="text-sm font-black uppercase tracking-[0.12em] text-slate-500">
-            Tech stack
+            기술 스택
           </dt>
           <dd className="mt-2 break-words text-sm leading-6 text-slate-700">
             {project.techStack.join(', ')}
@@ -51,9 +51,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </dl>
 
       <div className="mt-5 grid gap-4 md:grid-cols-3">
-        <ProjectList title="Implementation" items={project.solution} />
-        <ProjectList title="Result" items={project.impact} />
-        <ProjectList title="Learning" items={project.learned} />
+        <ProjectList title="구현" items={project.solution} />
+        <ProjectList title="결과" items={project.impact} />
+        <ProjectList title="배운 점" items={project.learned} />
       </div>
     </article>
   );
