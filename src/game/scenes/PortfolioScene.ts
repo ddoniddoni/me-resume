@@ -8,6 +8,7 @@ import type { PortfolioGameCallbacks } from '@/game/PhaserGame';
 
 const PLAYER_SPEED = 250;
 const INTERACTION_RADIUS = 78;
+const TILE_SIZE = 32;
 const PLAYER_START = {
   x: 480,
   y: 300,
@@ -30,8 +31,7 @@ type RenderedInteractable = {
 
 export class PortfolioScene extends Phaser.Scene {
   private readonly callbacks: PortfolioGameCallbacks;
-  private player?: Phaser.GameObjects.Arc;
-  private playerHighlight?: Phaser.GameObjects.Arc;
+  private player?: Phaser.GameObjects.Container;
   private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
   private wasd?: MovementKeys;
   private enterKey?: Phaser.Input.Keyboard.Key;
@@ -82,33 +82,55 @@ export class PortfolioScene extends Phaser.Scene {
   private drawMap() {
     const graphics = this.add.graphics();
 
-    graphics.fillStyle(0xeef0f3, 1);
+    graphics.fillStyle(0x5faa64, 1);
     graphics.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
-    graphics.lineStyle(1, 0xdee1e6, 0.8);
-    for (let x = 40; x < GAME_WIDTH; x += 40) {
-      graphics.lineBetween(x, 0, x, GAME_HEIGHT);
+    for (let y = 0; y < GAME_HEIGHT; y += TILE_SIZE) {
+      for (let x = 0; x < GAME_WIDTH; x += TILE_SIZE) {
+        const isAlt = (x / TILE_SIZE + y / TILE_SIZE) % 2 === 0;
+        graphics.fillStyle(isAlt ? 0x65b96b : 0x57a95f, 1);
+        graphics.fillRect(x, y, TILE_SIZE, TILE_SIZE);
+
+        if ((x + y) % 96 === 0) {
+          graphics.fillStyle(0x3f8f4f, 1);
+          graphics.fillRect(x + 6, y + 10, 4, 4);
+          graphics.fillRect(x + 20, y + 22, 4, 4);
+        }
+      }
     }
-    for (let y = 40; y < GAME_HEIGHT; y += 40) {
-      graphics.lineBetween(0, y, GAME_WIDTH, y);
+
+    graphics.fillStyle(0xd7bd7a, 1);
+    graphics.fillRect(96, 256, 768, 64);
+    graphics.fillRect(448, 96, 64, 384);
+    graphics.fillRect(128, 160, 736, 48);
+    graphics.fillRect(128, 400, 640, 48);
+
+    graphics.fillStyle(0xb89b5c, 1);
+    for (let x = 96; x <= 864; x += TILE_SIZE) {
+      graphics.fillRect(x, 256, TILE_SIZE, 4);
+      graphics.fillRect(x, 316, TILE_SIZE, 4);
+    }
+    for (let y = 96; y <= 480; y += TILE_SIZE) {
+      graphics.fillRect(448, y, 4, TILE_SIZE);
+      graphics.fillRect(508, y, 4, TILE_SIZE);
     }
 
-    graphics.fillStyle(0xdee1e6, 1);
-    graphics.fillRoundedRect(74, 82, 812, 398, 18);
-    graphics.fillStyle(0xffffff, 1);
-    graphics.fillRoundedRect(95, 105, 770, 354, 14);
+    graphics.fillStyle(0x4f8fd9, 1);
+    graphics.fillRect(0, 500, GAME_WIDTH, 60);
+    graphics.fillStyle(0x7fb6f0, 1);
+    for (let x = 0; x < GAME_WIDTH; x += 64) {
+      graphics.fillRect(x + 12, 516, 28, 4);
+      graphics.fillRect(x + 42, 544, 18, 4);
+    }
 
-    graphics.lineStyle(4, 0x0a0b0d, 1);
-    graphics.strokeRoundedRect(95, 105, 770, 354, 14);
-
-    graphics.lineStyle(3, 0x0052ff, 0.85);
-    graphics.strokeRoundedRect(130, 140, 700, 284, 10);
+    this.drawTrees(graphics);
+    this.drawFence(graphics);
 
     this.add
-      .text(128, 118, 'DDoni 프론트엔드 포트폴리오 지도', {
-        color: '#0a0b0d',
+      .text(22, 18, 'DDoni FRONTEND QUEST', {
+        color: '#ffffff',
         fontFamily: GAME_FONT,
-        fontSize: '18px',
+        fontSize: '16px',
         fontStyle: '900',
       })
       .setDepth(1);
@@ -116,9 +138,11 @@ export class PortfolioScene extends Phaser.Scene {
 
   private renderInteractables() {
     this.renderedInteractables = portfolioInteractables.map((interactable) => {
+      this.drawStation(interactable);
+
       const marker = this.add
-        .rectangle(interactable.x, interactable.y, 108, 58, 0xffffff)
-        .setStrokeStyle(3, 0x0a0b0d)
+        .rectangle(interactable.x, interactable.y, 86, 72, 0xffffff, 0.001)
+        .setStrokeStyle(0, 0x0052ff, 0)
         .setInteractive({ useHandCursor: true });
 
       const pulse = this.add
@@ -126,26 +150,28 @@ export class PortfolioScene extends Phaser.Scene {
         .setStrokeStyle(2, 0x0052ff, 0)
         .setDepth(0);
 
+      const labelWidth = Math.max(88, interactable.label.length * 13);
       this.add
-        .text(interactable.x, interactable.y, this.iconFor(interactable.id), {
-          color: '#0a0b0d',
-          fontFamily: GAME_FONT,
-          fontSize: '20px',
-          fontStyle: '900',
-        })
-        .setOrigin(0.5)
+        .rectangle(
+          interactable.x,
+          interactable.y + 52,
+          labelWidth,
+          24,
+          0x0a0b0d,
+          0.88,
+        )
         .setDepth(2);
 
       this.add
-        .text(interactable.x, interactable.y + 48, interactable.label, {
+        .text(interactable.x, interactable.y + 52, interactable.label, {
           align: 'center',
-          color: '#5b616e',
+          color: '#ffffff',
           fontFamily: GAME_FONT,
-          fontSize: '13px',
+          fontSize: '12px',
           fontStyle: '700',
         })
-        .setOrigin(0.5, 0)
-        .setDepth(2);
+        .setOrigin(0.5)
+        .setDepth(3);
 
       marker.on('pointerdown', () => {
         this.callbacks.onInteract(interactable);
@@ -160,14 +186,29 @@ export class PortfolioScene extends Phaser.Scene {
   }
 
   private createPlayer() {
-    this.player = this.add
-      .circle(PLAYER_START.x, PLAYER_START.y, 18, 0x0052ff)
-      .setStrokeStyle(4, 0x0a0b0d)
-      .setDepth(4);
+    const shadow = this.add.rectangle(0, 20, 30, 8, 0x0a0b0d, 0.28);
+    const legs = this.add.rectangle(0, 14, 22, 12, 0x102a5c);
+    const body = this.add
+      .rectangle(0, 0, 26, 28, 0x0052ff)
+      .setStrokeStyle(3, 0x0a0b0d);
+    const face = this.add
+      .rectangle(0, -15, 22, 18, 0xffd6b0)
+      .setStrokeStyle(3, 0x0a0b0d);
+    const hair = this.add.rectangle(0, -25, 26, 9, 0x2b1b12);
+    const eyeLeft = this.add.rectangle(-5, -15, 3, 3, 0x0a0b0d);
+    const eyeRight = this.add.rectangle(5, -15, 3, 3, 0x0a0b0d);
 
-    this.playerHighlight = this.add
-      .circle(PLAYER_START.x + 6, PLAYER_START.y - 6, 5, 0xffffff)
-      .setDepth(5);
+    this.player = this.add
+      .container(PLAYER_START.x, PLAYER_START.y, [
+        shadow,
+        legs,
+        body,
+        face,
+        hair,
+        eyeLeft,
+        eyeRight,
+      ])
+      .setDepth(4);
   }
 
   private createControls() {
@@ -218,7 +259,6 @@ export class PortfolioScene extends Phaser.Scene {
     );
 
     this.player.setPosition(nextX, nextY);
-    this.playerHighlight?.setPosition(nextX + 6, nextY - 6);
   }
 
   private updateNearestInteractable() {
@@ -253,23 +293,158 @@ export class PortfolioScene extends Phaser.Scene {
     for (const rendered of this.renderedInteractables) {
       const isNearest = rendered.data.id === nearest?.id;
       rendered.marker.setStrokeStyle(
-        isNearest ? 4 : 3,
-        isNearest ? 0x0052ff : 0x0a0b0d,
+        isNearest ? 4 : 0,
+        0x0052ff,
+        isNearest ? 1 : 0,
       );
       rendered.pulse.setStrokeStyle(2, 0x0052ff, isNearest ? 0.95 : 0);
     }
   }
 
-  private iconFor(id: InteractableObject['id']) {
-    const icons: Record<InteractableObject['id'], string> = {
-      projects: '</>',
-      resume: '이력',
-      components: '{}',
-      performance: '성능',
-      troubleshooting: '!',
-      contact: '@',
-    };
+  private drawTrees(graphics: Phaser.GameObjects.Graphics) {
+    const treePositions = [
+      [44, 88],
+      [86, 116],
+      [846, 74],
+      [892, 118],
+      [74, 424],
+      [842, 470],
+      [908, 438],
+    ];
 
-    return icons[id];
+    for (const [x, y] of treePositions) {
+      graphics.fillStyle(0x6b3f20, 1);
+      graphics.fillRect(x + 10, y + 28, 12, 20);
+      graphics.fillStyle(0x1f7f43, 1);
+      graphics.fillRect(x, y + 12, 32, 24);
+      graphics.fillRect(x + 6, y, 20, 20);
+      graphics.fillStyle(0x35a852, 1);
+      graphics.fillRect(x + 6, y + 16, 20, 8);
+    }
+  }
+
+  private drawFence(graphics: Phaser.GameObjects.Graphics) {
+    graphics.fillStyle(0x8b5a2b, 1);
+    for (let x = 96; x <= 864; x += 32) {
+      graphics.fillRect(x, 80, 8, 28);
+      graphics.fillRect(x, 462, 8, 28);
+    }
+    graphics.fillRect(96, 88, 768, 6);
+    graphics.fillRect(96, 470, 768, 6);
+  }
+
+  private drawStation(interactable: InteractableObject) {
+    switch (interactable.id) {
+      case 'projects':
+        this.drawLaptop(interactable.x, interactable.y);
+        return;
+      case 'resume':
+        this.drawResumeBoard(interactable.x, interactable.y);
+        return;
+      case 'components':
+        this.drawLab(interactable.x, interactable.y);
+        return;
+      case 'performance':
+        this.drawMonitor(interactable.x, interactable.y);
+        return;
+      case 'troubleshooting':
+        this.drawTroubleRoom(interactable.x, interactable.y);
+        return;
+      case 'contact':
+        this.drawTerminal(interactable.x, interactable.y);
+        return;
+    }
+  }
+
+  private drawLaptop(x: number, y: number) {
+    this.add.rectangle(x, y + 18, 58, 16, 0x7b4a24).setDepth(1);
+    this.add.rectangle(x, y - 2, 48, 34, 0x0a0b0d).setDepth(1);
+    this.add.rectangle(x, y - 2, 36, 22, 0x0052ff).setDepth(2);
+    this.add
+      .text(x, y - 8, '</>', this.stationTextStyle())
+      .setOrigin(0.5)
+      .setDepth(3);
+  }
+
+  private drawResumeBoard(x: number, y: number) {
+    this.add.rectangle(x - 28, y + 14, 8, 48, 0x7b4a24).setDepth(1);
+    this.add.rectangle(x + 28, y + 14, 8, 48, 0x7b4a24).setDepth(1);
+    this.add
+      .rectangle(x, y - 10, 70, 44, 0xf2e2b8)
+      .setStrokeStyle(3, 0x0a0b0d)
+      .setDepth(2);
+    this.add.rectangle(x, y - 10, 46, 26, 0xffffff).setDepth(3);
+    this.add
+      .text(x, y - 16, 'CV', this.stationTextStyle('#0a0b0d'))
+      .setOrigin(0.5)
+      .setDepth(4);
+  }
+
+  private drawLab(x: number, y: number) {
+    this.add
+      .rectangle(x, y, 72, 52, 0xeef0f3)
+      .setStrokeStyle(3, 0x0a0b0d)
+      .setDepth(1);
+    this.add
+      .rectangle(x, y - 32, 84, 18, 0x0052ff)
+      .setStrokeStyle(3, 0x0a0b0d)
+      .setDepth(2);
+    this.add.rectangle(x - 20, y + 10, 14, 22, 0x7fb6f0).setDepth(2);
+    this.add.rectangle(x + 20, y + 10, 14, 22, 0x7fb6f0).setDepth(2);
+    this.add
+      .text(x, y - 4, '{}', this.stationTextStyle('#0a0b0d'))
+      .setOrigin(0.5)
+      .setDepth(3);
+  }
+
+  private drawMonitor(x: number, y: number) {
+    this.add.rectangle(x, y, 58, 42, 0x0a0b0d).setDepth(1);
+    this.add.rectangle(x, y, 44, 28, 0x05b169).setDepth(2);
+    this.add.rectangle(x, y + 30, 12, 20, 0x0a0b0d).setDepth(1);
+    this.add.rectangle(x, y + 42, 42, 8, 0x0a0b0d).setDepth(1);
+    this.add
+      .text(x, y - 6, '60', this.stationTextStyle())
+      .setOrigin(0.5)
+      .setDepth(3);
+  }
+
+  private drawTroubleRoom(x: number, y: number) {
+    this.add
+      .rectangle(x, y, 72, 54, 0x3a2d2d)
+      .setStrokeStyle(3, 0x0a0b0d)
+      .setDepth(1);
+    this.add
+      .rectangle(x, y - 32, 82, 18, 0xcf202f)
+      .setStrokeStyle(3, 0x0a0b0d)
+      .setDepth(2);
+    this.add.rectangle(x, y + 8, 36, 28, 0xf4b000).setDepth(2);
+    this.add
+      .text(x, y, '!', this.stationTextStyle('#0a0b0d'))
+      .setOrigin(0.5)
+      .setDepth(3);
+  }
+
+  private drawTerminal(x: number, y: number) {
+    this.add
+      .rectangle(x, y, 60, 50, 0x16181c)
+      .setStrokeStyle(3, 0x0a0b0d)
+      .setDepth(1);
+    this.add.rectangle(x, y - 6, 42, 26, 0x7fb6f0).setDepth(2);
+    this.add.rectangle(x, y + 26, 52, 12, 0x0a0b0d).setDepth(1);
+    this.add
+      .text(x, y - 12, '@', this.stationTextStyle('#0a0b0d'))
+      .setOrigin(0.5)
+      .setDepth(3);
+  }
+
+  private stationTextStyle(
+    color = '#ffffff',
+  ): Phaser.Types.GameObjects.Text.TextStyle {
+    return {
+      color,
+      fontFamily: GAME_FONT,
+      fontSize: '16px',
+      fontStyle: '900',
+    };
   }
 }

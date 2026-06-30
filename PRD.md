@@ -9,9 +9,9 @@ This project is a game-first interactive frontend developer portfolio inspired b
 The goal is not to build a full game with complex systems.
 The goal is to make the first impression feel like entering DDoni’s portfolio map, then present resume, projects, skills, and problem-solving experience through fast, accessible React UI.
 
-Users should land directly in the portfolio game map on `/`, move a character around, and interact with objects such as a laptop, resume board, component lab, performance monitor, and trouble room. Each object opens a focused portfolio modal.
+Users should land directly inside the portfolio game on `/`, where the full viewport is the game map. They can move a character around and interact with objects such as a laptop, resume board, component lab, performance monitor, and trouble room. Each object opens a focused portfolio modal.
 
-The portfolio must also provide a visible `페이지로 보기` mode and fast direct access to resume, projects, skills, and contact information without requiring game exploration.
+The portfolio must also provide a visible `페이지로 보기` mode and fast direct access to resume, projects, skills, and contact information without requiring game exploration. These controls should feel like a game HUD overlay, not a separate page layout, while in game view.
 
 ## 2. Target Users
 
@@ -55,7 +55,7 @@ Alternative titles:
 
 Recommended concept:
 
-A small 2D top-view map where the visitor can move a character around and interact with stations. The visual direction should evoke classic dot-style top-down RPGs without copying any specific copyrighted game, map, character, or asset.
+A full-screen 2D top-view map where the visitor can move a character around and interact with stations. The visual direction should evoke classic dot-style top-down RPGs without copying any specific copyrighted game, map, character, or asset.
 
 Each station represents a resume section:
 
@@ -237,8 +237,10 @@ Default view:
 
 1. Sticky top experience bar
 2. `페이지로 보기` / `Game으로 보기` segmented control
-3. Main portfolio game map
-4. Visible direct actions for resume, projects, skills, and contact
+3. Full-viewport portfolio game map
+4. HUD-style direct actions for resume, projects, skills, and contact
+
+Do not render the default game view as a normal page section, card, preview panel, or split layout. The game must own the screen. Supporting UI may be overlaid as HUD controls.
 
 Page view:
 
@@ -479,6 +481,7 @@ The first screen must include:
 - Projects button
 - Contact button
 - Main game map by default
+- The game map must fill the viewport rather than sit inside a page card
 
 ### Navigation
 

@@ -119,6 +119,68 @@ export function GameSection({
     );
   };
 
+  if (isHome) {
+    return (
+      <section
+        aria-labelledby="game-title"
+        className="relative min-h-[100svh] overflow-hidden bg-ink"
+      >
+        <div
+          ref={containerRef}
+          aria-label="인터랙티브 포트폴리오 지도 캔버스"
+          aria-live="polite"
+          className="portfolio-game-canvas absolute inset-0 h-full w-full bg-ink"
+        >
+          {status !== 'ready' ? (
+            <div className="flex h-full min-h-[420px] items-center justify-center px-4 text-center text-sm font-semibold text-muted-soft">
+              {status === 'waiting'
+                ? '인터랙티브 지도를 준비하고 있습니다.'
+                : status === 'loading'
+                  ? '인터랙티브 지도를 불러오는 중...'
+                  : status === 'reduced-motion'
+                    ? '동작 줄이기 설정이 켜져 있어 인터랙티브 지도를 멈췄습니다. 상단 바로가기나 페이지 보기를 이용하세요.'
+                    : '인터랙티브 지도를 표시할 수 없습니다. 상단 바로가기나 페이지 보기를 이용하세요.'}
+            </div>
+          ) : null}
+        </div>
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-ink via-ink/88 to-transparent px-4 pb-5 pt-20 sm:px-5">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <p className="w-fit border border-white/20 bg-ink/80 px-3 py-1 text-xs font-semibold text-white">
+                Game으로 보기
+              </p>
+              <h1
+                id="game-title"
+                className="mt-3 text-3xl font-normal leading-tight text-white sm:text-5xl"
+              >
+                DDoni 포트폴리오 맵
+              </h1>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-soft sm:text-base">
+                {profile.role} {profile.name}의 작업을 도트형 맵에서 탐색하세요.
+                WASD 또는 방향키로 이동하고, 오브젝트 가까이에서 Enter를 누르면
+                관련 정보가 열립니다.
+              </p>
+            </div>
+
+            <div className="pointer-events-auto flex flex-wrap gap-2">
+              {portfolioInteractables.map((interactable) => (
+                <button
+                  key={interactable.id}
+                  type="button"
+                  onClick={() => handleOpen(interactable)}
+                  className="min-h-10 border border-white/20 bg-ink/80 px-3 py-2 text-xs font-semibold text-white outline-none transition hover:border-primary hover:bg-primary focus-visible:shadow-focus sm:px-4 sm:text-sm"
+                >
+                  {interactable.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section
       aria-labelledby="game-title"

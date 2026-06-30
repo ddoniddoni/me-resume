@@ -67,10 +67,11 @@ export function HomeExperience() {
       <header
         id="top"
         className={cn(
-          'sticky top-0 z-30 border-b backdrop-blur',
+          'top-0 z-30 border-b backdrop-blur',
           isGameView
-            ? 'border-white/10 bg-ink/95 text-white'
+            ? 'fixed left-0 right-0 border-white/10 bg-ink/80 text-white'
             : 'border-hairline-soft bg-canvas/95 text-ink',
+          isGameView ? '' : 'sticky',
         )}
       >
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 sm:px-5 lg:flex-row lg:items-center lg:justify-between">
