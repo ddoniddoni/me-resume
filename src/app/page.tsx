@@ -1,10 +1,5 @@
-import { Footer } from '@/components/layout/Footer';
-import { Header } from '@/components/layout/Header';
 import { PortfolioModals } from '@/components/modals/PortfolioModals';
-import { FallbackPortfolio } from '@/components/sections/FallbackPortfolio';
-import { GameSection } from '@/components/sections/GameSection';
-import { HeroSection } from '@/components/sections/HeroSection';
-import { QuickActions } from '@/components/sections/QuickActions';
+import { HomeExperience } from '@/components/sections/HomeExperience';
 
 export default function Home() {
   return (
@@ -15,14 +10,7 @@ export default function Home() {
       >
         포트폴리오 본문으로 이동
       </a>
-      <Header />
-      <main id="main-content" tabIndex={-1}>
-        <HeroSection />
-        <QuickActions />
-        <GameSection />
-        <FallbackPortfolio />
-      </main>
-      <Footer />
+      <HomeExperience />
       <PortfolioModals />
     </div>
   );
