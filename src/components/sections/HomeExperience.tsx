@@ -69,7 +69,7 @@ export function HomeExperience() {
         className={cn(
           'top-0 z-30 border-b backdrop-blur',
           isGameView
-            ? 'fixed left-0 right-0 border-white/10 bg-ink/80 text-white'
+            ? 'fixed left-0 right-0 border-white/10 bg-ink/88 text-white'
             : 'border-hairline-soft bg-canvas/95 text-ink',
           isGameView ? '' : 'sticky',
         )}
@@ -79,7 +79,7 @@ export function HomeExperience() {
             <a
               href="#top"
               className={cn(
-                'block w-fit text-sm font-semibold outline-none transition focus-visible:rounded-full focus-visible:shadow-focus',
+                'block w-fit text-sm font-semibold outline-none transition focus-visible:rounded-md focus-visible:shadow-focus',
                 isGameView
                   ? 'text-white hover:text-muted-soft'
                   : 'text-primary hover:text-primary-active',
@@ -89,7 +89,7 @@ export function HomeExperience() {
             </a>
             <p
               className={cn(
-                'mt-1 text-sm leading-5',
+                'mt-1 max-w-3xl truncate text-sm leading-5',
                 isGameView ? 'text-muted-soft' : 'text-body',
               )}
             >
@@ -101,8 +101,10 @@ export function HomeExperience() {
             <div
               aria-label="포트폴리오 보기 방식"
               className={cn(
-                'grid grid-cols-2 rounded-full p-1',
-                isGameView ? 'bg-white/10' : 'bg-strong',
+                'grid grid-cols-2 rounded-lg p-1',
+                isGameView
+                  ? 'border border-white/10 bg-white/10'
+                  : 'border border-hairline bg-strong',
               )}
               role="group"
             >
@@ -117,7 +119,7 @@ export function HomeExperience() {
                     disabled={isPending}
                     onClick={() => switchView(option.value)}
                     className={cn(
-                      'min-h-10 rounded-full px-4 py-2 text-sm font-semibold outline-none transition focus-visible:shadow-focus disabled:cursor-wait',
+                      'min-h-10 rounded-md px-4 py-2 text-sm font-semibold outline-none transition focus-visible:shadow-focus disabled:cursor-wait',
                       isActive
                         ? 'bg-primary text-white'
                         : isGameView
@@ -139,10 +141,10 @@ export function HomeExperience() {
                       type="button"
                       onClick={() => openModal(action.modal)}
                       className={cn(
-                        'inline-flex min-h-10 items-center justify-center rounded-full px-4 py-2 text-sm font-semibold outline-none transition focus-visible:shadow-focus',
+                        'inline-flex min-h-10 items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold outline-none transition focus-visible:shadow-focus',
                         isGameView
-                          ? 'bg-white/10 text-white hover:bg-white/20'
-                          : 'bg-strong text-ink hover:bg-primary hover:text-white',
+                          ? 'border border-white/10 bg-white/10 text-white hover:bg-white/20'
+                          : 'border border-hairline bg-strong text-ink hover:bg-primary hover:text-white',
                       )}
                     >
                       {action.label}

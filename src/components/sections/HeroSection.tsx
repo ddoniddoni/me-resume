@@ -30,13 +30,14 @@ export function HeroSection() {
 
   return (
     <section id="top" className="relative overflow-hidden bg-ink text-white">
-      <div className="mx-auto grid min-h-[calc(100vh-65px)] max-w-6xl content-center gap-12 px-5 py-20 md:grid-cols-[1fr_0.92fr] md:py-24">
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgb(255_255_255/0.08)_0_1px,transparent_1px_24px)] opacity-20" />
+      <div className="relative mx-auto grid min-h-[calc(100vh-65px)] max-w-6xl content-center gap-12 px-5 py-20 md:grid-cols-[1fr_0.88fr] md:py-24">
         <div className="flex flex-col justify-center">
-          <p className="mb-5 w-fit rounded-full bg-dark-elevated px-4 py-2 text-sm font-semibold text-white">
-            {profile.name}
-          </p>
-          <h1 className="max-w-3xl text-balance text-5xl font-normal leading-none tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl">
+          <p className="mb-4 w-fit border border-white/15 bg-dark-elevated px-3 py-1.5 text-xs font-semibold uppercase text-muted-soft">
             {profile.role}
+          </p>
+          <h1 className="max-w-3xl text-balance text-5xl font-semibold leading-none text-white sm:text-6xl lg:text-7xl">
+            {profile.name}
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-muted-soft sm:text-lg">
             {profile.headline}
@@ -49,27 +50,37 @@ export function HeroSection() {
                 onClick={() => openModal(cta.modal)}
                 className={
                   cta.variant === 'primary'
-                    ? 'inline-flex min-h-14 items-center justify-center rounded-full bg-primary px-8 py-4 text-base font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus'
-                    : 'inline-flex min-h-14 items-center justify-center rounded-full border border-white/20 bg-dark-elevated px-8 py-4 text-base font-semibold text-white outline-none transition hover:border-white/40 hover:bg-white/10 focus-visible:shadow-focus'
+                    ? 'inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-7 py-3 text-base font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus'
+                    : 'inline-flex min-h-12 items-center justify-center rounded-lg border border-white/20 bg-dark-elevated px-7 py-3 text-base font-semibold text-white outline-none transition hover:border-white/40 hover:bg-white/10 focus-visible:shadow-focus'
                 }
               >
                 {cta.label}
               </button>
             ))}
           </div>
+          <dl className="mt-10 grid max-w-2xl gap-3 text-sm sm:grid-cols-3">
+            {[
+              ['Focus', 'React UI'],
+              ['Strength', '접근성/유지보수'],
+              ['Mode', 'Game + Page'],
+            ].map(([label, value]) => (
+              <div key={label} className="border-l border-white/15 pl-4">
+                <dt className="text-muted-soft">{label}</dt>
+                <dd className="mt-1 font-semibold text-white">{value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
         <div className="flex items-center md:justify-end">
           <div className="relative w-full max-w-md">
-            <div className="rounded-3xl border border-white/10 bg-dark-elevated p-6 shadow-soft">
+            <div className="rounded-lg border border-white/10 bg-dark-elevated p-6 shadow-soft">
               <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-5">
                 <div>
                   <p className="text-sm text-muted-soft">포트폴리오 상태</p>
-                  <p className="mt-1 text-2xl font-normal tracking-[-0.02em]">
-                    탐색 준비 완료
-                  </p>
+                  <p className="mt-1 text-2xl font-semibold">탐색 준비 완료</p>
                 </div>
-                <span className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-white">
+                <span className="rounded-md bg-signal px-2.5 py-1 text-xs font-semibold text-ink">
                   MVP
                 </span>
               </div>
@@ -82,7 +93,7 @@ export function HeroSection() {
                 ].map(([label, value]) => (
                   <div
                     key={label}
-                    className="flex min-h-14 items-center justify-between rounded-2xl bg-ink px-4"
+                    className="flex min-h-14 items-center justify-between rounded-lg bg-ink px-4"
                   >
                     <span className="text-sm text-muted-soft">{label}</span>
                     <span className="text-sm font-semibold text-white">
@@ -92,13 +103,11 @@ export function HeroSection() {
                 ))}
               </div>
             </div>
-            <div className="absolute -bottom-8 -left-4 hidden w-56 rotate-[-3deg] rounded-3xl border border-white/10 bg-white p-5 text-ink shadow-soft sm:block">
+            <div className="absolute -bottom-8 -left-4 hidden w-56 rotate-[-2deg] rounded-lg border border-hairline bg-white p-5 text-ink shadow-soft sm:block">
               <p className="text-sm font-semibold text-body">다음 목적지</p>
-              <p className="mt-2 text-2xl font-normal tracking-[-0.02em]">
-                포트폴리오 지도
-              </p>
-              <div className="mt-4 h-2 rounded-full bg-strong">
-                <div className="h-2 w-2/3 rounded-full bg-primary" />
+              <p className="mt-2 text-2xl font-semibold">포트폴리오 지도</p>
+              <div className="mt-4 h-2 rounded bg-strong">
+                <div className="h-2 w-2/3 rounded bg-primary" />
               </div>
             </div>
           </div>

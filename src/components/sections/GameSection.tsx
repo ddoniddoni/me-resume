@@ -125,6 +125,7 @@ export function GameSection({
         aria-labelledby="game-title"
         className="relative min-h-[100svh] overflow-hidden bg-ink"
       >
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_18%_16%,rgb(244_176_0/0.16),transparent_24rem),linear-gradient(180deg,rgb(10_11_13/0.24),rgb(10_11_13/0.72))]" />
         <div
           ref={containerRef}
           aria-label="인터랙티브 포트폴리오 지도 캔버스"
@@ -144,22 +145,24 @@ export function GameSection({
           ) : null}
         </div>
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-ink via-ink/88 to-transparent px-4 pb-5 pt-20 sm:px-5">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 px-4 pb-5 pt-24 sm:px-5">
           <div className="mx-auto flex max-w-7xl flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
-              <p className="w-fit border border-white/20 bg-ink/80 px-3 py-1 text-xs font-semibold text-white">
-                Game으로 보기
+              <p className="w-fit border border-white/20 bg-ink/85 px-3 py-1 text-xs font-semibold uppercase text-muted-soft">
+                {profile.role}
               </p>
               <h1
                 id="game-title"
-                className="mt-3 text-3xl font-normal leading-tight text-white sm:text-5xl"
+                className="mt-3 text-4xl font-semibold leading-tight text-white sm:text-6xl"
               >
-                DDoni 포트폴리오 맵
+                DDoni Frontend Quest
               </h1>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-soft sm:text-base">
-                {profile.role} {profile.name}의 작업을 도트형 맵에서 탐색하세요.
-                WASD 또는 방향키로 이동하고, 오브젝트 가까이에서 Enter를 누르면
-                관련 정보가 열립니다.
+                {profile.headline} WASD 또는 방향키로 이동하고, 오브젝트
+                가까이에서 Enter를 누르면 관련 정보가 열립니다.
+              </p>
+              <p className="mt-3 w-fit border border-white/15 bg-ink/80 px-3 py-2 text-xs font-semibold text-white sm:text-sm">
+                Move: WASD / Arrow Keys · Interact: Enter
               </p>
             </div>
 
@@ -169,7 +172,7 @@ export function GameSection({
                   key={interactable.id}
                   type="button"
                   onClick={() => handleOpen(interactable)}
-                  className="min-h-10 border border-white/20 bg-ink/80 px-3 py-2 text-xs font-semibold text-white outline-none transition hover:border-primary hover:bg-primary focus-visible:shadow-focus sm:px-4 sm:text-sm"
+                  className="min-h-10 rounded-lg border border-white/20 bg-ink/85 px-3 py-2 text-xs font-semibold text-white outline-none transition hover:border-primary hover:bg-primary focus-visible:shadow-focus sm:px-4 sm:text-sm"
                 >
                   {interactable.label}
                 </button>
@@ -199,7 +202,7 @@ export function GameSection({
         >
           <div
             className={cn(
-              'rounded-3xl border p-4 shadow-soft sm:p-6',
+              'rounded-lg border p-4 shadow-soft sm:p-6',
               isHome
                 ? 'order-1 border-white/10 bg-dark-elevated text-white'
                 : 'order-2 border-hairline bg-canvas lg:order-1',
@@ -207,7 +210,7 @@ export function GameSection({
           >
             <p
               className={cn(
-                'w-fit rounded-full px-4 py-2 text-xs font-semibold',
+                'w-fit rounded-md px-3 py-1.5 text-xs font-semibold uppercase',
                 isHome ? 'bg-white/10 text-white' : 'bg-strong text-ink',
               )}
             >
@@ -216,7 +219,7 @@ export function GameSection({
             <h2
               id="game-title"
               className={cn(
-                'mt-5 text-balance text-4xl font-normal tracking-[-0.03em]',
+                'mt-5 text-balance text-4xl font-semibold',
                 isHome ? 'text-white sm:text-5xl' : 'text-ink',
               )}
             >
@@ -237,7 +240,7 @@ export function GameSection({
               aria-label="인터랙티브 포트폴리오 지도 캔버스"
               aria-live="polite"
               className={cn(
-                'portfolio-game-canvas mt-6 overflow-hidden rounded-3xl border',
+                'portfolio-game-canvas mt-6 overflow-hidden rounded-lg border',
                 isHome
                   ? 'h-[68svh] min-h-[360px] max-h-[680px] border-white/10 bg-ink sm:h-[calc(100svh-340px)] lg:h-[560px] xl:h-[620px]'
                   : 'h-[320px] border-hairline bg-strong sm:h-[420px] lg:h-[520px]',
@@ -271,7 +274,7 @@ export function GameSection({
           <aside
             aria-label="지도 목적지 바로가기"
             className={cn(
-              'rounded-3xl border p-5 shadow-soft',
+              'rounded-lg border p-5 shadow-soft',
               isHome
                 ? 'order-2 border-white/10 bg-dark-elevated text-white'
                 : 'order-1 border-hairline bg-canvas lg:order-2',
@@ -279,14 +282,14 @@ export function GameSection({
           >
             <p
               className={cn(
-                'w-fit rounded-full px-4 py-2 text-xs font-semibold',
+                'w-fit rounded-md px-3 py-1.5 text-xs font-semibold uppercase',
                 isHome ? 'bg-white/10 text-white' : 'bg-strong text-ink',
               )}
             >
               {isHome ? '직접 열기' : '바로가기'}
             </p>
             {isHome ? (
-              <div className="mt-5 rounded-2xl border border-white/10 bg-ink p-4">
+              <div className="mt-5 rounded-lg border border-white/10 bg-ink p-4">
                 <p className="text-sm font-semibold text-white">
                   게임 없이도 모든 정보에 접근할 수 있습니다.
                 </p>
@@ -298,7 +301,7 @@ export function GameSection({
                   <button
                     type="button"
                     onClick={onSwitchToPage}
-                    className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus"
+                    className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus"
                   >
                     페이지로 보기
                   </button>
@@ -312,10 +315,10 @@ export function GameSection({
                   type="button"
                   onClick={() => handleOpen(interactable)}
                   className={cn(
-                    'min-h-12 rounded-full px-4 py-2 text-left text-sm font-semibold outline-none transition focus-visible:shadow-focus',
+                    'min-h-12 rounded-lg px-4 py-2 text-left text-sm font-semibold outline-none transition focus-visible:shadow-focus',
                     isHome
-                      ? 'bg-white/10 text-white hover:bg-primary'
-                      : 'bg-strong text-ink hover:bg-primary hover:text-white',
+                      ? 'border border-white/10 bg-white/10 text-white hover:bg-primary'
+                      : 'border border-hairline bg-strong text-ink hover:bg-primary hover:text-white',
                   )}
                 >
                   {interactable.label}

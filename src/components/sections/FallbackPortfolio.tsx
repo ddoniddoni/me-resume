@@ -64,15 +64,15 @@ export function FallbackPortfolio() {
   const openModal = usePortfolioStore((state) => state.openModal);
 
   return (
-    <section className="bg-canvas py-24">
-      <div className="mx-auto grid max-w-6xl gap-16 px-5">
+    <section className="bg-canvas py-20 sm:py-24">
+      <div className="mx-auto grid max-w-6xl gap-14 px-5">
         <section aria-labelledby="fallback-title" className="scroll-mt-24">
-          <p className="w-fit rounded-full bg-strong px-4 py-2 text-xs font-semibold text-ink">
+          <p className="w-fit rounded-md bg-strong px-3 py-1.5 text-xs font-semibold uppercase text-ink">
             전체 접근
           </p>
           <h2
             id="fallback-title"
-            className="mt-5 text-balance text-4xl font-normal tracking-[-0.03em] text-ink sm:text-5xl"
+            className="mt-5 text-balance text-4xl font-semibold text-ink sm:text-5xl"
           >
             포트폴리오 바로가기
           </h2>
@@ -93,9 +93,9 @@ export function FallbackPortfolio() {
                       : undefined,
                   )
                 }
-                className="min-h-32 rounded-3xl border border-hairline bg-canvas p-6 text-left outline-none transition hover:-translate-y-0.5 hover:shadow-soft focus-visible:shadow-focus motion-reduce:hover:translate-y-0"
+                className="min-h-32 rounded-lg border border-hairline bg-canvas p-5 text-left outline-none transition hover:-translate-y-0.5 hover:border-primary hover:shadow-soft focus-visible:shadow-focus motion-reduce:hover:translate-y-0"
               >
-                <span className="block text-lg font-semibold text-ink">
+                <span className="block text-base font-semibold text-ink">
                   {action.title}
                 </span>
                 <span className="mt-3 block text-sm leading-6 text-body">
@@ -111,12 +111,12 @@ export function FallbackPortfolio() {
           aria-labelledby="resume-title"
           className="scroll-mt-24"
         >
-          <p className="w-fit rounded-full bg-strong px-4 py-2 text-xs font-semibold text-ink">
+          <p className="w-fit rounded-md bg-strong px-3 py-1.5 text-xs font-semibold uppercase text-ink">
             이력서
           </p>
           <h2
             id="resume-title"
-            className="mt-5 text-balance text-4xl font-normal tracking-[-0.03em] text-ink"
+            className="mt-5 text-balance text-4xl font-semibold text-ink"
           >
             경력 요약
           </h2>
@@ -126,7 +126,7 @@ export function FallbackPortfolio() {
           <button
             type="button"
             onClick={() => openModal('resume')}
-            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-strong px-5 py-2 text-sm font-semibold text-ink outline-none transition hover:bg-primary hover:text-white focus-visible:shadow-focus"
+            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-lg bg-strong px-5 py-2 text-sm font-semibold text-ink outline-none transition hover:bg-primary hover:text-white focus-visible:shadow-focus"
           >
             이력서 모달 열기
           </button>
@@ -137,12 +137,12 @@ export function FallbackPortfolio() {
           aria-labelledby="projects-title"
           className="scroll-mt-24"
         >
-          <p className="w-fit rounded-full bg-strong px-4 py-2 text-xs font-semibold text-ink">
+          <p className="w-fit rounded-md bg-strong px-3 py-1.5 text-xs font-semibold uppercase text-ink">
             프로젝트
           </p>
           <h2
             id="projects-title"
-            className="mt-5 text-balance text-4xl font-normal tracking-[-0.03em] text-ink"
+            className="mt-5 text-balance text-4xl font-semibold text-ink"
           >
             주요 작업
           </h2>
@@ -154,7 +154,7 @@ export function FallbackPortfolio() {
           <button
             type="button"
             onClick={() => openModal('projects')}
-            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-strong px-5 py-2 text-sm font-semibold text-ink outline-none transition hover:bg-primary hover:text-white focus-visible:shadow-focus"
+            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-lg bg-strong px-5 py-2 text-sm font-semibold text-ink outline-none transition hover:bg-primary hover:text-white focus-visible:shadow-focus"
           >
             프로젝트 모달 열기
           </button>
@@ -165,12 +165,12 @@ export function FallbackPortfolio() {
           aria-labelledby="skills-title"
           className="scroll-mt-24"
         >
-          <p className="w-fit rounded-full bg-strong px-4 py-2 text-xs font-semibold text-ink">
+          <p className="w-fit rounded-md bg-strong px-3 py-1.5 text-xs font-semibold uppercase text-ink">
             기술
           </p>
           <h2
             id="skills-title"
-            className="mt-5 text-balance text-4xl font-normal tracking-[-0.03em] text-ink"
+            className="mt-5 text-balance text-4xl font-semibold text-ink"
           >
             프론트엔드 도구함
           </h2>
@@ -180,19 +180,19 @@ export function FallbackPortfolio() {
           <button
             type="button"
             onClick={() => openModal('skills')}
-            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-strong px-5 py-2 text-sm font-semibold text-ink outline-none transition hover:bg-primary hover:text-white focus-visible:shadow-focus"
+            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-lg bg-strong px-5 py-2 text-sm font-semibold text-ink outline-none transition hover:bg-primary hover:text-white focus-visible:shadow-focus"
           >
             기술 모달 열기
           </button>
         </section>
 
         <section aria-labelledby="experience-title" className="scroll-mt-24">
-          <p className="w-fit rounded-full bg-strong px-4 py-2 text-xs font-semibold text-ink">
+          <p className="w-fit rounded-md bg-strong px-3 py-1.5 text-xs font-semibold uppercase text-ink">
             경험
           </p>
           <h2
             id="experience-title"
-            className="mt-5 text-balance text-4xl font-normal tracking-[-0.03em] text-ink"
+            className="mt-5 text-balance text-4xl font-semibold text-ink"
           >
             기술적 강점
           </h2>
@@ -207,7 +207,7 @@ export function FallbackPortfolio() {
                 onClick={() =>
                   openModal('experience', { experienceId: experience.id })
                 }
-                className="inline-flex min-h-11 items-center justify-center rounded-full bg-strong px-5 py-2 text-sm font-semibold text-ink outline-none transition hover:bg-primary hover:text-white focus-visible:shadow-focus"
+                className="inline-flex min-h-11 items-center justify-center rounded-lg bg-strong px-5 py-2 text-sm font-semibold text-ink outline-none transition hover:bg-primary hover:text-white focus-visible:shadow-focus"
               >
                 {experience.title} 열기
               </button>
@@ -218,14 +218,14 @@ export function FallbackPortfolio() {
         <section
           id="contact"
           aria-labelledby="contact-title"
-          className="scroll-mt-24 rounded-3xl bg-ink p-8 text-white sm:p-10"
+          className="scroll-mt-24 rounded-lg bg-ink p-8 text-white sm:p-10"
         >
-          <p className="w-fit rounded-full bg-dark-elevated px-4 py-2 text-xs font-semibold text-white">
+          <p className="w-fit rounded-md bg-dark-elevated px-3 py-1.5 text-xs font-semibold uppercase text-white">
             연락처
           </p>
           <h2
             id="contact-title"
-            className="mt-5 text-balance text-4xl font-normal tracking-[-0.03em]"
+            className="mt-5 text-balance text-4xl font-semibold"
           >
             연락처 정보는 DDoni 입력이 필요합니다
           </h2>
@@ -239,7 +239,7 @@ export function FallbackPortfolio() {
           <button
             type="button"
             onClick={() => openModal('contact')}
-            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus"
+            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus"
           >
             연락처 모달 열기
           </button>

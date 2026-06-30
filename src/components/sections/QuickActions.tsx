@@ -35,7 +35,7 @@ export function QuickActions() {
   return (
     <section
       aria-labelledby="quick-actions-title"
-      className="border-b border-hairline-soft bg-canvas py-8"
+      className="border-b border-hairline-soft bg-panel py-6"
     >
       <div className="mx-auto max-w-6xl px-5">
         <h2 id="quick-actions-title" className="sr-only">
@@ -47,13 +47,16 @@ export function QuickActions() {
               key={action.title}
               type="button"
               onClick={() => openModal(action.modal)}
-              className="rounded-3xl border border-hairline bg-canvas p-6 text-left outline-none transition hover:-translate-y-0.5 hover:shadow-soft focus-visible:shadow-focus motion-reduce:hover:translate-y-0"
+              className="min-h-36 rounded-lg border border-hairline bg-canvas p-5 text-left outline-none transition hover:-translate-y-0.5 hover:border-primary hover:shadow-soft focus-visible:shadow-focus motion-reduce:hover:translate-y-0"
             >
-              <span className="block text-lg font-semibold text-ink">
+              <span className="block text-base font-semibold text-ink">
                 {action.title}
               </span>
               <span className="mt-2 block text-sm leading-6 text-body">
                 {action.description}
+              </span>
+              <span className="mt-4 inline-flex text-sm font-semibold text-primary">
+                열기
               </span>
             </button>
           ))}

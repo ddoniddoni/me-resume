@@ -6,16 +6,14 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="overflow-hidden rounded-3xl border border-hairline bg-canvas p-6">
+    <article className="overflow-hidden rounded-lg border border-hairline bg-canvas p-6 shadow-soft">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
-          <h3 className="text-2xl font-normal tracking-[-0.02em] text-ink">
-            {project.title}
-          </h3>
+          <h3 className="text-2xl font-semibold text-ink">{project.title}</h3>
           <p className="mt-2 text-sm text-body">{project.subtitle}</p>
         </div>
         {project.period ? (
-          <p className="shrink-0 rounded-full bg-strong px-3 py-1 text-sm font-semibold text-ink">
+          <p className="shrink-0 rounded-md bg-strong px-3 py-1 text-sm font-semibold text-ink">
             {project.period}
           </p>
         ) : null}
@@ -58,11 +56,14 @@ type ProjectListProps = {
 
 function ProjectList({ title, items }: ProjectListProps) {
   return (
-    <div>
+    <div className="rounded-lg bg-panel p-4">
       <h4 className="text-sm font-semibold text-muted">{title}</h4>
       <ul className="mt-2 space-y-2 text-sm leading-6 text-body">
         {items.map((item) => (
-          <li key={item}>{item}</li>
+          <li key={item} className="pl-3 [text-indent:-0.75rem]">
+            <span aria-hidden="true">- </span>
+            {item}
+          </li>
         ))}
       </ul>
     </div>
