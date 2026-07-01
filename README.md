@@ -1,87 +1,18 @@
-# DDoni의 프론트엔드 퀘스트
+# DDoni Resume
 
-프론트엔드 개발자 박상돈(DDoni)의 포트폴리오입니다. `/` 진입 시 전체 화면 2D 게임 맵이 먼저 열리고, 채용 담당자가 이력서, 프로젝트, 기술, 연락처를 바로 확인할 수 있도록 페이지 보기와 직접 접근 버튼을 함께 제공합니다.
+프론트엔드 개발자 박상돈(DDoni)의 인터랙티브 이력서입니다.
 
-## 기술 스택
+2D 게임 맵을 이동하며 이력서, 프로젝트, UI 설계 경험, 연락처를 확인할 수 있도록 구성했습니다. 일반적인 프로젝트 소개보다, 경력과 작업 방식을 조금 더 기억에 남는 방식으로 보여주는 개인 이력서 페이지입니다.
 
-- Next.js App Router
-- React
-- TypeScript
-- Tailwind CSS
-- Phaser
-- Zustand
-- npm
+## About
 
-## 로컬 실행
+- 이름: 박상돈
+- 직무: 프론트엔드 개발자
+- 주요 경험: Next.js, React, Angular, TypeScript 기반 서비스 UI 개발
+- GitHub: <https://github.com/ddoniddoni>
+- Blog: <https://velog.io/@psdkey/posts>
 
-```bash
-npm install
-npm run dev
-```
-
-기본 주소는 `http://localhost:3000`입니다. 이미 포트가 사용 중이면 Next.js가 다른 포트를 안내합니다.
-
-## 검증 명령
-
-```bash
-npm run lint
-npm run typecheck
-npm run test
-npm run build
-npm run format
-```
-
-현재 테스트 스크립트는 테스트 파일이 없어도 통과하도록 설정되어 있습니다.
-
-## 게임 에셋 생성
-
-현재 게임은 Phaser가 `public/assets`의 PNG 타일셋, 스프라이트시트, Tiled 호환 JSON 맵을 로드하는 구조입니다.
-
-```bash
-npm run assets:generate
-```
-
-생성되는 파일:
-
-- `public/assets/tiles/portfolio-campus.png`
-- `public/assets/sprites/player.png`
-- `public/assets/sprites/stations.png`
-- `public/assets/maps/portfolio-campus.json`
-
-## 에셋 크레딧
+## Asset Credit
 
 - Sprout Lands Basic Pack assets by Cup Nooble
-- License note: non-commercial use, modification allowed, credit required, redistribution/resale of the asset pack itself is not allowed.
 - Original license text is kept in `public/assets/games/read_me.txt`.
-
-## 콘텐츠 수정 위치
-
-- 프로필과 연락처: `src/data/profile.ts`
-- 프로젝트: `src/data/projects.ts`
-- 기술 스택: `src/data/skills.ts`
-- 경험 섹션: `src/data/experiences.ts`
-
-현재 프로필, 이메일, GitHub, Blog, 경력, 기술, 학력/자격 정보는 공개 이력서 저장소의 내용을 기준으로 반영했습니다.
-
-## 디자인 기준
-
-`DESIGN.md`를 기준으로 흰 캔버스, 조용한 타이포그래피, 단일 블루 액센트, pill CTA, 큰 radius의 feature card를 사용합니다. Coinbase 전용 폰트는 사용하지 않고 한국어 환경에 맞는 시스템 폰트 fallback을 사용합니다.
-
-## 게임 지도
-
-Phaser 지도는 기본 경험이지만, 필수 접근 경로는 아닙니다. 모든 주요 정보는 HUD 버튼과 페이지 보기의 일반 HTML 섹션에서도 접근할 수 있습니다.
-
-게임 코드는 클라이언트에서 동적으로 로드합니다. `prefers-reduced-motion`이 켜져 있으면 게임 로딩을 멈추고 바로가기 버튼과 페이지 보기 사용을 안내합니다.
-
-## Git 규칙
-
-- 기본 개발 브랜치: `develop`
-- 작업 브랜치 예시: `feature/performance-polish`
-- 커밋 형식: Conventional Commits
-
-예시:
-
-```bash
-git commit -m "feat(ui): add project modal"
-git commit -m "fix(ui): improve responsive accessibility"
-```

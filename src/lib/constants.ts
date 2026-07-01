@@ -1,4 +1,4 @@
-export const SITE_NAME = 'DDoni의 프론트엔드 퀘스트';
+export const SITE_NAME = 'DDoni Resume';
 
 export const QUICK_ACTION_TARGETS = {
   resume: '#resume',

@@ -15,11 +15,13 @@ export function ContactLinks({ profile }: ContactLinksProps) {
       label: 'GitHub',
       value: profile.github,
       href: profile.github,
+      opensInNewTab: true,
     },
     {
       label: 'Blog',
       value: profile.blog,
       href: profile.blog,
+      opensInNewTab: true,
     },
   ];
 
@@ -33,6 +35,8 @@ export function ContactLinks({ profile }: ContactLinksProps) {
           <span className="font-bold text-ink">{link.label}</span>
           <a
             href={link.href}
+            target={link.opensInNewTab ? '_blank' : undefined}
+            rel={link.opensInNewTab ? 'noreferrer' : undefined}
             className="break-words text-sm font-semibold text-primary outline-none hover:text-primary-active focus-visible:rounded-full focus-visible:shadow-focus"
           >
             {link.value}

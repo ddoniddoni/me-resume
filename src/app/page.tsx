@@ -8,10 +8,10 @@ export default function Home() {
         href="#main-content"
         className="sr-only z-[60] rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:shadow-focus"
       >
-        포트폴리오 본문으로 이동
+        이력서 본문으로 이동
       </a>
       <main id="main-content" tabIndex={-1}>
-        <GameSection loadStrategy="immediate" variant="home" />
+        <GameSection loadStrategy="immediate" />
       </main>
       <PortfolioModals />
     </div>

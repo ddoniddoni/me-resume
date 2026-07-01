@@ -37,11 +37,98 @@ a {
   height: 100% !important;
 }
 
+.game-loading-character {
+  width: 144px;
+  height: 144px;
+  background-image: url('/assets/games/Characters/Basic%20Charakter%20Spritesheet.png');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 576px 576px;
+  image-rendering: pixelated;
+  animation: game-loading-spin 2s linear infinite;
+}
+
+@keyframes game-loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pixel-modal {
+  image-rendering: pixelated;
+  background: #263821;
+}
+
+.pixel-modal h3,
+.pixel-modal h4,
+.pixel-modal h5,
+.pixel-modal .text-ink {
+  color: #fff4c7 !important;
+}
+
+.pixel-modal p,
+.pixel-modal li,
+.pixel-modal dd,
+.pixel-modal .text-body {
+  color: #eadfb7 !important;
+}
+
+.pixel-modal dt,
+.pixel-modal .text-muted {
+  color: #c8ad79 !important;
+}
+
+.pixel-modal .bg-canvas,
+.pixel-modal .bg-panel,
+.pixel-modal .bg-strong {
+  border-color: #536446 !important;
+  background-color: rgb(39 56 34 / 0.92) !important;
+}
+
+.pixel-modal .rounded-3xl,
+.pixel-modal .rounded-2xl,
+.pixel-modal .rounded-lg,
+.pixel-modal .rounded-md,
+.pixel-modal .rounded-full {
+  border-radius: 0.25rem !important;
+}
+
+.pixel-modal article,
+.pixel-modal li.rounded-2xl,
+.pixel-modal .rounded-3xl,
+.pixel-modal .rounded-lg {
+  box-shadow:
+    inset 0 0 0 2px rgb(255 244 199 / 0.05),
+    0 4px 0 rgb(19 27 15 / 0.38) !important;
+}
+
+.pixel-modal a {
+  color: #f4c95d !important;
+}
+
+.pixel-modal a:hover {
+  color: #ffe28a !important;
+}
+
+.pixel-modal .bg-primary {
+  border: 3px solid #5f3b22 !important;
+  background-color: #e5b76c !important;
+  color: #2d1a0f !important;
+}
+
+.pixel-modal .bg-primary:hover {
+  background-color: #f0ca7d !important;
+}
+
 ::selection {
   background: rgb(0 82 255 / 0.16);
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .game-loading-character {
+    animation: none !important;
+  }
+
   *,
   *::before,
   *::after {

@@ -107,7 +107,7 @@ export function BaseModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center overflow-y-auto overscroll-contain bg-ink/70 px-4 py-6 backdrop-blur-sm sm:items-center"
+      className="fixed inset-0 z-50 flex items-end justify-center overflow-y-auto overscroll-contain bg-[#10140c]/78 px-4 py-6 backdrop-blur-[2px] sm:items-center"
       onClick={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
@@ -121,19 +121,19 @@ export function BaseModal({
         aria-labelledby={titleId}
         aria-describedby={description ? descriptionId : undefined}
         tabIndex={-1}
-        className="max-h-[min(760px,calc(100dvh-3rem))] w-full max-w-3xl overflow-y-auto overscroll-contain rounded-3xl border border-hairline bg-canvas p-6 shadow-2xl outline-none focus-visible:shadow-focus sm:p-8"
+        className="pixel-modal max-h-[min(760px,calc(100dvh-3rem))] w-full max-w-3xl overflow-y-auto overscroll-contain border-[4px] border-[#3f4b35] bg-[#24331f] p-5 text-[#f6edc8] shadow-[0_0_0_3px_#b99b65,0_0_0_6px_#1d2419,0_16px_0_rgba(19,27,15,0.38)] outline-none focus-visible:shadow-focus sm:p-7"
       >
-        <div className="flex items-start justify-between gap-4 border-b border-hairline-soft pb-5">
+        <div className="flex items-start justify-between gap-4 border-b-[3px] border-[#9d865c] pb-4">
           <h2
             id={titleId}
-            className="text-3xl font-normal tracking-[-0.03em] text-ink"
+            className="text-3xl font-black text-[#fff4c7]"
           >
             {title}
           </h2>
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-strong text-xl font-semibold leading-none text-ink outline-none transition hover:bg-primary hover:text-white focus-visible:shadow-focus"
+            className="inline-flex size-10 shrink-0 items-center justify-center border-[3px] border-[#5f3b22] bg-[#e5b76c] text-xl font-black leading-none text-[#2d1a0f] outline-none transition hover:-translate-y-0.5 hover:bg-[#f0ca7d] focus-visible:shadow-focus motion-reduce:hover:translate-y-0"
             aria-label="모달 닫기"
           >
             ×

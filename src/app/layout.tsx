@@ -1,10 +1,16 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { profile } from '@/data/profile';
 
 export const metadata: Metadata = {
-  title: 'DDoni의 프론트엔드 퀘스트',
-  description: profile.summary,
+  title: 'DDoni Resume | 박상돈 프론트엔드 개발자',
+  description:
+    '박상돈 프론트엔드 개발자의 경력, 프로젝트, 기술 스택, 연락처를 정리한 인터랙티브 이력서입니다.',
+  openGraph: {
+    description:
+      'Next.js, React, Angular 기반 서비스 경험을 정리한 박상돈 프론트엔드 개발자 이력서입니다.',
+    title: 'DDoni Resume',
+    type: 'profile',
+  },
 };
 
 export default function RootLayout({
