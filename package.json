@@ -7,7 +7,7 @@
     "build": "next build",
     "assets:generate": "node scripts/generate-pixel-assets.mjs && prettier --write public/assets/maps/portfolio-campus.json",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run --passWithNoTests",
     "format": "prettier --check ."
   },
