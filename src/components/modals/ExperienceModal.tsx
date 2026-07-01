@@ -36,10 +36,6 @@ export function ExperienceModal({
             ))}
           </ul>
         </div>
-        <p className="text-sm leading-6 text-body">
-          실제 프로젝트와 업무 경험이 정리되면 이 요약을 더 구체적인 사례로
-          교체합니다.
-        </p>
       </div>
     </BaseModal>
   );

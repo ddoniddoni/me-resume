@@ -60,8 +60,8 @@ export function HeroSection() {
           </div>
           <dl className="mt-10 grid max-w-2xl gap-3 text-sm sm:grid-cols-3">
             {[
-              ['Focus', 'React UI'],
-              ['Strength', '접근성/유지보수'],
+              ['Experience', '5 Years'],
+              ['Domain', 'Platform / SDDC'],
               ['Mode', 'Game + Page'],
             ].map(([label, value]) => (
               <div key={label} className="border-l border-white/15 pl-4">
@@ -89,7 +89,7 @@ export function HeroSection() {
                   ['이력서', '즉시 열기'],
                   ['프로젝트', '사례 확인'],
                   ['기술', '스택 보기'],
-                  ['연락처', '준비 중'],
+                  ['연락처', '연결 완료'],
                 ].map(([label, value]) => (
                   <div
                     key={label}

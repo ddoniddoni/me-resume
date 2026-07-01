@@ -10,19 +10,25 @@ export function ContactLinks({ profile }: ContactLinksProps) {
       label: '이메일',
       value: profile.email,
       href: profile.email ? `mailto:${profile.email}` : '',
-      todo: '공개 이메일 준비 중',
+      fallback: '공개 이메일 준비 중',
     },
     {
       label: 'GitHub',
       value: profile.github,
       href: profile.github,
-      todo: 'GitHub 주소 준비 중',
+      fallback: 'GitHub 주소 준비 중',
+    },
+    {
+      label: 'Blog',
+      value: profile.blog,
+      href: profile.blog,
+      fallback: 'Blog 주소 준비 중',
     },
     {
       label: 'LinkedIn',
       value: profile.linkedin,
       href: profile.linkedin,
-      todo: 'LinkedIn 주소 준비 중',
+      fallback: 'LinkedIn 주소 준비 중',
     },
   ];
 
@@ -42,7 +48,9 @@ export function ContactLinks({ profile }: ContactLinksProps) {
               {link.value}
             </a>
           ) : (
-            <span className="text-sm font-semibold text-body">{link.todo}</span>
+            <span className="text-sm font-semibold text-body">
+              {link.fallback}
+            </span>
           )}
         </li>
       ))}

@@ -1,6 +1,6 @@
 'use client';
 
-import { profile } from '@/data/profile';
+import { careerItems, educationItems, profile } from '@/data/profile';
 import { BaseModal } from './BaseModal';
 
 type ResumeModalProps = {
@@ -33,6 +33,49 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             지역: {profile.location}
           </p>
         </div>
+        <div className="grid gap-4">
+          <h4 className="font-semibold text-ink">주요 경력</h4>
+          {careerItems.map((career) => (
+            <article
+              key={`${career.company}-${career.period}`}
+              className="rounded-2xl border border-hairline bg-canvas p-5"
+            >
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                <h5 className="text-lg font-semibold text-ink">
+                  {career.company}
+                </h5>
+                <span className="text-sm font-semibold text-body">
+                  {career.period}
+                </span>
+              </div>
+              <p className="mt-3 text-sm leading-6 text-body">
+                {career.summary}
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {career.roles.map((role) => (
+                  <span
+                    key={role}
+                    className="rounded-md bg-strong px-2.5 py-1 text-xs font-semibold text-ink"
+                  >
+                    {role}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="rounded-3xl border border-hairline bg-panel p-6">
+          <h4 className="font-semibold text-ink">학력 및 자격</h4>
+          <ul className="mt-3 grid gap-3 text-sm leading-6 text-body">
+            {educationItems.map((item) => (
+              <li key={`${item.title}-${item.period}`}>
+                <span className="font-semibold text-ink">{item.title}</span>
+                <span className="text-body"> · {item.period}</span>
+                <p>{item.detail}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
         {profile.resumePdfUrl ? (
           <a
             href={profile.resumePdfUrl}
@@ -41,10 +84,20 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             이력서 PDF 다운로드
           </a>
         ) : (
-          <p className="rounded-2xl border border-hairline bg-panel p-4 text-sm leading-6 text-body">
-            이력서 PDF는 공개 가능한 최종 파일이 준비되면 다운로드 버튼으로
-            연결됩니다.
-          </p>
+          <div className="grid gap-3 rounded-2xl border border-hairline bg-panel p-4 text-sm leading-6 text-body">
+            <p>
+              이력서 PDF는 공개 가능한 최종 파일이 준비되면 다운로드 버튼으로
+              연결됩니다.
+            </p>
+            <a
+              href={profile.resumeSourceUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-primary outline-none hover:text-primary-active focus-visible:rounded-md focus-visible:shadow-focus"
+            >
+              GitHub 이력서 저장소 보기
+            </a>
+          </div>
         )}
       </div>
     </BaseModal>

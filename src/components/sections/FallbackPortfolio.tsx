@@ -17,7 +17,7 @@ import {
 const fallbackActions = [
   {
     title: '이력서',
-    description: '경력 요약과 이력서 PDF 준비 상태를 확인합니다.',
+    description: '경력 요약, 주요 경력, 학력과 자격 정보를 확인합니다.',
     modal: 'resume',
   },
   {
@@ -50,7 +50,7 @@ const fallbackActions = [
   },
   {
     title: '연락처',
-    description: '공개 연락처 입력 상태를 확인합니다.',
+    description: '공개 이메일, GitHub, Blog 링크를 확인합니다.',
     modal: 'contact',
   },
 ] satisfies {
@@ -227,11 +227,11 @@ export function FallbackPortfolio() {
             id="contact-title"
             className="mt-5 text-balance text-4xl font-semibold"
           >
-            연락처 정보는 DDoni 입력이 필요합니다
+            공개 연락처
           </h2>
           <p className="mt-4 max-w-3xl leading-7 text-muted-soft">
-            공개 이메일, GitHub, LinkedIn, 최종 이력서 PDF는 준비되는 대로
-            연결합니다. 비공개 개인정보는 명시적으로 제공된 경우에만 넣습니다.
+            공개 이력서에 명시된 이메일, GitHub, Blog 링크를 연결했습니다.
+            LinkedIn과 최종 이력서 PDF는 준비되면 추가합니다.
           </p>
           <div className="mt-5">
             <ContactLinks profile={profile} />
