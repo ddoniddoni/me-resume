@@ -131,9 +131,8 @@ export function GameSection({
       >
         <p id={descriptionId} className="sr-only">
           포트폴리오 지도는 시각적 탐색 경험입니다. 모든 주요 정보는 화면의
-          바로가기 버튼과 페이지 보기에서도 동일하게 열 수 있습니다.
+          바로가기 버튼에서도 동일하게 열 수 있습니다.
         </p>
-        <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_18%_16%,rgb(244_176_0/0.16),transparent_24rem),linear-gradient(180deg,rgb(10_11_13/0.24),rgb(10_11_13/0.72))]" />
         <div
           ref={containerRef}
           aria-hidden="true"
@@ -146,62 +145,55 @@ export function GameSection({
                 : status === 'loading'
                   ? '인터랙티브 지도를 불러오는 중...'
                   : status === 'reduced-motion'
-                    ? '동작 줄이기 설정이 켜져 있어 인터랙티브 지도를 멈췄습니다. 상단 바로가기나 페이지 보기를 이용하세요.'
-                    : '인터랙티브 지도를 표시할 수 없습니다. 상단 바로가기나 페이지 보기를 이용하세요.'}
+                    ? '동작 줄이기 설정이 켜져 있어 인터랙티브 지도를 멈췄습니다. 바로가기 버튼을 이용하세요.'
+                    : '인터랙티브 지도를 표시할 수 없습니다. 바로가기 버튼을 이용하세요.'}
             </div>
           ) : null}
         </div>
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 max-h-[calc(100svh-5rem)] overflow-y-auto px-4 pb-5 pt-24 sm:px-5">
-          <div className="mx-auto flex max-w-7xl flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-3xl">
-              <p className="w-fit border border-white/20 bg-ink/85 px-3 py-1 text-xs font-semibold uppercase text-muted-soft">
-                {profile.role}
-              </p>
-              <h1
-                id={titleId}
-                className="mt-3 text-4xl font-semibold leading-tight text-white sm:text-6xl"
-              >
-                DDoni Frontend Quest
-              </h1>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-soft sm:text-base">
-                {profile.headline} WASD 또는 방향키로 이동하고, 오브젝트
-                가까이에서 Enter를 누르면 관련 정보가 열립니다.
-              </p>
-              <p className="mt-3 w-fit border border-white/15 bg-ink/80 px-3 py-2 text-xs font-semibold text-white sm:text-sm">
-                Move: WASD / Arrow Keys · Interact: Enter
-              </p>
-            </div>
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-4 px-4 py-4 sm:px-5">
+          <div className="max-w-[min(30rem,calc(100vw-2rem))] border border-white/15 bg-ink/82 px-3 py-2 text-white backdrop-blur">
+            <p className="text-xs font-semibold uppercase text-muted-soft">
+              {profile.role}
+            </p>
+            <h1 id={titleId} className="mt-1 text-lg font-semibold leading-6">
+              DDoni Frontend Quest
+            </h1>
+            <p className="mt-1 text-xs font-semibold text-muted-soft sm:text-sm">
+              Move: WASD / Arrow Keys · Interact: Enter
+            </p>
+          </div>
+        </div>
 
-            <div
-              aria-labelledby={directActionsTitleId}
-              className="pointer-events-auto grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-end"
-              role="group"
-            >
-              <h2 id={directActionsTitleId} className="sr-only">
-                지도 목적지 바로가기
-              </h2>
-              {onSwitchToPage ? (
-                <button
-                  type="button"
-                  onClick={onSwitchToPage}
-                  className="col-span-2 min-h-10 rounded-lg bg-primary px-3 py-2 text-xs font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus sm:col-span-1 sm:px-4 sm:text-sm"
-                >
-                  페이지로 보기
-                </button>
-              ) : null}
-              {portfolioInteractables.map((interactable) => (
-                <button
-                  key={interactable.id}
-                  type="button"
-                  aria-label={`${interactable.label} 정보 열기`}
-                  onClick={() => handleOpen(interactable)}
-                  className="min-h-10 rounded-lg border border-white/20 bg-ink/85 px-3 py-2 text-xs font-semibold text-white outline-none transition hover:border-primary hover:bg-primary focus-visible:shadow-focus sm:px-4 sm:text-sm"
-                >
-                  {interactable.label}
-                </button>
-              ))}
-            </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 max-h-[42svh] overflow-y-auto px-4 pb-4 sm:px-5">
+          <div
+            aria-labelledby={directActionsTitleId}
+            className="pointer-events-auto ml-auto grid max-w-2xl grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-end"
+            role="group"
+          >
+            <h2 id={directActionsTitleId} className="sr-only">
+              지도 목적지 바로가기
+            </h2>
+            {onSwitchToPage ? (
+              <button
+                type="button"
+                onClick={onSwitchToPage}
+                className="col-span-2 min-h-10 rounded-lg bg-primary px-3 py-2 text-xs font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus sm:col-span-1 sm:px-4 sm:text-sm"
+              >
+                페이지로 보기
+              </button>
+            ) : null}
+            {portfolioInteractables.map((interactable) => (
+              <button
+                key={interactable.id}
+                type="button"
+                aria-label={`${interactable.label} 정보 열기`}
+                onClick={() => handleOpen(interactable)}
+                className="min-h-10 rounded-lg border border-white/20 bg-ink/85 px-3 py-2 text-xs font-semibold text-white outline-none backdrop-blur transition hover:border-primary hover:bg-primary focus-visible:shadow-focus sm:px-4 sm:text-sm"
+              >
+                {interactable.label}
+              </button>
+            ))}
           </div>
         </div>
       </section>

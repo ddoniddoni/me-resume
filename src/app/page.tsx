@@ -1,5 +1,5 @@
 import { PortfolioModals } from '@/components/modals/PortfolioModals';
-import { HomeExperience } from '@/components/sections/HomeExperience';
+import { GameSection } from '@/components/sections/GameSection';
 
 export default function Home() {
   return (
@@ -10,7 +10,9 @@ export default function Home() {
       >
         포트폴리오 본문으로 이동
       </a>
-      <HomeExperience />
+      <main id="main-content" tabIndex={-1}>
+        <GameSection loadStrategy="immediate" variant="home" />
+      </main>
       <PortfolioModals />
     </div>
   );
