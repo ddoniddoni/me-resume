@@ -401,6 +401,7 @@ Each task should produce a focused change.
   - `chore/*` for setup, config, dependency, or maintenance work
 - Keep feature branches small and merge them back into `develop` frequently.
 - Run lint, tests, or build checks before pushing when the related scripts exist.
+- When a phase is completed, commit the completed phase with a Conventional Commit message and push the current branch to `origin` before the final response, unless the user explicitly says not to push.
 - Use `main` later as the stable release branch.
 - When releasing, merge `develop` into `main` and create a version tag such as `v0.1.0`.
 - Use `hotfix/*` branches only for urgent production fixes after `main` becomes active.
@@ -526,4 +527,5 @@ A task is complete only when:
 - The page is usable without game interaction.
 - The code is organized by responsibility.
 - No fake personal data is invented.
+- Phase-complete work is committed and pushed to the current remote branch unless explicitly skipped.
 - Final response includes commands run and remaining TODOs.

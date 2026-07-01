@@ -5,6 +5,7 @@ import { type ReactNode, useEffect, useId, useRef } from 'react';
 type BaseModalProps = {
   isOpen: boolean;
   title: string;
+  description?: string;
   children: ReactNode;
   onClose: () => void;
 };
@@ -21,10 +22,12 @@ const focusableSelector = [
 export function BaseModal({
   isOpen,
   title,
+  description,
   children,
   onClose,
 }: BaseModalProps) {
   const titleId = useId();
+  const descriptionId = useId();
   const dialogRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
@@ -104,8 +107,8 @@ export function BaseModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-ink/70 px-4 py-6 backdrop-blur-sm"
-      onMouseDown={(event) => {
+      className="fixed inset-0 z-50 flex items-end justify-center overflow-y-auto overscroll-contain bg-[#10140c]/78 px-4 py-6 backdrop-blur-[2px] sm:items-center"
+      onClick={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
         }
@@ -116,23 +119,32 @@ export function BaseModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
+        aria-describedby={description ? descriptionId : undefined}
         tabIndex={-1}
-        className="max-h-[min(760px,calc(100vh-3rem))] w-full max-w-3xl overflow-y-auto rounded-lg border border-slate-200 bg-white p-5 shadow-2xl outline-none focus-visible:shadow-focus sm:p-6"
+        className="pixel-modal max-h-[min(760px,calc(100dvh-3rem))] w-full max-w-3xl overflow-y-auto overscroll-contain border-[4px] border-[#3f4b35] bg-[#24331f] p-5 text-[#f6edc8] shadow-[0_0_0_3px_#b99b65,0_0_0_6px_#1d2419,0_16px_0_rgba(19,27,15,0.38)] outline-none focus-visible:shadow-focus sm:p-7"
       >
-        <div className="flex items-start justify-between gap-4 border-b border-slate-200 pb-4">
-          <h2 id={titleId} className="text-2xl font-black text-ink">
+        <div className="flex items-start justify-between gap-4 border-b-[3px] border-[#9d865c] pb-4">
+          <h2
+            id={titleId}
+            className="text-3xl font-black text-[#fff4c7]"
+          >
             {title}
           </h2>
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex size-10 shrink-0 items-center justify-center rounded-md border border-slate-300 text-xl font-bold leading-none text-slate-700 outline-none transition hover:border-circuit hover:text-circuit focus-visible:shadow-focus"
-            aria-label="Close modal"
+            className="inline-flex size-10 shrink-0 items-center justify-center border-[3px] border-[#5f3b22] bg-[#e5b76c] text-xl font-black leading-none text-[#2d1a0f] outline-none transition hover:-translate-y-0.5 hover:bg-[#f0ca7d] focus-visible:shadow-focus motion-reduce:hover:translate-y-0"
+            aria-label="모달 닫기"
           >
             ×
           </button>
         </div>
-        <div className="pt-5">{children}</div>
+        {description ? (
+          <p id={descriptionId} className="sr-only">
+            {description}
+          </p>
+        ) : null}
+        <div className="pt-6">{children}</div>
       </div>
     </div>
   );

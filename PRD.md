@@ -4,14 +4,14 @@
 
 ## 1. Product Summary
 
-This project is an interactive frontend developer portfolio inspired by a 2D game map experience.
+This project is a game-first interactive frontend developer portfolio inspired by a lightweight top-down 2D RPG map experience.
 
-The goal is not to build a full game.  
-The goal is to present DDoni’s frontend resume, projects, skills, and problem-solving experience through a lightweight, memorable, game-like interface.
+The goal is not to build a full game with complex systems.
+The goal is to make the first impression feel like entering DDoni’s portfolio map, then present resume, projects, skills, and problem-solving experience through fast, accessible React UI.
 
-Users should be able to explore a small 2D map with a character and interact with objects such as a laptop, resume board, component lab, performance monitor, and trouble room. Each object opens a focused portfolio modal.
+Users should land directly inside the portfolio game on `/`, where the full viewport is the game map. They can move a character around and interact with objects such as a laptop, resume board, component lab, performance monitor, and trouble room. Each object opens a focused portfolio modal.
 
-The portfolio must also provide fast direct access to resume, projects, and contact information without requiring game exploration.
+The portfolio must also provide a visible `페이지로 보기` mode and fast direct access to resume, projects, skills, and contact information without requiring game exploration. These controls should feel like a game HUD overlay, not a separate page layout, while in game view.
 
 ## 2. Target Users
 
@@ -36,8 +36,9 @@ The user must understand within 5 seconds:
 
 - This is a frontend developer portfolio.
 - The developer uses React, Next.js, TypeScript, and modern frontend tooling.
-- The user can immediately access resume, projects, contact, and technical experience.
-- The game mode is optional, not mandatory.
+- The default experience is the interactive portfolio game map.
+- The user can immediately switch to page view or open resume, projects, contact, and technical experience.
+- The game is the main entrance, but it is not the only path to important content.
 
 ## 4. Product Concept
 
@@ -54,7 +55,9 @@ Alternative titles:
 
 Recommended concept:
 
-A small 2D top-view map where the visitor can move a character around and interact with stations.
+A full-screen 2D top-view map where the visitor can move a character around and interact with stations. The visual direction should evoke classic dot-style top-down RPGs without copying any specific copyrighted game, map, character, or asset.
+
+The game view should be asset-based. Prefer PNG tile sets, sprite sheets, and map JSON over drawing the complete world with Phaser primitive rectangles. Phaser primitive graphics may still be used for HUD, focus highlights, debug overlays, and lightweight interaction affordances.
 
 Each station represents a resume section:
 
@@ -140,7 +143,7 @@ Do not build:
 
 ## 8. Architecture Direction
 
-Use Next.js for the overall site and portfolio shell.
+Use Next.js for the overall site, portfolio shell, view switching, and accessible content.
 
 Use Phaser only for the interactive game map area.
 
@@ -164,16 +167,17 @@ When the player interacts with the laptop object:
 
 ## 9. Key User Flows
 
-### Flow 1: Recruiter Quick View
+### Flow 1: Game-first Landing
 
 1. User enters the site.
-2. User sees hero section with role and CTA buttons.
-3. User clicks Resume.
-4. Resume summary opens.
-5. User clicks Download PDF or Contact.
+2. User immediately sees the interactive portfolio game map.
+3. User also sees top-level `페이지로 보기` and `Game으로 보기` controls.
+4. User can click Resume, Projects, or Contact from visible direct actions without moving the character.
+5. User can switch to page view for a conventional portfolio layout.
 
 Acceptance criteria:
 
+- Game view is the default on `/`.
 - User can access resume within 1 click from the first screen.
 - User does not need to move the character to access resume.
 - Contact links are visible and functional.
@@ -181,7 +185,7 @@ Acceptance criteria:
 ### Flow 2: Interactive Exploration
 
 1. User enters the site.
-2. User sees a small game map.
+2. User sees the portfolio game map as the main screen.
 3. User moves character using arrow keys or WASD.
 4. User approaches an object.
 5. User sees interaction hint.
@@ -231,13 +235,21 @@ Each project must include:
 
 Main portfolio page.
 
-Sections:
+Default view:
+
+1. Sticky top experience bar
+2. `페이지로 보기` / `Game으로 보기` segmented control
+3. Full-viewport portfolio game map
+4. HUD-style direct actions for resume, projects, skills, and contact
+
+Do not render the default game view as a normal page section, card, preview panel, or split layout. The game must own the screen. Supporting UI may be overlaid as HUD controls.
+
+Page view:
 
 1. Hero
 2. Quick CTA Navigation
-3. Game Map Section
-4. Fallback Portfolio Sections
-5. Contact/Footer
+3. Fallback Portfolio Sections
+4. Contact/Footer
 
 ### Optional future routes
 
@@ -252,6 +264,7 @@ Initial version can be single-page.
 ### Layout Components
 
 - `Header`
+- `HomeExperience`
 - `HeroSection`
 - `QuickActions`
 - `GameSection`
@@ -464,16 +477,21 @@ The first screen must include:
 - Name or brand
 - Frontend Developer title
 - One-sentence summary
+- `페이지로 보기` button
+- `Game으로 보기` button
 - Resume button
 - Projects button
 - Contact button
+- Main game map by default
+- The game map must fill the viewport rather than sit inside a page card
 
 ### Navigation
 
 Provide both:
 
-- Game exploration
-- Direct navigation buttons
+- Game exploration as the default view
+- Page view as an explicit alternate view
+- Direct navigation buttons that do not require character movement
 
 ### Modal UX
 

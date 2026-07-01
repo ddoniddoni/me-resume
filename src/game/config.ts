@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
-export const GAME_WIDTH = 960;
-export const GAME_HEIGHT = 560;
+export const GAME_WIDTH = 1280;
+export const GAME_HEIGHT = 736;
 
 export function createGameConfig(
   parent: HTMLElement,
@@ -12,15 +12,15 @@ export function createGameConfig(
     parent,
     width: GAME_WIDTH,
     height: GAME_HEIGHT,
-    backgroundColor: '#f8fafc',
+    transparent: true,
     scene,
     scale: {
       mode: Phaser.Scale.FIT,
       autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     render: {
-      antialias: true,
-      pixelArt: false,
+      antialias: false,
+      pixelArt: true,
     },
   };
 }

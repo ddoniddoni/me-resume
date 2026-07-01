@@ -7,22 +7,21 @@ type ContactLinksProps = {
 export function ContactLinks({ profile }: ContactLinksProps) {
   const links = [
     {
-      label: 'Email',
+      label: '이메일',
       value: profile.email,
-      href: profile.email ? `mailto:${profile.email}` : '',
-      todo: 'TODO: Add public email',
+      href: `mailto:${profile.email}`,
     },
     {
       label: 'GitHub',
       value: profile.github,
       href: profile.github,
-      todo: 'TODO: Add GitHub URL',
+      opensInNewTab: true,
     },
     {
-      label: 'LinkedIn',
-      value: profile.linkedin,
-      href: profile.linkedin,
-      todo: 'TODO: Add LinkedIn URL',
+      label: 'Blog',
+      value: profile.blog,
+      href: profile.blog,
+      opensInNewTab: true,
     },
   ];
 
@@ -31,21 +30,17 @@ export function ContactLinks({ profile }: ContactLinksProps) {
       {links.map((link) => (
         <li
           key={link.label}
-          className="flex flex-col gap-2 rounded-md border border-slate-200 bg-panel p-4 sm:flex-row sm:items-center sm:justify-between"
+          className="flex flex-col gap-2 rounded-2xl border border-hairline bg-canvas p-4 sm:flex-row sm:items-center sm:justify-between"
         >
           <span className="font-bold text-ink">{link.label}</span>
-          {link.href ? (
-            <a
-              href={link.href}
-              className="text-sm font-bold text-circuit outline-none hover:text-ink focus-visible:rounded focus-visible:shadow-focus"
-            >
-              {link.value}
-            </a>
-          ) : (
-            <span className="text-sm font-semibold text-slate-600">
-              {link.todo}
-            </span>
-          )}
+          <a
+            href={link.href}
+            target={link.opensInNewTab ? '_blank' : undefined}
+            rel={link.opensInNewTab ? 'noreferrer' : undefined}
+            className="break-words text-sm font-semibold text-primary outline-none hover:text-primary-active focus-visible:rounded-full focus-visible:shadow-focus"
+          >
+            {link.value}
+          </a>
         </li>
       ))}
     </ul>

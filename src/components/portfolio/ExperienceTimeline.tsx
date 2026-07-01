@@ -10,10 +10,10 @@ export function ExperienceTimeline({ experiences }: ExperienceTimelineProps) {
       {experiences.map((experience) => (
         <article
           key={experience.id}
-          className="rounded-lg border border-slate-200 bg-panel p-5"
+          className="rounded-lg border border-hairline bg-canvas p-6 shadow-soft"
         >
-          <h3 className="font-black text-ink">{experience.title}</h3>
-          <p className="mt-3 text-sm leading-6 text-slate-700">
+          <h3 className="text-lg font-semibold text-ink">{experience.title}</h3>
+          <p className="mt-3 text-sm leading-6 text-body">
             {experience.summary}
           </p>
         </article>

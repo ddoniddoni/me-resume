@@ -11,12 +11,15 @@ type ContactModalProps = {
 
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   return (
-    <BaseModal isOpen={isOpen} title="Contact" onClose={onClose}>
+    <BaseModal
+      isOpen={isOpen}
+      title="연락처"
+      description="이메일, GitHub, Blog 공개 연락처입니다."
+      onClose={onClose}
+    >
       <div className="grid gap-5">
-        <p className="leading-7 text-slate-700">
-          Add DDoni&apos;s public contact links here when they are ready.
-          Private personal information should stay out of the repository unless
-          explicitly provided.
+        <p className="leading-7 text-body">
+          공개 이력서에 명시된 이메일, GitHub, Blog 링크입니다.
         </p>
         <ContactLinks profile={profile} />
       </div>

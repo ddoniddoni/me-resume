@@ -6,52 +6,44 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="rounded-lg border border-slate-200 bg-panel p-5">
+    <article className="overflow-hidden rounded-lg border border-hairline bg-canvas p-6 shadow-soft">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <h3 className="text-xl font-black text-ink">{project.title}</h3>
-          <p className="mt-1 text-sm font-semibold text-slate-600">
-            {project.subtitle}
-          </p>
+        <div className="min-w-0">
+          <h3 className="text-2xl font-semibold text-ink">{project.title}</h3>
+          <p className="mt-2 text-sm text-body">{project.subtitle}</p>
         </div>
         {project.period ? (
-          <p className="text-sm font-bold text-circuit">{project.period}</p>
+          <p className="shrink-0 rounded-md bg-strong px-3 py-1 text-sm font-semibold text-ink">
+            {project.period}
+          </p>
         ) : null}
       </div>
 
-      <p className="mt-4 leading-7 text-slate-700">{project.summary}</p>
+      <p className="mt-5 leading-7 text-body">{project.summary}</p>
 
       <dl className="mt-5 grid gap-4">
         <div>
-          <dt className="text-sm font-black uppercase tracking-[0.12em] text-slate-500">
-            Problem
-          </dt>
-          <dd className="mt-2 text-sm leading-6 text-slate-700">
+          <dt className="text-sm font-semibold text-muted">문제</dt>
+          <dd className="mt-2 text-sm leading-6 text-body">
             {project.problem}
           </dd>
         </div>
         <div>
-          <dt className="text-sm font-black uppercase tracking-[0.12em] text-slate-500">
-            Role
-          </dt>
-          <dd className="mt-2 text-sm leading-6 text-slate-700">
-            {project.role}
-          </dd>
+          <dt className="text-sm font-semibold text-muted">역할</dt>
+          <dd className="mt-2 text-sm leading-6 text-body">{project.role}</dd>
         </div>
         <div>
-          <dt className="text-sm font-black uppercase tracking-[0.12em] text-slate-500">
-            Tech stack
-          </dt>
-          <dd className="mt-2 text-sm leading-6 text-slate-700">
+          <dt className="text-sm font-semibold text-muted">기술 스택</dt>
+          <dd className="mt-2 break-words text-sm leading-6 text-body">
             {project.techStack.join(', ')}
           </dd>
         </div>
       </dl>
 
       <div className="mt-5 grid gap-4 md:grid-cols-3">
-        <ProjectList title="Implementation" items={project.solution} />
-        <ProjectList title="Result" items={project.impact} />
-        <ProjectList title="Learning" items={project.learned} />
+        <ProjectList title="구현" items={project.solution} />
+        <ProjectList title="결과" items={project.impact} />
+        <ProjectList title="배운 점" items={project.learned} />
       </div>
     </article>
   );
@@ -64,13 +56,14 @@ type ProjectListProps = {
 
 function ProjectList({ title, items }: ProjectListProps) {
   return (
-    <div>
-      <h4 className="text-sm font-black uppercase tracking-[0.12em] text-slate-500">
-        {title}
-      </h4>
-      <ul className="mt-2 space-y-2 text-sm leading-6 text-slate-700">
+    <div className="rounded-lg bg-panel p-4">
+      <h4 className="text-sm font-semibold text-muted">{title}</h4>
+      <ul className="mt-2 space-y-2 text-sm leading-6 text-body">
         {items.map((item) => (
-          <li key={item}>{item}</li>
+          <li key={item} className="pl-3 [text-indent:-0.75rem]">
+            <span aria-hidden="true">- </span>
+            {item}
+          </li>
         ))}
       </ul>
     </div>

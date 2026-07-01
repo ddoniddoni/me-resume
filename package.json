@@ -1,12 +1,13 @@
 {
-  "name": "ddoni-frontend-quest",
+  "name": "ddoni-resume",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "assets:generate": "node scripts/generate-pixel-assets.mjs && prettier --write public/assets/maps/portfolio-campus.json",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run --passWithNoTests",
     "format": "prettier --check ."
   },

@@ -11,11 +11,16 @@ type SkillsModalProps = {
 
 export function SkillsModal({ isOpen, onClose }: SkillsModalProps) {
   return (
-    <BaseModal isOpen={isOpen} title="Skills" onClose={onClose}>
+    <BaseModal
+      isOpen={isOpen}
+      title="기술"
+      description="카테고리별 프론트엔드 기술 목록입니다."
+      onClose={onClose}
+    >
       <div className="grid gap-5">
-        <p className="leading-7 text-slate-700">
-          Frontend skills are grouped by practical working area, with TODO
-          placeholders where DDoni should provide exact tooling details.
+        <p className="leading-7 text-body">
+          공개 이력서에 정리된 프레임워크, 상태 관리, 스타일링, 성능 개선, 운영
+          UI 경험을 작업 영역별로 묶었습니다.
         </p>
         <SkillInventory skills={skills} />
       </div>
