@@ -23,11 +23,11 @@ const config: Config = {
       },
       fontFamily: {
         sans: [
-          'Pretendard',
+          'var(--font-noto-sans-kr)',
           'Noto Sans KR',
-          'Inter',
           'ui-sans-serif',
           'system-ui',
+          'sans-serif',
         ],
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular'],
       },
