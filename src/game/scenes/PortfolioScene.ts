@@ -41,7 +41,7 @@ const fenceHorizontalFrames = {
   top: [1, 2, 3],
 } as const;
 const fencePostFrames = [0, 4, 8, 12] as const;
-const flowerFrames = [25, 32, 33] as const;
+const flowerFrames: number[] = [25, 32, 33];
 const BASE_FLOWER_COUNT = 7;
 const BASE_TREE_COUNT = 4;
 const regionContents = [
