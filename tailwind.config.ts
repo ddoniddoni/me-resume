@@ -22,13 +22,7 @@ const config: Config = {
         signal: '#f4b000',
       },
       fontFamily: {
-        sans: [
-          'var(--font-noto-sans-kr)',
-          'Noto Sans KR',
-          'ui-sans-serif',
-          'system-ui',
-          'sans-serif',
-        ],
+        sans: ['Noto Sans KR', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular'],
       },
       boxShadow: {
