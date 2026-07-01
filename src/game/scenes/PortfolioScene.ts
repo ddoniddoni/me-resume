@@ -32,10 +32,7 @@ const ASSETS = {
 const colors = {
   blue: 0x0052ff,
   cream: 0xf6f0df,
-  dark: 0x2f4330,
   ink: 0x10141b,
-  meadow: 0x80b75c,
-  moss: 0x557846,
   white: 0xffffff,
 };
 
@@ -50,16 +47,14 @@ type MovementKeys = {
 
 type RenderedInteractable = {
   data: InteractableObject;
-  labelBg: Phaser.GameObjects.Rectangle;
   labelText: Phaser.GameObjects.Text;
   marker: Phaser.GameObjects.Ellipse;
-  pulse: Phaser.GameObjects.Ellipse;
 };
 
 const directionRows: Record<Direction, number> = {
   down: 0,
-  left: 3,
-  right: 2,
+  left: 2,
+  right: 3,
   up: 1,
 };
 
@@ -150,17 +145,6 @@ export class PortfolioScene extends Phaser.Scene {
       .setTileScale(2.2, 2.2);
 
     this.add
-      .rectangle(
-        GAME_WIDTH / 2,
-        GAME_HEIGHT / 2,
-        GAME_WIDTH,
-        GAME_HEIGHT,
-        0x325b36,
-        0.16,
-      )
-      .setDepth(1);
-
-    this.add
       .tileSprite(GAME_WIDTH / 2, 402, GAME_WIDTH - 184, 92, 'paths')
       .setDepth(2)
       .setAlpha(0.98)
@@ -194,16 +178,6 @@ export class PortfolioScene extends Phaser.Scene {
     this.createFenceLine(1154, 168, 9, 'vertical');
 
     this.scatterPlants();
-
-    this.add
-      .text(28, 24, 'DDONI FRONTEND QUEST', {
-        color: '#f6f0df',
-        fontFamily: GAME_FONT,
-        fontSize: '18px',
-        fontStyle: '900',
-      })
-      .setShadow(2, 2, '#10141b', 0, true, true)
-      .setDepth(90);
   }
 
   private createFenceLine(
@@ -278,24 +252,6 @@ export class PortfolioScene extends Phaser.Scene {
         .setInteractive({ useHandCursor: true })
         .setDepth(interactable.y + 24);
 
-      const pulse = this.add
-        .ellipse(interactable.x, interactable.y + 8, 132, 84, colors.blue, 0)
-        .setStrokeStyle(4, colors.blue, 0)
-        .setDepth(interactable.y + 23);
-
-      const labelWidth = Math.max(104, interactable.label.length * 12);
-      const labelBg = this.add
-        .rectangle(
-          interactable.x,
-          interactable.y + 68,
-          labelWidth,
-          27,
-          colors.ink,
-          0.9,
-        )
-        .setStrokeStyle(2, colors.cream, 0.32)
-        .setDepth(95);
-
       const labelText = this.add
         .text(interactable.x, interactable.y + 68, interactable.label, {
           align: 'center',
@@ -305,6 +261,7 @@ export class PortfolioScene extends Phaser.Scene {
           fontStyle: '800',
         })
         .setOrigin(0.5)
+        .setShadow(2, 2, '#10141b', 3, true, true)
         .setDepth(96);
 
       marker.on('pointerdown', () => {
@@ -313,19 +270,13 @@ export class PortfolioScene extends Phaser.Scene {
 
       return {
         data: interactable,
-        labelBg,
         labelText,
         marker,
-        pulse,
       };
     });
   }
 
   private renderInteractableObject(interactable: InteractableObject) {
-    this.add
-      .ellipse(interactable.x, interactable.y + 34, 92, 28, 0x17311e, 0.32)
-      .setDepth(interactable.y - 2);
-
     switch (interactable.id) {
       case 'projects':
         this.add
@@ -336,17 +287,6 @@ export class PortfolioScene extends Phaser.Scene {
           .sprite(interactable.x + 20, interactable.y + 8, 'tools', 0)
           .setScale(2.2)
           .setDepth(interactable.y + 1);
-        this.add
-          .rectangle(
-            interactable.x + 20,
-            interactable.y - 20,
-            38,
-            24,
-            colors.ink,
-            0.9,
-          )
-          .setStrokeStyle(3, colors.blue, 0.9)
-          .setDepth(interactable.y + 2);
         break;
       case 'resume':
         this.renderTree(interactable.x - 18, interactable.y + 8, 2.35);
@@ -355,36 +295,9 @@ export class PortfolioScene extends Phaser.Scene {
           .setScale(2.1)
           .setDepth(interactable.y + 1);
         this.add
-          .rectangle(
-            interactable.x + 16,
-            interactable.y - 8,
-            58,
-            38,
-            colors.cream,
-            0.96,
-          )
-          .setStrokeStyle(4, colors.ink, 0.9)
-          .setDepth(interactable.y + 12);
-        this.add
-          .rectangle(
-            interactable.x + 16,
-            interactable.y - 17,
-            36,
-            5,
-            colors.blue,
-            0.95,
-          )
-          .setDepth(interactable.y + 13);
-        this.add
-          .rectangle(
-            interactable.x + 16,
-            interactable.y - 1,
-            40,
-            4,
-            colors.moss,
-            0.86,
-          )
-          .setDepth(interactable.y + 13);
+          .sprite(interactable.x + 16, interactable.y + 18, 'furniture', 2)
+          .setScale(2.2)
+          .setDepth(interactable.y + 3);
         break;
       case 'components':
         this.add
@@ -406,54 +319,12 @@ export class PortfolioScene extends Phaser.Scene {
           .setScale(2.5)
           .setDepth(interactable.y);
         this.add
-          .rectangle(
-            interactable.x + 18,
-            interactable.y - 16,
-            44,
-            28,
-            colors.ink,
-            0.9,
-          )
-          .setStrokeStyle(3, colors.meadow, 0.95)
+          .sprite(interactable.x + 18, interactable.y + 14, 'tools', 3)
+          .setScale(2.4)
           .setDepth(interactable.y + 2);
         this.add
-          .line(
-            interactable.x + 18,
-            interactable.y - 16,
-            -14,
-            6,
-            -4,
-            -3,
-            colors.meadow,
-            0.95,
-          )
-          .setLineWidth(3)
-          .setDepth(interactable.y + 3);
-        this.add
-          .line(
-            interactable.x + 18,
-            interactable.y - 16,
-            -4,
-            -3,
-            6,
-            5,
-            colors.meadow,
-            0.95,
-          )
-          .setLineWidth(3)
-          .setDepth(interactable.y + 3);
-        this.add
-          .line(
-            interactable.x + 18,
-            interactable.y - 16,
-            6,
-            5,
-            16,
-            -8,
-            colors.meadow,
-            0.95,
-          )
-          .setLineWidth(3)
+          .sprite(interactable.x + 42, interactable.y + 16, 'plants', 5)
+          .setScale(2.1)
           .setDepth(interactable.y + 3);
         break;
       case 'troubleshooting':
@@ -466,26 +337,9 @@ export class PortfolioScene extends Phaser.Scene {
           .setScale(2.4)
           .setDepth(interactable.y + 2);
         this.add
-          .rectangle(
-            interactable.x + 2,
-            interactable.y - 24,
-            42,
-            26,
-            colors.ink,
-            0.88,
-          )
-          .setStrokeStyle(3, 0xffcc4d, 0.95)
+          .sprite(interactable.x + 2, interactable.y - 8, 'grassBiome', 25)
+          .setScale(2.1)
           .setDepth(interactable.y + 3);
-        this.add
-          .text(interactable.x + 2, interactable.y - 25, '!', {
-            align: 'center',
-            color: '#ffcc4d',
-            fontFamily: GAME_FONT,
-            fontSize: '22px',
-            fontStyle: '900',
-          })
-          .setOrigin(0.5)
-          .setDepth(interactable.y + 4);
         break;
       case 'contact':
         this.add
@@ -493,25 +347,12 @@ export class PortfolioScene extends Phaser.Scene {
           .setScale(2.5)
           .setDepth(interactable.y);
         this.add
-          .rectangle(
-            interactable.x + 18,
-            interactable.y - 14,
-            42,
-            32,
-            colors.ink,
-            0.92,
-          )
-          .setStrokeStyle(3, colors.blue, 0.95)
+          .sprite(interactable.x + 16, interactable.y + 14, 'furniture', 15)
+          .setScale(2.3)
           .setDepth(interactable.y + 2);
         this.add
-          .rectangle(
-            interactable.x + 18,
-            interactable.y - 14,
-            24,
-            5,
-            colors.blue,
-            0.95,
-          )
+          .sprite(interactable.x + 40, interactable.y + 14, 'tools', 1)
+          .setScale(2.1)
           .setDepth(interactable.y + 3);
         break;
     }
@@ -670,16 +511,6 @@ export class PortfolioScene extends Phaser.Scene {
 
     for (const rendered of this.renderedInteractables) {
       const isNearest = rendered.data.id === nearest?.id;
-      rendered.marker.setStrokeStyle(
-        isNearest ? 4 : 0,
-        colors.blue,
-        isNearest ? 1 : 0,
-      );
-      rendered.pulse.setStrokeStyle(4, colors.blue, isNearest ? 0.92 : 0);
-      rendered.labelBg.setFillStyle(
-        isNearest ? colors.blue : colors.ink,
-        isNearest ? 0.96 : 0.9,
-      );
       rendered.labelText.setColor(isNearest ? '#ffffff' : '#f6f0df');
     }
   }
