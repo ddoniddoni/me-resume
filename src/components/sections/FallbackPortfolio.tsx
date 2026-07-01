@@ -231,7 +231,6 @@ export function FallbackPortfolio() {
           </h2>
           <p className="mt-4 max-w-3xl leading-7 text-muted-soft">
             공개 이력서에 명시된 이메일, GitHub, Blog 링크를 연결했습니다.
-            LinkedIn과 최종 이력서 PDF는 준비되면 추가합니다.
           </p>
           <div className="mt-5">
             <ContactLinks profile={profile} />

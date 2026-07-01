@@ -54,9 +54,8 @@ npm run assets:generate
 - 프로젝트: `src/data/projects.ts`
 - 기술 스택: `src/data/skills.ts`
 - 경험 섹션: `src/data/experiences.ts`
-- 이력서 PDF: `public/resume/resume.pdf`
 
-현재 프로필, 이메일, GitHub, Blog, 경력, 기술, 학력/자격 정보는 공개 이력서 저장소의 내용을 기준으로 반영했습니다. LinkedIn과 이력서 PDF는 실제 공개 정보가 준비된 뒤 교체하세요.
+현재 프로필, 이메일, GitHub, Blog, 경력, 기술, 학력/자격 정보는 공개 이력서 저장소의 내용을 기준으로 반영했습니다.
 
 ## 디자인 기준
 

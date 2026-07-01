@@ -13,7 +13,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     <BaseModal
       isOpen={isOpen}
       title="이력서"
-      description="경력 요약, 이력서 PDF 준비 상태, 프로필 정보입니다."
+      description="경력 요약, 주요 경력, 학력과 자격 정보입니다."
       onClose={onClose}
     >
       <div className="grid gap-5">
@@ -76,29 +76,14 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             ))}
           </ul>
         </div>
-        {profile.resumePdfUrl ? (
-          <a
-            href={profile.resumePdfUrl}
-            className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-primary px-5 py-2 text-center text-sm font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus sm:w-fit"
-          >
-            이력서 PDF 다운로드
-          </a>
-        ) : (
-          <div className="grid gap-3 rounded-2xl border border-hairline bg-panel p-4 text-sm leading-6 text-body">
-            <p>
-              이력서 PDF는 공개 가능한 최종 파일이 준비되면 다운로드 버튼으로
-              연결됩니다.
-            </p>
-            <a
-              href={profile.resumeSourceUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="font-semibold text-primary outline-none hover:text-primary-active focus-visible:rounded-md focus-visible:shadow-focus"
-            >
-              GitHub 이력서 저장소 보기
-            </a>
-          </div>
-        )}
+        <a
+          href={profile.resumeSourceUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-primary px-5 py-2 text-center text-sm font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus sm:w-fit"
+        >
+          GitHub 이력서 저장소 보기
+        </a>
       </div>
     </BaseModal>
   );

@@ -7,8 +7,6 @@ export type Profile = {
   email: string;
   github: string;
   blog: string;
-  linkedin: string;
-  resumePdfUrl: string;
   resumeSourceUrl: string;
 };
 
@@ -22,10 +20,6 @@ export const profile: Profile = {
   email: 'psdkei@naver.com',
   github: 'https://github.com/ddoniddoni',
   blog: 'https://velog.io/@psdkey/posts',
-  // TODO: 공개 LinkedIn 프로필이 준비되면 URL을 입력하세요.
-  linkedin: '',
-  // TODO: 실제 이력서 PDF를 public/resume/resume.pdf에 추가한 뒤 경로를 입력하세요.
-  resumePdfUrl: '',
   resumeSourceUrl: 'https://github.com/ddoniddoni/resume',
 };
 
