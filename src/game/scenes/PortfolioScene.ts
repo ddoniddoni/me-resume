@@ -20,6 +20,7 @@ const ASSETS = {
   chest: '/assets/games/Objects/Chest.png',
   fences: '/assets/games/Tilesets/Fences.png',
   furniture: '/assets/games/Objects/Basic_Furniture.png',
+  grassBiome: '/assets/games/Objects/Basic_Grass_Biom_things.png',
   grass: '/assets/games/Tilesets/Grass.png',
   paths: '/assets/games/Objects/Paths.png',
   plants: '/assets/games/Objects/Basic_Plants.png',
@@ -57,9 +58,9 @@ type RenderedInteractable = {
 
 const directionRows: Record<Direction, number> = {
   down: 0,
-  left: 1,
+  left: 3,
   right: 2,
-  up: 3,
+  up: 1,
 };
 
 export class PortfolioScene extends Phaser.Scene {
@@ -93,6 +94,10 @@ export class PortfolioScene extends Phaser.Scene {
       frameWidth: 16,
     });
     this.load.spritesheet('furniture', ASSETS.furniture, {
+      frameHeight: 16,
+      frameWidth: 16,
+    });
+    this.load.spritesheet('grassBiome', ASSETS.grassBiome, {
       frameHeight: 16,
       frameWidth: 16,
     });
@@ -344,45 +349,42 @@ export class PortfolioScene extends Phaser.Scene {
           .setDepth(interactable.y + 2);
         break;
       case 'resume':
+        this.renderTree(interactable.x - 18, interactable.y + 8, 2.35);
         this.add
-          .sprite(interactable.x - 26, interactable.y + 20, 'fences', 4)
-          .setScale(2.4)
-          .setDepth(interactable.y);
-        this.add
-          .sprite(interactable.x + 26, interactable.y + 20, 'fences', 4)
-          .setScale(2.4)
-          .setDepth(interactable.y);
+          .sprite(interactable.x + 40, interactable.y + 20, 'grassBiome', 27)
+          .setScale(2.1)
+          .setDepth(interactable.y + 1);
         this.add
           .rectangle(
-            interactable.x,
-            interactable.y - 14,
-            76,
-            48,
+            interactable.x + 16,
+            interactable.y - 8,
+            58,
+            38,
             colors.cream,
             0.96,
           )
           .setStrokeStyle(4, colors.ink, 0.9)
-          .setDepth(interactable.y + 2);
+          .setDepth(interactable.y + 12);
         this.add
           .rectangle(
-            interactable.x,
-            interactable.y - 24,
-            46,
+            interactable.x + 16,
+            interactable.y - 17,
+            36,
             5,
             colors.blue,
             0.95,
           )
-          .setDepth(interactable.y + 3);
+          .setDepth(interactable.y + 13);
         this.add
           .rectangle(
-            interactable.x,
-            interactable.y - 8,
-            52,
+            interactable.x + 16,
+            interactable.y - 1,
+            40,
             4,
             colors.moss,
             0.86,
           )
-          .setDepth(interactable.y + 3);
+          .setDepth(interactable.y + 13);
         break;
       case 'components':
         this.add
@@ -513,6 +515,27 @@ export class PortfolioScene extends Phaser.Scene {
           .setDepth(interactable.y + 3);
         break;
     }
+  }
+
+  private renderTree(x: number, y: number, scale: number) {
+    const treeFrames = [
+      { frame: 0, offsetX: -8, offsetY: -24 },
+      { frame: 1, offsetX: 8, offsetY: -24 },
+      { frame: 9, offsetX: -8, offsetY: -8 },
+      { frame: 10, offsetX: 8, offsetY: -8 },
+    ];
+
+    treeFrames.forEach((part) => {
+      this.add
+        .sprite(
+          x + part.offsetX * scale,
+          y + part.offsetY * scale,
+          'grassBiome',
+          part.frame,
+        )
+        .setScale(scale)
+        .setDepth(y + part.offsetY + 32);
+    });
   }
 
   private createPlayer() {
