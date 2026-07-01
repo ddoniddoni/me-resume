@@ -12,6 +12,8 @@ const PLAYER_START = {
   x: 640,
   y: 408,
 };
+const TILE_SIZE = 32;
+const GRASS_TILE_FRAME = 0;
 const GAME_FONT =
   'Pretendard, Noto Sans KR, Apple SD Gothic Neo, Malgun Gothic, ui-sans-serif, system-ui, sans-serif';
 
@@ -77,7 +79,6 @@ export class PortfolioScene extends Phaser.Scene {
 
   preload() {
     this.load.image('bridge', ASSETS.bridge);
-    this.load.image('grass', ASSETS.grass);
     this.load.image('paths', ASSETS.paths);
     this.load.image('water', ASSETS.water);
     this.load.spritesheet('chest', ASSETS.chest, {
@@ -93,6 +94,10 @@ export class PortfolioScene extends Phaser.Scene {
       frameWidth: 16,
     });
     this.load.spritesheet('grassBiome', ASSETS.grassBiome, {
+      frameHeight: 16,
+      frameWidth: 16,
+    });
+    this.load.spritesheet('grassTiles', ASSETS.grass, {
       frameHeight: 16,
       frameWidth: 16,
     });
@@ -133,16 +138,7 @@ export class PortfolioScene extends Phaser.Scene {
   }
 
   private createMap() {
-    this.add
-      .tileSprite(
-        GAME_WIDTH / 2,
-        GAME_HEIGHT / 2,
-        GAME_WIDTH,
-        GAME_HEIGHT,
-        'grass',
-      )
-      .setDepth(0)
-      .setTileScale(2.2, 2.2);
+    this.fillGrassGround();
 
     this.add
       .tileSprite(GAME_WIDTH / 2, 402, GAME_WIDTH - 184, 92, 'paths')
@@ -178,6 +174,17 @@ export class PortfolioScene extends Phaser.Scene {
     this.createFenceLine(1154, 168, 9, 'vertical');
 
     this.scatterPlants();
+  }
+
+  private fillGrassGround() {
+    for (let y = TILE_SIZE / 2; y < GAME_HEIGHT + TILE_SIZE; y += TILE_SIZE) {
+      for (let x = TILE_SIZE / 2; x < GAME_WIDTH + TILE_SIZE; x += TILE_SIZE) {
+        this.add
+          .sprite(x, y, 'grassTiles', GRASS_TILE_FRAME)
+          .setScale(2)
+          .setDepth(0);
+      }
+    }
   }
 
   private createFenceLine(
