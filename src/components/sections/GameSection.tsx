@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import {
   portfolioInteractables,
   type InteractableObject,
@@ -27,6 +27,9 @@ export function GameSection({
   const [status, setStatus] = useState<GameStatus>('waiting');
   const openModal = usePortfolioStore((state) => state.openModal);
   const isHome = variant === 'home';
+  const titleId = useId();
+  const descriptionId = useId();
+  const directActionsTitleId = useId();
 
   useEffect(() => {
     let isMounted = true;
@@ -122,14 +125,18 @@ export function GameSection({
   if (isHome) {
     return (
       <section
-        aria-labelledby="game-title"
+        aria-labelledby={titleId}
+        aria-describedby={descriptionId}
         className="relative min-h-[100svh] overflow-hidden bg-ink"
       >
+        <p id={descriptionId} className="sr-only">
+          포트폴리오 지도는 시각적 탐색 경험입니다. 모든 주요 정보는 화면의
+          바로가기 버튼과 페이지 보기에서도 동일하게 열 수 있습니다.
+        </p>
         <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_18%_16%,rgb(244_176_0/0.16),transparent_24rem),linear-gradient(180deg,rgb(10_11_13/0.24),rgb(10_11_13/0.72))]" />
         <div
           ref={containerRef}
-          aria-label="인터랙티브 포트폴리오 지도 캔버스"
-          aria-live="polite"
+          aria-hidden="true"
           className="portfolio-game-canvas absolute inset-0 h-full w-full bg-ink"
         >
           {status !== 'ready' ? (
@@ -145,14 +152,14 @@ export function GameSection({
           ) : null}
         </div>
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 px-4 pb-5 pt-24 sm:px-5">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 max-h-[calc(100svh-5rem)] overflow-y-auto px-4 pb-5 pt-24 sm:px-5">
           <div className="mx-auto flex max-w-7xl flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <p className="w-fit border border-white/20 bg-ink/85 px-3 py-1 text-xs font-semibold uppercase text-muted-soft">
                 {profile.role}
               </p>
               <h1
-                id="game-title"
+                id={titleId}
                 className="mt-3 text-4xl font-semibold leading-tight text-white sm:text-6xl"
               >
                 DDoni Frontend Quest
@@ -166,11 +173,28 @@ export function GameSection({
               </p>
             </div>
 
-            <div className="pointer-events-auto flex flex-wrap gap-2">
+            <div
+              aria-labelledby={directActionsTitleId}
+              className="pointer-events-auto grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-end"
+              role="group"
+            >
+              <h2 id={directActionsTitleId} className="sr-only">
+                지도 목적지 바로가기
+              </h2>
+              {onSwitchToPage ? (
+                <button
+                  type="button"
+                  onClick={onSwitchToPage}
+                  className="col-span-2 min-h-10 rounded-lg bg-primary px-3 py-2 text-xs font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus sm:col-span-1 sm:px-4 sm:text-sm"
+                >
+                  페이지로 보기
+                </button>
+              ) : null}
               {portfolioInteractables.map((interactable) => (
                 <button
                   key={interactable.id}
                   type="button"
+                  aria-label={`${interactable.label} 정보 열기`}
                   onClick={() => handleOpen(interactable)}
                   className="min-h-10 rounded-lg border border-white/20 bg-ink/85 px-3 py-2 text-xs font-semibold text-white outline-none transition hover:border-primary hover:bg-primary focus-visible:shadow-focus sm:px-4 sm:text-sm"
                 >
@@ -186,11 +210,16 @@ export function GameSection({
 
   return (
     <section
-      aria-labelledby="game-title"
+      aria-labelledby={titleId}
+      aria-describedby={descriptionId}
       className={cn(
         isHome ? 'bg-ink px-4 py-4 sm:px-5 sm:py-6' : 'bg-panel py-24',
       )}
     >
+      <p id={descriptionId} className="sr-only">
+        포트폴리오 지도와 동일한 정보는 바로가기 버튼과 일반 HTML 포트폴리오
+        섹션에서도 접근할 수 있습니다.
+      </p>
       <div className={cn('mx-auto', isHome ? 'max-w-7xl' : 'max-w-6xl px-5')}>
         <div
           className={cn(
@@ -217,7 +246,7 @@ export function GameSection({
               {isHome ? 'Game으로 보기' : '선택형 탐색'}
             </p>
             <h2
-              id="game-title"
+              id={titleId}
               className={cn(
                 'mt-5 text-balance text-4xl font-semibold',
                 isHome ? 'text-white sm:text-5xl' : 'text-ink',
@@ -237,8 +266,7 @@ export function GameSection({
             </p>
             <div
               ref={containerRef}
-              aria-label="인터랙티브 포트폴리오 지도 캔버스"
-              aria-live="polite"
+              aria-hidden="true"
               className={cn(
                 'portfolio-game-canvas mt-6 overflow-hidden rounded-lg border',
                 isHome
@@ -313,6 +341,7 @@ export function GameSection({
                 <button
                   key={interactable.id}
                   type="button"
+                  aria-label={`${interactable.label} 정보 열기`}
                   onClick={() => handleOpen(interactable)}
                   className={cn(
                     'min-h-12 rounded-lg px-4 py-2 text-left text-sm font-semibold outline-none transition focus-visible:shadow-focus',

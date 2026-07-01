@@ -108,7 +108,7 @@ export function BaseModal({
   return (
     <div
       className="fixed inset-0 z-50 flex items-end justify-center overflow-y-auto overscroll-contain bg-ink/70 px-4 py-6 backdrop-blur-sm sm:items-center"
-      onMouseDown={(event) => {
+      onClick={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
         }
