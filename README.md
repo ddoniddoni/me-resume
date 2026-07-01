@@ -48,6 +48,12 @@ npm run assets:generate
 - `public/assets/sprites/stations.png`
 - `public/assets/maps/portfolio-campus.json`
 
+## 에셋 크레딧
+
+- Sprout Lands Basic Pack assets by Cup Nooble
+- License note: non-commercial use, modification allowed, credit required, redistribution/resale of the asset pack itself is not allowed.
+- Original license text is kept in `public/assets/games/read_me.txt`.
+
 ## 콘텐츠 수정 위치
 
 - 프로필과 연락처: `src/data/profile.ts`
