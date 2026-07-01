@@ -13,7 +13,7 @@ const PLAYER_START = {
   y: 388,
 };
 const GAME_FONT =
-  'Noto Sans KR, Apple SD Gothic Neo, Malgun Gothic, ui-sans-serif, system-ui, sans-serif';
+  'Pretendard, Noto Sans KR, Apple SD Gothic Neo, Malgun Gothic, ui-sans-serif, system-ui, sans-serif';
 
 const ASSETS = {
   map: '/assets/maps/portfolio-campus.json',
