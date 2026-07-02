@@ -3,7 +3,14 @@
 import { create } from 'zustand';
 
 export type ModalType =
-  'resume' | 'projects' | 'skills' | 'experience' | 'contact' | null;
+  | 'resume'
+  | 'projects'
+  | 'skills'
+  | 'experience'
+  | 'career'
+  | 'introduction'
+  | 'contact'
+  | null;
 
 export type ExperienceId = 'components' | 'performance' | 'troubleshooting';
 

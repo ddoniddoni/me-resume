@@ -1,11 +1,9 @@
 import type { ExperienceId, ModalType } from '@/store/portfolioStore';
 
 export type InteractableId =
-  | 'projects'
   | 'resume'
-  | 'components'
-  | 'performance'
-  | 'troubleshooting'
+  | 'career'
+  | 'introduction'
   | 'contact';
 
 export type InteractableObject = {
@@ -20,53 +18,34 @@ export type InteractableObject = {
 
 export const portfolioInteractables: InteractableObject[] = [
   {
-    id: 'projects',
-    label: '프로젝트 노트북',
-    x: 304,
-    y: 246,
-    interactionType: 'modal',
-    modalType: 'projects',
-  },
-  {
     id: 'resume',
     label: '이력서 보드',
-    x: 640,
+    x: 410,
     y: 178,
     interactionType: 'modal',
     modalType: 'resume',
   },
   {
-    id: 'components',
-    label: '컴포넌트 연구실',
-    x: 1010,
-    y: 270,
+    id: 'career',
+    label: '경력기술서',
+    x: 870,
+    y: 178,
     interactionType: 'modal',
-    modalType: 'experience',
-    experienceId: 'components',
+    modalType: 'career',
   },
   {
-    id: 'performance',
-    label: '성능 모니터',
-    x: 930,
-    y: 552,
+    id: 'introduction',
+    label: '자기소개서',
+    x: 410,
+    y: 474,
     interactionType: 'modal',
-    modalType: 'experience',
-    experienceId: 'performance',
-  },
-  {
-    id: 'troubleshooting',
-    label: '문제 해결실',
-    x: 460,
-    y: 560,
-    interactionType: 'modal',
-    modalType: 'experience',
-    experienceId: 'troubleshooting',
+    modalType: 'introduction',
   },
   {
     id: 'contact',
     label: '연락처 터미널',
-    x: 202,
-    y: 442,
+    x: 870,
+    y: 474,
     interactionType: 'modal',
     modalType: 'contact',
   },
