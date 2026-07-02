@@ -1,6 +1,6 @@
 'use client';
 
-import { careerItems } from '@/data/profile';
+import { careerStatementItems } from '@/data/careerStatement';
 import { BaseModal } from './BaseModal';
 
 type CareerStatementModalProps = {
@@ -21,11 +21,11 @@ export function CareerStatementModal({
     >
       <div className="grid gap-5">
         <p className="leading-7 text-body">
-          공개 이력서에 정리된 회사별 담당 업무와 프로젝트 중심의 경력 상세
-          내용입니다.
+          회사별 담당 업무, 프로젝트 수행 내역, 구현 내용과 성과를 정리한
+          경력기술서입니다.
         </p>
         <div className="grid gap-4">
-          {careerItems.map((career) => (
+          {careerStatementItems.map((career) => (
             <article
               key={`${career.company}-${career.period}`}
               className="rounded-2xl border border-hairline bg-canvas p-5"
@@ -34,22 +34,23 @@ export function CareerStatementModal({
                 <div>
                   <h3 className="text-xl font-semibold text-ink">
                     {career.company}
+                    <span className="font-normal text-body">
+                      {' '}
+                      · {career.position}
+                    </span>
                   </h3>
-                  <p className="mt-2 text-sm leading-6 text-body">
-                    {career.summary}
-                  </p>
                 </div>
                 <span className="shrink-0 text-sm font-semibold text-body">
                   {career.period}
                 </span>
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
-                {career.roles.map((role) => (
+                {career.techStack.map((tech) => (
                   <span
-                    key={role}
+                    key={tech}
                     className="rounded-md bg-strong px-2.5 py-1 text-xs font-semibold text-ink"
                   >
-                    {role}
+                    {tech}
                   </span>
                 ))}
               </div>

@@ -4,7 +4,6 @@ import { create } from 'zustand';
 
 export type ModalType =
   | 'resume'
-  | 'projects'
   | 'skills'
   | 'experience'
   | 'career'
