@@ -53,20 +53,69 @@ export function CareerStatementModal({
                   </span>
                 ))}
               </div>
-              <ul className="mt-5 grid gap-3 text-sm leading-6 text-body">
-                {career.details.map((detail) => (
-                  <li key={`${detail.title}-${detail.period}`}>
-                    <p className="font-semibold text-ink">
-                      {detail.title}
-                      <span className="font-normal text-body">
-                        {' '}
-                        · {detail.period}
-                      </span>
-                    </p>
-                    <p className="mt-1">{detail.description}</p>
-                  </li>
-                ))}
-              </ul>
+              <section className="mt-5">
+                <h4 className="font-semibold text-ink">담당 업무</h4>
+                <ul className="mt-3 grid gap-2 text-sm leading-6 text-body">
+                  {career.responsibilities.map((responsibility) => (
+                    <li key={responsibility}>{responsibility}</li>
+                  ))}
+                </ul>
+              </section>
+              <section className="mt-6">
+                <h4 className="font-semibold text-ink">프로젝트 수행 내역</h4>
+                <div className="mt-3 grid gap-4">
+                  {career.projects.map((project) => (
+                    <article
+                      key={project.title}
+                      className="rounded-2xl border border-hairline bg-panel p-4"
+                    >
+                      <h5 className="text-base font-semibold text-ink">
+                        {project.title}
+                      </h5>
+                      <dl className="mt-3 grid gap-2 text-sm leading-6 text-body">
+                        <div>
+                          <dt className="font-semibold text-ink">내용</dt>
+                          <dd>{project.content}</dd>
+                        </div>
+                        <div>
+                          <dt className="font-semibold text-ink">역할</dt>
+                          <dd>{project.role}</dd>
+                        </div>
+                      </dl>
+                      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                        <div>
+                          <h6 className="text-sm font-semibold text-ink">
+                            주요 구현 내용
+                          </h6>
+                          <ul className="mt-2 grid gap-2 text-sm leading-6 text-body">
+                            {project.implementations.map((implementation) => (
+                              <li key={implementation}>{implementation}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <h6 className="text-sm font-semibold text-ink">
+                            성과
+                          </h6>
+                          <ul className="mt-2 grid gap-2 text-sm leading-6 text-body">
+                            {project.results.map((result) => (
+                              <li key={result}>{result}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+              <section className="mt-6">
+                <h4 className="font-semibold text-ink">기타 성과</h4>
+                <ul className="mt-3 grid gap-2 text-sm leading-6 text-body">
+                  {career.extraAchievements.map((achievement) => (
+                    <li key={achievement}>{achievement}</li>
+                  ))}
+                </ul>
+              </section>
             </article>
           ))}
         </div>
