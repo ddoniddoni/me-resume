@@ -22,12 +22,13 @@ export function IntroductionModal({
     >
       <div className="grid gap-5">
         <div>
-          <p className="w-fit rounded-full bg-strong px-4 py-2 text-xs font-semibold text-ink">
-            {profile.name}
-          </p>
-          <h3 className="mt-4 text-2xl font-normal text-ink">
-            {profile.headline}
+          <h3 className="flex flex-col gap-2 text-3xl font-semibold text-ink sm:flex-row sm:items-end sm:text-4xl">
+            <span>{profile.name}</span>
+            <span className="text-2xl font-normal text-body sm:text-3xl">
+              {profile.role}
+            </span>
           </h3>
+          <p className="mt-3 leading-7 text-body">{profile.headline}</p>
         </div>
         <div className="grid gap-4">
           {introductionSections.map((section) => (

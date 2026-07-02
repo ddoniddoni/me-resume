@@ -136,7 +136,19 @@ export function BaseModal({
             className="inline-flex size-10 shrink-0 items-center justify-center border-[3px] border-[#5f3b22] bg-[#e5b76c] text-xl font-black leading-none text-[#2d1a0f] outline-none transition hover:-translate-y-0.5 hover:bg-[#f0ca7d] focus-visible:shadow-focus motion-reduce:hover:translate-y-0"
             aria-label="모달 닫기"
           >
-            ×
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="size-5"
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="square"
+              strokeLinejoin="miter"
+              strokeWidth="3"
+            >
+              <path d="M6 6l12 12" />
+              <path d="M18 6L6 18" />
+            </svg>
           </button>
         </div>
         {description ? (

@@ -27,6 +27,7 @@ export const careerStatementItems: CareerStatementItem[] = [
       'TypeScript',
       'Recoil',
       'TanStack Query',
+      'Zustand',
       'HTML',
       'SCSS',
     ],

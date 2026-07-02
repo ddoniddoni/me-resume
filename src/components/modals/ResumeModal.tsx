@@ -52,7 +52,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 {career.roles.map((role) => (
                   <span
                     key={role}
-                    className="rounded-md bg-strong px-2.5 py-1 text-xs font-semibold text-ink"
+                    className="inline-flex min-h-6 items-center rounded-full border border-[#5f3b22] bg-[#e5b76c] px-2.5 py-0.5 text-[11px] font-black leading-none text-[#2d1a0f] shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_1px_0_rgba(95,59,34,0.32)]"
                   >
                     {role}
                   </span>
@@ -73,14 +73,6 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             ))}
           </ul>
         </div>
-        <a
-          href={profile.resumeSourceUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-primary px-5 py-2 text-center text-sm font-semibold text-white outline-none transition hover:bg-primary-active focus-visible:shadow-focus sm:w-fit"
-        >
-          GitHub 이력서 저장소 보기
-        </a>
       </div>
     </BaseModal>
   );

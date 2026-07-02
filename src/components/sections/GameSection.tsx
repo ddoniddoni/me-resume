@@ -277,11 +277,18 @@ export function GameSection({ loadStrategy = 'visible' }: GameSectionProps) {
 
       {status === 'ready' ? (
         <div className="pointer-events-none absolute left-4 top-4 z-10 sm:left-5 sm:top-5">
-          <p
-            className="border border-white/35 bg-ink/82 px-3 py-2 text-sm font-semibold text-white backdrop-blur"
-          >
-            Move: WASD / 방향키
-          </p>
+          <div className="flex flex-wrap items-center gap-2 border-2 border-[#8fb56b] bg-[#25431d] px-3 py-2 text-white shadow-[0_3px_0_rgba(19,27,15,0.42)]">
+            <span className="text-xs font-black uppercase tracking-[0.16em] text-[#f4c95d]">
+              이동
+            </span>
+            <kbd className="border border-[#d7efb8] bg-[#5f7f3d] px-2 py-1 text-sm font-black leading-none text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]">
+              WASD
+            </kbd>
+            <span className="text-xs font-bold text-[#d7efb8]">또는</span>
+            <kbd className="border border-[#d7efb8] bg-[#5f7f3d] px-2 py-1 text-sm font-black leading-none text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]">
+              방향키
+            </kbd>
+          </div>
         </div>
       ) : null}
     </section>

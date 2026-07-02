@@ -57,6 +57,22 @@ a {
 .pixel-modal {
   image-rendering: pixelated;
   background: #263821;
+  scrollbar-color: rgb(200 173 121 / 0.5) rgb(19 27 15 / 0.18);
+  scrollbar-width: thin;
+}
+
+.pixel-modal::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.pixel-modal::-webkit-scrollbar-track {
+  background: rgb(19 27 15 / 0.18);
+}
+
+.pixel-modal::-webkit-scrollbar-thumb {
+  background: rgb(200 173 121 / 0.5);
+  border: 1px solid rgb(38 56 33 / 0.75);
 }
 
 .pixel-modal h3,

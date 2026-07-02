@@ -99,7 +99,7 @@ export function CareerStatementModal({
                             ))}
                           </ul>
                         </div>
-                        <div>
+                        <div className="border-t border-[#c8ad79]/35 pt-4 sm:border-l sm:border-t-0 sm:pl-4 sm:pt-0">
                           <h6 className="text-sm font-semibold text-ink">
                             성과
                           </h6>

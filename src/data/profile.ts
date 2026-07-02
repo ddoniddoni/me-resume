@@ -36,7 +36,16 @@ export const careerItems: CareerItem[] = [
     period: '2024.06 - 2025.04, 2026.01 - 2026.03',
     summary:
       'Next.js, React 기반 웹 플랫폼 프론트엔드 개발을 맡아 UI/UX 개선, 성능 최적화, 재사용 가능한 컴포넌트 설계, 관리자 페이지 신규 기능 개발을 수행했습니다.',
-    roles: ['Next.js', 'React', 'TypeScript', 'Recoil', 'HTML', 'SCSS'],
+    roles: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Recoil',
+      'TanStack Query',
+      'Zustand',
+      'HTML',
+      'SCSS',
+    ],
   },
   {
     company: '나임네트웍스',
