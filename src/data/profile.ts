@@ -15,7 +15,7 @@ export const profile: Profile = {
   role: '프론트엔드 개발자',
   headline: '사용자의 필요를 넘어 기대까지 고려하는 프론트엔드를 만듭니다.',
   summary:
-    '5년 차 프론트엔드 개발자로 Next.js, React, Angular 기반 서비스에서 UI/UX 개선, 성능 최적화, 공통 컴포넌트 설계, 운영 이슈 대응을 맡아왔습니다.',
+    '4년 차 프론트엔드 개발자로 Next.js, React, Angular 기반 서비스에서 UI/UX 개선, 성능 최적화, 공통 컴포넌트 설계, 운영 이슈 대응을 맡아왔습니다.',
   location: '서울시 송파구',
   email: 'psdkei@naver.com',
   github: 'https://github.com/ddoniddoni',

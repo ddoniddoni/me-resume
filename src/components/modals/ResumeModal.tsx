@@ -18,20 +18,17 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     >
       <div className="grid gap-5">
         <div>
-          <p className="w-fit rounded-full bg-strong px-4 py-2 text-xs font-semibold text-ink">
-            {profile.name}
-          </p>
-          <h3 className="mt-4 text-2xl font-normal tracking-[-0.02em] text-ink">
-            {profile.role}
+          <h3 className="flex flex-col gap-2 text-3xl font-semibold text-ink sm:flex-row sm:items-end sm:text-4xl">
+            <span>{profile.name}</span>
+            <span className="text-2xl font-normal text-body sm:text-3xl">
+              {profile.role}
+            </span>
           </h3>
           <p className="mt-3 leading-7 text-body">{profile.headline}</p>
         </div>
         <div className="rounded-3xl border border-hairline bg-panel p-6">
           <h4 className="font-semibold text-ink">경력 요약</h4>
           <p className="mt-3 leading-7 text-body">{profile.summary}</p>
-          <p className="mt-3 text-sm font-semibold text-body">
-            지역: {profile.location}
-          </p>
         </div>
         <div className="grid gap-4">
           <h4 className="font-semibold text-ink">주요 경력</h4>
