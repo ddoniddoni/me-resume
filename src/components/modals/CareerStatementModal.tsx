@@ -44,16 +44,21 @@ export function CareerStatementModal({
                   {career.period}
                 </span>
               </div>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {career.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-md bg-strong px-2.5 py-1 text-xs font-semibold text-ink"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+              <section className="mt-5 rounded-2xl border border-[#d8bd7a] bg-[#fff3c4] p-4 shadow-[inset_0_2px_0_rgba(255,255,255,0.65),0_4px_0_rgba(95,59,34,0.22)]">
+                <h4 className="text-sm font-black uppercase text-[#5f3b22]">
+                  Tech Stack
+                </h4>
+                <div className="mt-3 flex flex-wrap gap-2.5">
+                  {career.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="inline-flex min-h-8 items-center rounded-full border-2 border-[#5f3b22] bg-[#e5b76c] px-3.5 py-1 text-sm font-black leading-none text-[#2d1a0f] shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_2px_0_rgba(95,59,34,0.45)]"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </section>
               <section className="mt-5">
                 <h4 className="font-semibold text-ink">담당 업무</h4>
                 <ul className="mt-3 grid gap-2 text-sm leading-6 text-body">

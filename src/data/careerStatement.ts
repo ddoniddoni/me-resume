@@ -21,7 +21,15 @@ export const careerStatementItems: CareerStatementItem[] = [
     company: '더블다운게임즈',
     position: '프론트엔드 개발',
     period: '2024.06 - 2025.04, 2026.01 - 2026.03',
-    techStack: ['Next.js', 'React', 'TypeScript', 'Recoil', 'HTML', 'SCSS'],
+    techStack: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Recoil',
+      'TanStack Query',
+      'HTML',
+      'SCSS',
+    ],
     responsibilities: [
       'Next.js & React 기반의 웹 플랫폼 프론트엔드 개발',
       'UI/UX 개선 및 프론트엔드 성능 최적화 수행',
