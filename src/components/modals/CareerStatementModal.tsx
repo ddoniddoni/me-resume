@@ -44,15 +44,15 @@ export function CareerStatementModal({
                   {career.period}
                 </span>
               </div>
-              <section className="mt-5 rounded-2xl border border-[#d8bd7a] bg-[#fff3c4] p-4 shadow-[inset_0_2px_0_rgba(255,255,255,0.65),0_4px_0_rgba(95,59,34,0.22)]">
-                <h4 className="text-sm font-black uppercase text-[#5f3b22]">
+              <section className="mt-5">
+                <h4 className="text-sm font-black uppercase text-ink">
                   Tech Stack
                 </h4>
                 <div className="mt-3 flex flex-wrap gap-2.5">
                   {career.techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="inline-flex min-h-8 items-center rounded-full border-2 border-[#5f3b22] bg-[#e5b76c] px-3.5 py-1 text-sm font-black leading-none text-[#2d1a0f] shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_2px_0_rgba(95,59,34,0.45)]"
+                      className="inline-flex min-h-8 items-center rounded-full border-2 border-[#5f3b22] bg-[#e5b76c] px-3.5 py-1 text-sm font-black leading-none text-[#2d1a0f] shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_2px_0_rgba(95,59,34,0.38)]"
                     >
                       {tech}
                     </span>
