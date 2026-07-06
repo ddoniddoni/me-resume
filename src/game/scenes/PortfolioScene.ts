@@ -31,8 +31,9 @@ const grassFillFrameRows = [
   [66, 67, 68, 69, 70, 71],
 ] as const;
 const fenceRegions = [
-  { interactableId: 'resume', x: 302, y: 112 },
-  { interactableId: 'career', x: 762, y: 112 },
+  { interactableId: 'resume', x: 196, y: 112 },
+  { interactableId: 'projects', x: 532, y: 112 },
+  { interactableId: 'career', x: 868, y: 112 },
   { interactableId: 'introduction', x: 302, y: 408 },
   { interactableId: 'contact', x: 762, y: 408 },
 ] as const;
