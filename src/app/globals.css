@@ -126,6 +126,14 @@ a {
   color: #ffe28a !important;
 }
 
+.pixel-modal a.pixel-modal-action {
+  color: #2d1a0f !important;
+}
+
+.pixel-modal a.pixel-modal-action:hover {
+  color: #2d1a0f !important;
+}
+
 .pixel-modal .bg-primary {
   border: 3px solid #5f3b22 !important;
   background-color: #e5b76c !important;
