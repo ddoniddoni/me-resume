@@ -5,6 +5,7 @@ import { CareerStatementModal } from './CareerStatementModal';
 import { ContactModal } from './ContactModal';
 import { ExperienceModal } from './ExperienceModal';
 import { IntroductionModal } from './IntroductionModal';
+import { ProjectModal } from './ProjectModal';
 import { ResumeModal } from './ResumeModal';
 import { SkillsModal } from './SkillsModal';
 
@@ -18,6 +19,7 @@ export function PortfolioModals() {
   return (
     <>
       <ResumeModal isOpen={activeModal === 'resume'} onClose={closeModal} />
+      <ProjectModal isOpen={activeModal === 'projects'} onClose={closeModal} />
       <SkillsModal isOpen={activeModal === 'skills'} onClose={closeModal} />
       <CareerStatementModal
         isOpen={activeModal === 'career'}

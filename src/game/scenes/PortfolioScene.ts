@@ -7,7 +7,7 @@ const PLAYER_SPEED = 220;
 const PLAYER_SCALE = 4;
 const PLAYER_START = {
   x: 640,
-  y: 368,
+  y: 432,
 };
 const TILE_SIZE = 16;
 const GROUND_TILE_SCALE = 2;
@@ -31,8 +31,9 @@ const grassFillFrameRows = [
   [66, 67, 68, 69, 70, 71],
 ] as const;
 const fenceRegions = [
-  { interactableId: 'resume', x: 302, y: 112 },
-  { interactableId: 'career', x: 762, y: 112 },
+  { interactableId: 'resume', x: 196, y: 112 },
+  { interactableId: 'projects', x: 532, y: 112 },
+  { interactableId: 'career', x: 868, y: 112 },
   { interactableId: 'introduction', x: 302, y: 408 },
   { interactableId: 'contact', x: 762, y: 408 },
 ] as const;
@@ -99,7 +100,7 @@ export class PortfolioScene extends Phaser.Scene {
   private player?: Phaser.GameObjects.Sprite;
   private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
   private wasd?: MovementKeys;
-  private currentDirection: Direction = 'right';
+  private currentDirection: Direction = 'down';
 
   constructor(callbacks: PortfolioGameCallbacks) {
     super('PortfolioScene');

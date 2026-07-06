@@ -6,6 +6,7 @@ type BaseModalProps = {
   isOpen: boolean;
   title: string;
   description?: string;
+  headerAction?: ReactNode;
   children: ReactNode;
   onClose: () => void;
 };
@@ -23,6 +24,7 @@ export function BaseModal({
   isOpen,
   title,
   description,
+  headerAction,
   children,
   onClose,
 }: BaseModalProps) {
@@ -124,12 +126,15 @@ export function BaseModal({
         className="pixel-modal max-h-[min(760px,calc(100dvh-3rem))] w-full max-w-3xl overflow-y-auto overscroll-contain border-[4px] border-[#3f4b35] bg-[#24331f] p-5 text-[#f6edc8] shadow-[0_0_0_3px_#b99b65,0_0_0_6px_#1d2419,0_16px_0_rgba(19,27,15,0.38)] outline-none focus-visible:shadow-focus sm:p-7"
       >
         <div className="flex items-start justify-between gap-4 border-b-[3px] border-[#9d865c] pb-4">
-          <h2
-            id={titleId}
-            className="text-3xl font-black text-[#fff4c7]"
-          >
-            {title}
-          </h2>
+          <div className="flex min-w-0 flex-wrap items-center gap-3">
+            <h2
+              id={titleId}
+              className="text-3xl font-black text-[#fff4c7]"
+            >
+              {title}
+            </h2>
+            {headerAction}
+          </div>
           <button
             type="button"
             onClick={onClose}

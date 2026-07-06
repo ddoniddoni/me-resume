@@ -30,12 +30,17 @@ const HOME_SIGN_TILE_CENTER_OFFSET = HOME_FENCE_TILE_SIZE / 2;
 const homeFenceRegions = [
   {
     label: '이력서',
-    x: 302,
+    x: 196,
+    y: 112,
+  },
+  {
+    label: '프로젝트',
+    x: 532,
     y: 112,
   },
   {
     label: '경력기술서',
-    x: 762,
+    x: 868,
     y: 112,
   },
   {

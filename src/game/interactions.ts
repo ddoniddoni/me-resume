@@ -2,6 +2,7 @@ import type { ExperienceId, ModalType } from '@/store/portfolioStore';
 
 export type InteractableId =
   | 'resume'
+  | 'projects'
   | 'career'
   | 'introduction'
   | 'contact';
@@ -20,15 +21,23 @@ export const portfolioInteractables: InteractableObject[] = [
   {
     id: 'resume',
     label: '이력서 보드',
-    x: 410,
+    x: 304,
     y: 178,
     interactionType: 'modal',
     modalType: 'resume',
   },
   {
+    id: 'projects',
+    label: '프로젝트 보드',
+    x: 640,
+    y: 178,
+    interactionType: 'modal',
+    modalType: 'projects',
+  },
+  {
     id: 'career',
     label: '경력기술서',
-    x: 870,
+    x: 976,
     y: 178,
     interactionType: 'modal',
     modalType: 'career',
