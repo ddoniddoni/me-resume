@@ -7,7 +7,7 @@ const PLAYER_SPEED = 220;
 const PLAYER_SCALE = 4;
 const PLAYER_START = {
   x: 640,
-  y: 368,
+  y: 432,
 };
 const TILE_SIZE = 16;
 const GROUND_TILE_SCALE = 2;
@@ -100,7 +100,7 @@ export class PortfolioScene extends Phaser.Scene {
   private player?: Phaser.GameObjects.Sprite;
   private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
   private wasd?: MovementKeys;
-  private currentDirection: Direction = 'right';
+  private currentDirection: Direction = 'down';
 
   constructor(callbacks: PortfolioGameCallbacks) {
     super('PortfolioScene');
