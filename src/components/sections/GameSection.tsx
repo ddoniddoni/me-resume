@@ -35,12 +35,12 @@ const homeFenceRegions = [
   },
   {
     label: '프로젝트',
-    x: 532,
+    x: 868,
     y: 112,
   },
   {
     label: '경력기술서',
-    x: 868,
+    x: 532,
     y: 112,
   },
   {
