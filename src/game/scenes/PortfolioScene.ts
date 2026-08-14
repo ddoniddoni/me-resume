@@ -32,7 +32,8 @@ const grassFillFrameRows = [
 ] as const;
 const fenceRegions = [
   { interactableId: 'resume', x: 196, y: 112 },
-  { interactableId: 'projects', x: 868, y: 112 },
+  // 프로젝트 영역은 내용 보강 전까지 숨깁니다.
+  // { interactableId: 'projects', x: 868, y: 112 },
   { interactableId: 'career', x: 532, y: 112 },
   { interactableId: 'introduction', x: 302, y: 408 },
   { interactableId: 'contact', x: 762, y: 408 },

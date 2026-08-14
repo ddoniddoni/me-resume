@@ -26,14 +26,15 @@ export const portfolioInteractables: InteractableObject[] = [
     interactionType: 'modal',
     modalType: 'resume',
   },
-  {
-    id: 'projects',
-    label: '프로젝트 보드',
-    x: 976,
-    y: 178,
-    interactionType: 'modal',
-    modalType: 'projects',
-  },
+  // 프로젝트 영역은 내용 보강 전까지 숨깁니다.
+  // {
+  //   id: 'projects',
+  //   label: '프로젝트 보드',
+  //   x: 976,
+  //   y: 178,
+  //   interactionType: 'modal',
+  //   modalType: 'projects',
+  // },
   {
     id: 'career',
     label: '경력기술서',
