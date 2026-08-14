@@ -135,8 +135,7 @@ export class PortfolioScene extends Phaser.Scene {
   create() {
     this.createGrassGround();
     this.createObjectFrames();
-    // 영역 테두리는 레이아웃 확정 전까지 숨깁니다.
-    // this.createFenceRegions();
+    this.createFenceRegions();
     this.createRegionContents();
     this.createAnimations();
     this.createPlayer();
