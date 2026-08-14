@@ -21,7 +21,7 @@ export const portfolioInteractables: InteractableObject[] = [
   {
     id: 'resume',
     label: '이력서 보드',
-    x: 304,
+    x: 412,
     y: 178,
     interactionType: 'modal',
     modalType: 'resume',
@@ -38,7 +38,7 @@ export const portfolioInteractables: InteractableObject[] = [
   {
     id: 'career',
     label: '경력기술서',
-    x: 640,
+    x: 868,
     y: 178,
     interactionType: 'modal',
     modalType: 'career',
@@ -46,7 +46,7 @@ export const portfolioInteractables: InteractableObject[] = [
   {
     id: 'introduction',
     label: '자기소개서',
-    x: 410,
+    x: 412,
     y: 474,
     interactionType: 'modal',
     modalType: 'introduction',
@@ -54,7 +54,7 @@ export const portfolioInteractables: InteractableObject[] = [
   {
     id: 'contact',
     label: '연락처 터미널',
-    x: 870,
+    x: 868,
     y: 474,
     interactionType: 'modal',
     modalType: 'contact',

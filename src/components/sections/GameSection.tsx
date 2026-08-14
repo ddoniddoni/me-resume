@@ -30,7 +30,7 @@ const HOME_SIGN_TILE_CENTER_OFFSET = HOME_FENCE_TILE_SIZE / 2;
 const homeFenceRegions = [
   {
     label: '이력서',
-    x: 196,
+    x: 304,
     y: 112,
   },
   // 프로젝트 영역은 내용 보강 전까지 숨깁니다.
@@ -41,17 +41,17 @@ const homeFenceRegions = [
   // },
   {
     label: '경력기술서',
-    x: 532,
+    x: 760,
     y: 112,
   },
   {
     label: '자기소개서',
-    x: 302,
+    x: 304,
     y: 408,
   },
   {
     label: '연락처',
-    x: 762,
+    x: 760,
     y: 408,
   },
 ] as const;

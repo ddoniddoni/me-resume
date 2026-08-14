@@ -31,12 +31,12 @@ const grassFillFrameRows = [
   [66, 67, 68, 69, 70, 71],
 ] as const;
 const fenceRegions = [
-  { interactableId: 'resume', x: 196, y: 112 },
+  { interactableId: 'resume', x: 304, y: 112 },
   // 프로젝트 영역은 내용 보강 전까지 숨깁니다.
   // { interactableId: 'projects', x: 868, y: 112 },
-  { interactableId: 'career', x: 532, y: 112 },
-  { interactableId: 'introduction', x: 302, y: 408 },
-  { interactableId: 'contact', x: 762, y: 408 },
+  { interactableId: 'career', x: 760, y: 112 },
+  { interactableId: 'introduction', x: 304, y: 408 },
+  { interactableId: 'contact', x: 760, y: 408 },
 ] as const;
 const fenceHorizontalFrames = {
   bottom: [13, 14, 15],
@@ -135,7 +135,8 @@ export class PortfolioScene extends Phaser.Scene {
   create() {
     this.createGrassGround();
     this.createObjectFrames();
-    this.createFenceRegions();
+    // 영역 테두리는 레이아웃 확정 전까지 숨깁니다.
+    // this.createFenceRegions();
     this.createRegionContents();
     this.createAnimations();
     this.createPlayer();
